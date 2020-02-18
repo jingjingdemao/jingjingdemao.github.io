@@ -33,7 +33,7 @@
 
 <title>
     
-    @import详解 |
+    标签: 博客 |
     
     Welcome to my Blog
 </title>
@@ -136,118 +136,157 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
+                <main class="col-md-8 main-content ">
+                    <ol class="breadcrumb">
+    
+    <li>
+        博客
+    </li>
+    
+    
+</ol>
+
 <article class="post">
-    <div class="post-head">
-        <h1 id="@import详解">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2018/10/20/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+                    搭建博客流程</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2018年10月20日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
             
-            @import详解
             
-        </h1>
-        <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
+一，安装环境1.搭建Node.js环境搭建博客网站首先需要安装Node.js环境，下载地址：http://nodejs.cn/download 。
+测试安装：命令行使用node -v 、npm -v，查看显示版本号即成功。
+注意：
+...
             
-        </span>
-    </span>
-    
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta">
-            2018/11/05</span>
-    </span>
-    
-    
-</div>
-        
-        
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                469</strong>
-            天之前发表，文中内容可能已经过时。
         </p>
-        
-    </div>
-    
-    <div class="post-body post-content">
-        
-    </div>
-    
-    <div class="post-footer">
-        <div>
-            
-            转载声明：
-            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
-            
-            
-        </div>
-        <div>
-            
-        </div>
     </div>
 </article>
-<div class="article-nav prev-next-wrap clearfix">
-    
-    
-    <a href="/2018/10/20/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="next-post btn btn-default" title='搭建博客流程'>
-        <span class="hidden-lg">下一篇</span>
-        <span class="hidden-xs">
-            搭建博客流程</span><i class="fa fa-angle-right fa-fw"></i>
-    </a>
-    
-</div>
 
-<div id="comments">
-    
-
-<div id="vcomments" class="valine"></div>
-
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="/assets/valine.min.js"></script>
-
-<script>
-new Valine({
-    av: AV,
-    el: '#vcomments',
-    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
-    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
-    placeholder: '说点什么吧',
-    notify: false,
-    verify: true,
-    avatar: 'mm',
-    meta: 'nick,mail'.split(','),
-    pageSize: '10',
-    path: window.location.pathname,
-    lang: 'zh-CN'.toLowerCase()
-})
-</script>
-
-
-</div>
 
                 </main>
                 
-                    <aside id="article-toc" role="navigation" class="col-md-4">
-    <div class="widget">
-        <h3 class="title">
-            文章目录
-        </h3>
+                    
+<aside class="col-md-4 sidebar">
+    
+    
+<div class="widget">
+    <h3 class="title">
+        搜索
+    </h3>
+    <div id="search-form">
+        <div id="result-mask" class="hide"></div>
+        <div class="search-area">
+            
+            <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢？">
+            <button type="button" class="search-form-submit" id="search-local">
+                站内搜索</button>
+            
+            
+        </div>
+        <div id="result-wrap" class="hide">
+            <div id="search-result"></div>
+        </div>
+        <div class="hide">
+            <template id="search-tpl">
+                <div class="item">
+                    <a href="/{path}" title="{title}">
+                        <div class="title">{title}</div>
+                        <div class="content">{content}</div>
+                    </a>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+
+    
+    
+    
+    
+<div class="widget">
+    <h3 class="title">
+        社交
+    </h3>
+    <div class="content social">
         
-        <p>暂无目录</p>
+        <a href="//github.com/jingjingdemao" rel="external nofollow" title="Github" target="_blank">
+            <i class="git fa fa-git"></i>
+        </a>
+        
+        <a href="2528932384.com" rel="external nofollow" title="邮箱" target="_blank">
+            <i class="envelope-o fa fa-envelope-o"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+            <i class="qq fa fa-qq"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="微信" target="_blank">
+            <i class="weixin fa fa-weixin"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+            <i class="users fa fa-users"></i>
+        </a>
+        
+        <a href="/" rel="external nofollow" title="RSS" target="_blank">
+            <i class="feed fa fa-feed"></i>
+        </a>
         
     </div>
+</div>
+
+    
+    
+    
+    
+<div class="widget">
+    <h3 class="title">
+        归档
+    </h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/"><i class="fa" aria-hidden="true">2020年02月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">2018年10月</i></a><span class="archive-list-count">1</span></li></ul>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        标签云
+    </h3>
+    <div class="content tag-cloud">
+        
+        <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a>
+        
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        友链
+    </h3>
+    <div class="content friends-link">
+        
+        <a href="https://hexo.io/zh-cn/" class="fa" target="_blank">
+            Hexo官网</a>
+        
+    </div>
+</div>
+
+    
 </aside>
+
                 
             </div>
         </div>
@@ -284,6 +323,10 @@ new Valine({
         </div>
     </div>
 </div>
+
+
+<script src="/js/search.js?rev=@@hash.js"></script>
+
 
 
 
