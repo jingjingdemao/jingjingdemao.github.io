@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="JavaScript,事件模型" />
+
+
+<meta name="description" content="事件模型1.DOM0DOM0事件就是直接通过 onclick 绑定到 html上的事件
+123&lt;input onclick&#x3D;&quot;sayHi()&quot;&#x2F;&g..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    事件模型 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="事件模型">
+            
+            事件模型
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="tag-link" href="/tags/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/" rel="tag">事件模型</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/11/18</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                458</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="事件模型"><a href="#事件模型" class="headerlink" title="事件模型"></a>事件模型</h4><h5 id="1-DOM0"><a href="#1-DOM0" class="headerlink" title="1.DOM0"></a>1.DOM0</h5><p>DOM0事件就是直接通过 onclick 绑定到 html上的事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input onclick&#x3D;&quot;sayHi()&quot;&#x2F;&gt;</span><br><span class="line">或者</span><br><span class="line">btn.onclick &#x3D; function() &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优点：所有的浏览器都是支持的，比较简单。</p>
+<p>缺点：一个dom对象只能注册一个同类型的函数，当注册多个同类型的函数时会发生覆盖，之前注册的函数就会无效。</p>
+<h5 id="2-DOM2"><a href="#2-DOM2" class="headerlink" title="2.DOM2"></a>2.DOM2<br></h5><p>DOM2级事件可以冒泡和捕获<br>事件传播1=&gt;2=&gt;3=&gt;4为捕获阶段，4=&gt;5=&gt;6=&gt;7为冒泡阶段，如下图所示</p>
+<p><img src="/2018/11/18/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/%E5%9B%BE%E7%89%870.png" alt="img"></p>
+<p>通过addEventListener绑定，addEventListener（type,listener,useCapture）有三个参数，分别是事件类型，回调函数，true捕获/false冒泡</p>
+<p>通过removeEventListener解绑，移除时传入的参数与添加时使用的参数必须相同，如果是匿名函数将无法移除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 绑定</span><br><span class="line">btn.addEventListener(&#39;click&#39;, sayHi)</span><br><span class="line">&#x2F;&#x2F; 解绑</span><br><span class="line">btn.removeEventListener(&#39;click&#39;, sayHi)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; myFunction是命名函数，可以移除</span><br><span class="line">document.getElementById(&quot;myDIV&quot;).addEventListener(&quot;mousemove&quot;, myFunction);</span><br><span class="line">function myFunction() </span><br><span class="line">&#123;</span><br><span class="line">    document.getElementById(&quot;demo&quot;).innerHTML &#x3D; Math.random();</span><br><span class="line">&#125;</span><br><span class="line">document.getElementById(&quot;myDIV&quot;).removeEventListener(&quot;mousemove&quot;, myFunction);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 第二个参数是匿名函数，无法移除</span><br><span class="line">document.removeEventListener(&quot;event&quot;, function()&#123; myScript &#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-DOM3"><a href="#3-DOM3" class="headerlink" title="3.DOM3"></a>3.DOM3<br></h5><p>DOM3具有更多事件类型<br>DOM3级事件在DOM2级事件的基础上添加了更多的事件类型，全部类型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">UI事件，当用户与页面上的元素交互时触发，如：load、scroll</span><br><span class="line">焦点事件，当元素获得或失去焦点时触发，如：blur、focus</span><br><span class="line">鼠标事件，当用户通过鼠标在页面执行操作时触发如：dbclick、mouseup</span><br><span class="line">滚轮事件，当使用鼠标滚轮或类似设备时触发，如：mousewheel</span><br><span class="line">文本事件，当在文档中输入文本时触发，如：textInput</span><br><span class="line">键盘事件，当用户通过键盘在页面上执行操作时触发，如：keydown、keypress</span><br><span class="line">合成事件，当为IME（输入法编辑器）输入字符时触发，如：compositionstart</span><br><span class="line">变动事件，当底层DOM结构发生变化时触发，如：DOMsubtreeModified</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/12/08/%E9%A2%84%E8%A7%A3%E6%9E%90%E8%A7%84%E5%88%99/" class="pre-post btn btn-default" title='预解析规则'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            预解析规则</span>
+    </a>
+    
+    
+    <a href="/2018/10/20/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="next-post btn btn-default" title='搭建博客流程'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            搭建博客流程</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#事件模型"><span class="toc-text">事件模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-DOM0"><span class="toc-text">1.DOM0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-DOM2"><span class="toc-text">2.DOM2
+</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-DOM3"><span class="toc-text">3.DOM3
+</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

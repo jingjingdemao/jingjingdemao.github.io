@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="JavaScript,预解析" />
+
+
+<meta name="description" content="
+二、预解析
+预解析预解析就是：在当前作用域中，JavaScript代码执行之前，浏览器首先会默认的把所有带var和function声明的变量进行提前的声明或者定义。
+1. 声明和定义var n..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    预解析规则 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="预解析规则">
+            
+            预解析规则
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="tag-link" href="/tags/%E9%A2%84%E8%A7%A3%E6%9E%90/" rel="tag">预解析</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/12/08</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                438</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/2018/12/08/%E9%A2%84%E8%A7%A3%E6%9E%90%E8%A7%84%E5%88%99/1.png" alt></p>
+<p><strong>二、预解析</strong></p>
+<h3 id="预解析"><a href="#预解析" class="headerlink" title="预解析"></a>预解析</h3><p>预解析就是：<strong>在当前作用域中，JavaScript代码执行之前，浏览器首先会默认的把所有带var和function声明的变量进行提前的声明或者定义。</strong></p>
+<h4 id="1-声明和定义"><a href="#1-声明和定义" class="headerlink" title="1. 声明和定义"></a>1. 声明和定义</h4><p>var num = 24;</p>
+<p>这行简单的代码其实是两个步骤：声明和定义。</p>
+<p>· 声明：var num; 告诉浏览器在全局作用域中有一个num变量了，如果一个变量只是声明了，但是没有赋值，默认值是undefined。</p>
+<p>· 定义：num = 12; 定义就是给变量进行赋值。</p>
+<h4 id="2-var声明的变量和function声明的函数在预解析的区别"><a href="#2-var声明的变量和function声明的函数在预解析的区别" class="headerlink" title="2. var声明的变量和function声明的函数在预解析的区别"></a>2. var声明的变量和function声明的函数在预解析的区别</h4><ul>
+<li>var声明的变量在预解析的时候，只会提升声明，不会提升定义；</li>
+<li>function声明的函数在预解析的时候会提前声明；</li>
+<li>函数的提升在变量的提升之前；</li>
+</ul>
+<h4 id="3-预解析只发生在当前的作用域下"><a href="#3-预解析只发生在当前的作用域下" class="headerlink" title="3. 预解析只发生在当前的作用域下"></a>3. 预解析只发生在当前的作用域下</h4><p>程序最开始的时候，只对window下的变量和函数进行预解析，只有函数执行的时候才会对函数中的变量和函数进行预解析。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">console.log(num);</span><br><span class="line">var num &#x3D; 24;</span><br><span class="line">console.log(num); </span><br><span class="line">func(100 , 200); </span><br><span class="line">function func(num1 , num2) &#123;</span><br><span class="line">    var total &#x3D; num1 + num2;</span><br><span class="line">    console.log(total);</span><br><span class="line">&#125;</span><br><span class="line">结果：undefined</span><br><span class="line">	 24</span><br><span class="line">	 300</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;预解析以后顺序</span><br><span class="line">function func(num1 , num2) &#123;</span><br><span class="line">    var total &#x3D; num1 + num2;</span><br><span class="line">    console.log(total);</span><br><span class="line">&#125;</span><br><span class="line">var num；</span><br><span class="line">console.log(num);      &#x2F;&#x2F;undefined</span><br><span class="line">num&#x3D; 24;</span><br><span class="line">console.log(num);      &#x2F;&#x2F;24</span><br><span class="line">func(100 , 200);       &#x2F;&#x2F;300</span><br></pre></td></tr></table></figure>
+
+<p>第一次输出num的时候，由于预解析的原因，只声明了还没有定义，所以会输出undefined；第二次输出num的时候，已经定义了，所以输出24。</p>
+<p>由于函数的声明和定义是同时进行的，所以func()虽然是在func函数定义声明处之前调用的，但是依然可以正常的调用，会正常输出300。</p>
+<h4 id="4-预解析中的一些变态机制"><a href="#4-预解析中的一些变态机制" class="headerlink" title="4.预解析中的一些变态机制"></a>4.预解析中的一些变态机制</h4><h5 id="1-不管条件是否成立，都要把带var的进行提前的声明"><a href="#1-不管条件是否成立，都要把带var的进行提前的声明" class="headerlink" title="1.不管条件是否成立，都要把带var的进行提前的声明"></a><strong>1.不管条件是否成立，都要把带var的进行提前的声明</strong></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (!(&#39;num&#39; in window)) &#123; </span><br><span class="line">    var num &#x3D; 12;</span><br><span class="line">&#125;</span><br><span class="line">console.log(num);  &#x2F;&#x2F; undefined</span><br></pre></td></tr></table></figure>
+
+<p>JavaScript进行预解析的时候，会忽略所有if条件，因为在ES6之前并没有块级作用域的概念。本例中会先将num预解析，而预解析会将该变量添加到window中，作为window的一个属性。那么 ‘num’ in window 就返回true，取反之后为false，这时代码执行不会进入if块里面，num也就没有被赋值，最后console.log(num)输出为undefined。</p>
+<h5 id="2-只预解析“-”左边的，右边的是指针，不参与预解析"><a href="#2-只预解析“-”左边的，右边的是指针，不参与预解析" class="headerlink" title="2.只预解析“=”左边的，右边的是指针，不参与预解析"></a><strong>2.只预解析“=”左边的，右边的是指针，不参与预解析</strong></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fn();           &#x2F;&#x2F; -&gt;相当于undefined();  &#x2F;&#x2F; Uncaught TypeError: fn is not a function报错</span><br><span class="line">var fn &#x3D; function () &#123;            &#x2F;&#x2F;这里提升了等号左边的var fn，而没有提升等号右边的函数</span><br><span class="line">    console.log(&#39;ok&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fn();           &#x2F;&#x2F;-&gt; &#39;ok&#39;</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(&#39;ok&#39;);</span><br><span class="line">&#125;</span><br><span class="line">fn();           &#x2F;&#x2F;-&gt; &#39;ok&#39;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-自执行函数：定义和执行一起完成（自调用函数不会预解析，定义与执行一起完成）"><a href="#3-自执行函数：定义和执行一起完成（自调用函数不会预解析，定义与执行一起完成）" class="headerlink" title="3.自执行函数：定义和执行一起完成（自调用函数不会预解析，定义与执行一起完成）"></a><strong>3.自执行函数：定义和执行一起完成</strong>（<strong>自调用函数不会预解析，定义与执行一起完成</strong>）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function (num) &#123;</span><br><span class="line">  console.log(num);</span><br><span class="line">&#125;)(100);</span><br></pre></td></tr></table></figure>
+
+<p>自执行函数定义的那个function在全局作用域下不进行预解析，当代码执行到这个位置的时候，定义和执行一起完成了。</p>
+<p><strong>补充</strong>：其他定义自执行函数的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~ function (num) &#123;&#125;(100)  </span><br><span class="line">+ function (num) &#123;&#125;(100) </span><br><span class="line">- function (num) &#123;&#125;(100)  </span><br><span class="line">! function (num) &#123;&#125;(100)</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-return后的代码依然会进行预解析"><a href="#4-return后的代码依然会进行预解析" class="headerlink" title="4.return后的代码依然会进行预解析"></a><strong>4.return后的代码依然会进行预解析</strong></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function fn() &#123;                             </span><br><span class="line">    console.log(num); &#x2F;&#x2F; -&gt; undefined 在此处num声明了但还没赋值所以是undefined</span><br><span class="line">    return function () &#123;             </span><br><span class="line">    &#125;;              &#x2F;&#x2F;一般return代表立即结束，后面代码不会再执行，但这里后面的代码依然执行了       </span><br><span class="line">    var num &#x3D; 100;                   </span><br><span class="line">&#125;                                  </span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+
+<p>函数体中return后面的代码，虽然不再执行了，但是需要进行预解析，return中的代码，都是我们的返回值，所以不进行预解析。</p>
+<h5 id="5-名字已经声明过了，不需要重新的声明，但是需要重新的赋值"><a href="#5-名字已经声明过了，不需要重新的声明，但是需要重新的赋值" class="headerlink" title="5 名字已经声明过了，不需要重新的声明，但是需要重新的赋值"></a><strong>5</strong> <strong>名字已经声明过了，不需要重新的声明，但是需要重新的赋值</strong></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var fn &#x3D; 13;                                       </span><br><span class="line">function fn() &#123;            &#x2F;&#x2F;首先函数提升， 然后变量var fn提升，没有作用                      </span><br><span class="line">    console.log(&#39;ok&#39;);                               </span><br><span class="line">&#125;                                                  </span><br><span class="line">fn();       &#x2F;&#x2F; Uncaught TypeError: fn is not a function</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2018/11/18/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/" class="next-post btn btn-default" title='事件模型'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            事件模型</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#预解析"><span class="toc-text">预解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-声明和定义"><span class="toc-text">1. 声明和定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-var声明的变量和function声明的函数在预解析的区别"><span class="toc-text">2. var声明的变量和function声明的函数在预解析的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-预解析只发生在当前的作用域下"><span class="toc-text">3. 预解析只发生在当前的作用域下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-预解析中的一些变态机制"><span class="toc-text">4.预解析中的一些变态机制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-不管条件是否成立，都要把带var的进行提前的声明"><span class="toc-text">1.不管条件是否成立，都要把带var的进行提前的声明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-只预解析“-”左边的，右边的是指针，不参与预解析"><span class="toc-text">2.只预解析“&#x3D;”左边的，右边的是指针，不参与预解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-自执行函数：定义和执行一起完成（自调用函数不会预解析，定义与执行一起完成）"><span class="toc-text">3.自执行函数：定义和执行一起完成（自调用函数不会预解析，定义与执行一起完成）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-return后的代码依然会进行预解析"><span class="toc-text">4.return后的代码依然会进行预解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-名字已经声明过了，不需要重新的声明，但是需要重新的赋值"><span class="toc-text">5 名字已经声明过了，不需要重新的声明，但是需要重新的赋值</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
