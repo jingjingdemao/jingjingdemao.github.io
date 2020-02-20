@@ -1,0 +1,360 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="JavaScript,事件循环" />
+
+
+<meta name="description" content="关于JavaScipt中的事件循环even-loop一，线程　　JavaScript是单线程的语言，也就是说，同一个时间只能做一件事。
+　　单线程就意味着，所有任务需要排队，前一个任务结束，才会..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    事件循环 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="事件循环">
+            
+            事件循环
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="tag-link" href="/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" rel="tag">事件循环</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/01/06</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                410</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="关于JavaScipt中的事件循环even-loop"><a href="#关于JavaScipt中的事件循环even-loop" class="headerlink" title="关于JavaScipt中的事件循环even-loop"></a>关于JavaScipt中的事件循环even-loop</h3><h4 id="一，线程"><a href="#一，线程" class="headerlink" title="一，线程"></a>一，线程</h4><p>　　JavaScript是单线程的语言，也就是说，同一个时间只能做一件事。</p>
+<p>　　单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长，后一个任务就不得不一直等着</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var i, t &#x3D; Date.now()</span><br><span class="line">for (i &#x3D; 0; i &lt; 100000000; i++) &#123;&#125;</span><br><span class="line">console.log(Date.now() - t) &#x2F;&#x2F; 238</span><br></pre></td></tr></table></figure>
+
+<h4 id="二，同步和异步"><a href="#二，同步和异步" class="headerlink" title="二，同步和异步"></a>二，同步和异步</h4><p>​    于是，任务分为同步任务和异步任务</p>
+<p>​    【同步】</p>
+<p>　　如果在函数返回的时候，调用者就能够得到预期结果(即拿到了预期的返回值或者看到了预期的效果)，那么这个函数就是同步的，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Math.sqrt(2);</span><br><span class="line">console.log(&#39;Hi&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>​    【异步】</p>
+<p>　　如果在函数返回的时候，调用者还不能够得到预期结果，而是需要在将来通过一定的手段得到，那么这个函数就是异步的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(&#39;foo.txt&#39;, &#39;utf8&#39;, function(err, data) &#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>　　在上面的代码中，我们希望通过<code>fs.readFile</code>函数读取文件foo.txt中的内容，并打印出来。但是在<code>fs.readFile</code>函数返回时，我们期望的结果并不会发生，而是要等到文件全部读取完成之后。如果文件很大的话可能要很长时间，所以，fs.readFile函数是异步的。</p>
+<p>　　正是由于JavaScript是单线程的，而异步容易实现非阻塞，所以在JavaScript中对于耗时的操作或者时间不确定的操作，使用异步就成了必然的选择　</p>
+<p>​    【异步类型】</p>
+<p>　　一般而言，异步任务有以下三种类型</p>
+<p>　　1、普通事件，如click、resize等</p>
+<p>　　2、资源加载，如load、error等</p>
+<p>　　3、定时器，包括setInterval、setTimeout等</p>
+<p>　　下面对这三种类型分别举例说明，下面代码中，鼠标点击div时，就代表任务执行完成了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div.onclick &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  console.log(&#39;click&#39;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　下面代码中，XHR对象的readyState值为4，即已经接收到全部响应数据了，代表任务执行完成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">  if(xhr.readyState &#x3D;&#x3D; 4)&#123;</span><br><span class="line">      if(xhr.status &#x3D;&#x3D; 200)&#123;</span><br><span class="line">          &#x2F;&#x2F;实际操作</span><br><span class="line">          result.innerHTML +&#x3D; xhr.responseText;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　下面代码中，过1s后，代表任务执行完成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">  console.log(&#39;timeout&#39;)</span><br><span class="line">&#125;,1000)</span><br></pre></td></tr></table></figure>
+
+<p>　　对于同步任务来说，按顺序执行即可；但是，对于异步任务，各任务执行的时间长短不同，执行完成的时间点也不同。</p>
+<h4 id="三，栈、堆、队列"><a href="#三，栈、堆、队列" class="headerlink" title="三，栈、堆、队列"></a>三，栈、堆、队列</h4><p>【栈】（Stack   先进后出）</p>
+<p>　　函数调用形成了一个栈帧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function foo(b) &#123;</span><br><span class="line">  var a &#x3D; 10;</span><br><span class="line">  return a + b + 11;</span><br><span class="line">&#125;</span><br><span class="line">function bar(x) &#123;</span><br><span class="line">  var y &#x3D; 3;</span><br><span class="line">  return foo(x * y);</span><br><span class="line">&#125;</span><br><span class="line">console.log(bar(7));</span><br></pre></td></tr></table></figure>
+
+<p>　　当调用<code>bar</code>时，创建了第一个帧 ，帧中包含了<code>bar</code>的参数和局部变量。当<code>bar</code>调用<code>foo</code>时，第二个帧就被创建，并被压到第一个帧之上，帧中包含了<code>foo</code>的参数和局部变量。当<code>foo</code>返回时，最上层的帧就被弹出栈（剩下<code>bar</code>函数的调用帧 ）。当<code>bar</code>返回的时候，栈就空了</p>
+<p>【堆】(Heap)</p>
+<p>　　对象被分配在一个堆中，即用以表示一个大部分非结构化的内存区域</p>
+<p>【队列】(Queue   先进先出)</p>
+<p>　　一个 JavaScript 运行时包含了一个待处理的消息队列。每一个消息都与一个函数相关联。当栈拥有足够内存时，从队列中取出一个消息进行处理。这个处理过程包含了调用与这个消息相关联的函数（以及因而创建了一个初始堆栈帧）。当栈再次为空的时候，也就意味着消息处理结束</p>
+<h4 id="四，事件循环（Event-loop）"><a href="#四，事件循环（Event-loop）" class="headerlink" title="四，事件循环（Event-loop）"></a>四，事件循环（Event-loop）</h4><p><img src="/2019/01/06/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/2.png" alt></p>
+<p>　　步骤如下：</p>
+<p>　　1、所有同步任务都在主线程上执行，形成一个执行栈</p>
+<p>　　2、主线程之外，还存在一个”消息队列”（又叫任务队列或事件队列）。只要异步操作执行完成，就到消息队列中排队</p>
+<p>　　3、一旦执行栈中的所有同步任务执行完毕，系统就会按次序读取消息队列中的异步任务，于是被读取的异步任务结束等待状态，进入执行栈，开始执行</p>
+<p>　　4、主线程不断重复获得消息、执行消息，这种机制被称为事件循环</p>
+<h4 id="五，宏任务与微任务"><a href="#五，宏任务与微任务" class="headerlink" title="五，宏任务与微任务"></a>五，宏任务与微任务</h4><p><img src="/2019/01/06/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/%E5%9B%BE%E7%89%870.png" alt></p>
+<p>ES6里有一个新概念：所有任务分为<code>macrotask</code>（宏任务） 和 <code>microtask</code>（微任务）</p>
+<ul>
+<li><p>宏任务：script    setTimeout   setInterval  setImmediate, I/O, UI rendering。</p>
+</li>
+<li><p>微任务：process.nextTick, Promise, Object.observe(已废弃), MutationObserver(html5新特性)</p>
+<p>​</p>
+</li>
+</ul>
+<p><strong>事件循环的任务队列有宏任务队列和微任务队列，每次一个宏任务执行完毕的时候，会执行微任务队列中的所有微任务，之后再执行下一个宏任务。</strong></p>
+<blockquote>
+<p>注意：在node环境下，process.nextTick的优先级高于Promise，也就是说：在宏任务结束后会先执行微任务队列中的nextTickQueue，然后才会执行微任务中的Promise。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#39;script start&#39;)</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    console.log(&#39;timer over&#39;)</span><br><span class="line">&#125;, 0)</span><br><span class="line"></span><br><span class="line">Promise.resolve().then(function() &#123;                 </span><br><span class="line">    console.log(&#39;promise1&#39;)             </span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">    console.log(&#39;promise2&#39;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(&#39;script end&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;结果：</span><br><span class="line">&#x2F;&#x2F; script start</span><br><span class="line">&#x2F;&#x2F; script end</span><br><span class="line">&#x2F;&#x2F; promise1</span><br><span class="line">&#x2F;&#x2F; promise2</span><br><span class="line">&#x2F;&#x2F; timer over</span><br></pre></td></tr></table></figure>
+
+<p><strong>“promise 1” “promise 2” 作为微任务加入到微任务队列中，</strong></p>
+<p><strong>而 “timer over” 做为宏任务加入到宏任务队列中，它们同时在等待被执行，</strong></p>
+<p><strong>但是微任务队列中的所有微任务都会在开始下一个宏任务之前都被执行完。</strong></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2018/12/08/%E9%A2%84%E8%A7%A3%E6%9E%90%E8%A7%84%E5%88%99/" class="next-post btn btn-default" title='预解析规则'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            预解析规则</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于JavaScipt中的事件循环even-loop"><span class="toc-text">关于JavaScipt中的事件循环even-loop</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一，线程"><span class="toc-text">一，线程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二，同步和异步"><span class="toc-text">二，同步和异步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三，栈、堆、队列"><span class="toc-text">三，栈、堆、队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四，事件循环（Event-loop）"><span class="toc-text">四，事件循环（Event-loop）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五，宏任务与微任务"><span class="toc-text">五，宏任务与微任务</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
