@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="节流防抖" />
+
+
+<meta name="description" content="防抖节流防抖、节流https://segmentfault.com/a/1190000016261602这个写的很好，平时键盘抬起就会搜索，防抖后，间隔一段时间不输入才会搜索，节流后，可以做到不..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    节流防抖 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="节流防抖">
+            
+            节流防抖
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E8%8A%82%E6%B5%81%E9%98%B2%E6%8A%96/" rel="tag">节流防抖</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/01/12</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="防抖节流"><a href="#防抖节流" class="headerlink" title="防抖节流"></a>防抖节流</h2><p>防抖、节流<code>https://segmentfault.com/a/1190000016261602</code>这个写的很好，平时键盘抬起就会搜索，防抖后，间隔一段时间不输入才会搜索，节流后，可以做到不管是否停止打字，间隔一段时间都会搜索。</p>
+<h3 id="函数防抖-debounce"><a href="#函数防抖-debounce" class="headerlink" title="函数防抖(debounce)"></a>函数防抖(debounce)</h3><ul>
+<li>在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;模拟一段ajax请求,只要按下键盘，就会触发这次ajax请求。</span><br><span class="line">&#x2F;* ajax函数用来输出传入的参数*&#x2F;</span><br><span class="line">function ajax(content) &#123;</span><br><span class="line">  console.log(&#39;ajax request &#39; + content)</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* 通过id值获取到DOM标签*&#x2F;</span><br><span class="line">let inputa &#x3D; document.getElementById(&#39;unDebounce&#39;)</span><br><span class="line"></span><br><span class="line">inputa.addEventListener(&#39;keyup&#39;, function (e) &#123;</span><br><span class="line">    ajax(e.target.value)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>优化后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F; 延迟执行ajax请求后，当你在频繁的输入时，并不会发送请求，只有当你在指定间隔内没有输入时，才会执行函数&#x2F;</span><br><span class="line">&#x2F;* ajax函数用来输出传入的参数*&#x2F;</span><br><span class="line">function ajax(content) &#123;</span><br><span class="line">  console.log(&#39;ajax request &#39; + content)</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;这里定义一个debounce函数，将传入的函数延迟5秒执行，如果间隔小于5秒，就会重新计时&#x2F;</span><br><span class="line">function debounce(fun, delay) &#123;</span><br><span class="line">    return function (args) &#123;</span><br><span class="line">        let that &#x3D; this</span><br><span class="line">        let _args &#x3D; args</span><br><span class="line">        clearTimeout(fun.id)</span><br><span class="line">        fun.id &#x3D; setTimeout(function () &#123;</span><br><span class="line">            fun.call(that, _args)</span><br><span class="line">        &#125;, delay)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* 通过id值获取到DOM标签*&#x2F;    </span><br><span class="line">let inputb &#x3D; document.getElementById(&#39;debounce&#39;);</span><br><span class="line">&#x2F;这是个函数，是debounce返回的函数&#x2F;</span><br><span class="line">let debounceAjax &#x3D; debounce(ajax, 500)</span><br><span class="line">&#x2F;* 添加监听键盘抬起事件，每次弹起就执行后面的回调函数，即将输入内容传值给debounceAjax函数延迟执行ajax*&#x2F;</span><br><span class="line">inputb.addEventListener(&#39;keyup&#39;, function (e) &#123;</span><br><span class="line">        debounceAjax(e.target.value)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数节流-throttle"><a href="#函数节流-throttle" class="headerlink" title="函数节流(throttle)"></a>函数节流(throttle)</h3><p>规定在一个单位时间内，只能触发一次函数。<strong>如果这个单位时间内触发多次函数，只有一次生效。</strong>【性能优化】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let biu &#x3D; function () &#123;</span><br><span class="line">    console.log(&#39;biu biu biu&#39;,new Date().Format(&#39;HH:mm:ss&#39;))</span><br><span class="line">&#125;</span><br><span class="line">setInterval(debounce(biu,500),1000)</span><br><span class="line">&#x2F;*biu这个函数在第一次1.5s后执行，然后每隔1s执行一次*&#x2F;</span><br><span class="line"></span><br><span class="line">let boom &#x3D; function () &#123;</span><br><span class="line">    console.log(&#39;boom boom boom&#39;,new Date().Format(&#39;HH:mm:ss&#39;))</span><br><span class="line">&#125;</span><br><span class="line">setInterval(debounce(boom,2000),1000)</span><br><span class="line">&#x2F;*boom这个函数，一次都不会执行，函数执行事件是1s，但是函数间隔2s才会执行，每次2s还没到，就重新计时了*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>优化后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">   &#x2F;在不断输入时，ajax会按照我们设定的时间，每1s执行一次</span><br><span class="line">function throttle(fun, delay) &#123;</span><br><span class="line">       let last, deferTimer</span><br><span class="line">       return function (args) &#123;</span><br><span class="line">           let that &#x3D; this</span><br><span class="line">           let _args &#x3D; arguments</span><br><span class="line">           let now &#x3D; +new Date()</span><br><span class="line">           if (last &amp;&amp; now &lt; last + delay) &#123;</span><br><span class="line">               clearTimeout(deferTimer)</span><br><span class="line">               deferTimer &#x3D; setTimeout(function () &#123;</span><br><span class="line">                   last &#x3D; now</span><br><span class="line">                   fun.apply(that, _args)</span><br><span class="line">               &#125;, delay)</span><br><span class="line">           &#125;else &#123;</span><br><span class="line">               &#x2F;如果现在&#x3D;上一次的时间+延迟时间，那么就马上执行fun函数</span><br><span class="line">               last &#x3D; now</span><br><span class="line">               fun.apply(that,_args)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;*throttleAjax是个函数，*&#x2F;</span><br><span class="line">   let throttleAjax &#x3D; throttle(ajax, 1000);</span><br><span class="line"></span><br><span class="line">&#x2F;* 获取当前的DOM元素，并添加键盘抬起的监听事件，每次抬起就调用函数throttleAjax*&#x2F;</span><br><span class="line">   let inputc &#x3D; document.getElementById(&#39;throttle&#39;)</span><br><span class="line">   inputc.addEventListener(&#39;keyup&#39;, function(e) &#123;</span><br><span class="line">       throttleAjax(e.target.value)</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;不管我们设定的执行时间间隔多小，总是1s内只执行一次。</span><br><span class="line">let biubiu &#x3D; function () &#123;</span><br><span class="line">       console.log(&#39;biu biu biu&#39;, new Date().Format(&#39;HH:mm:ss&#39;))</span><br><span class="line">   &#125;;</span><br><span class="line">   setInterval(throttle(biubiu,1000),10);</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>函数防抖，类似法师技能读条，还没读完条再按技能，就会重新读条，但是会出现一直读条不能放技能的状况；函数节流，就是一直按着技能键，也能在规定时间内发技能。</p>
+<ul>
+<li>函数防抖和函数节流都是防止某一时间频繁触发，但是这两兄弟之间的原理却不一样。</li>
+<li>函数防抖是某一段时间内只执行一次，而函数节流是间隔时间执行。</li>
+<li>debounce<ul>
+<li>search搜索联想，用户在不断输入值时，用防抖来节约请求资源。</li>
+<li>window触发resize的时候，不断的调整浏览器窗口大小会不断的触发这个事件，用防抖来让其只触发一次</li>
+</ul>
+</li>
+<li>throttle<ul>
+<li>鼠标不断点击触发，mousedown(单位时间内只触发一次)</li>
+<li>监听滚动事件，比如是否滑到底部自动加载更多，用throttle来判断</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2019/12/21/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94react-hook%E5%AE%9E%E7%8E%B0redux%E7%9A%84%E5%8A%9F%E8%83%BD/" class="next-post btn btn-default" title='react hook实现redux的功能'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            react hook实现redux的功能</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#防抖节流"><span class="toc-text">防抖节流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数防抖-debounce"><span class="toc-text">函数防抖(debounce)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数节流-throttle"><span class="toc-text">函数节流(throttle)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结："><span class="toc-text">总结：</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="ES6" />
+
+
+<meta name="description" content="Promise的使用
+一个 Promise 就是一个代表了异步操作最终完成或者失败的对象。这是MDN上关于Promise的解释。在前端开发中，Promise经常被拿来用于处理异步和回调的问题，来..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    ES6中promise使用 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="ES6中promise使用">
+            
+            ES6中promise使用
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/ES6/" rel="tag">ES6</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/08/15</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="Promise的使用"><a href="#Promise的使用" class="headerlink" title="Promise的使用"></a>Promise的使用</h3><blockquote>
+<p>一个 Promise 就是一个代表了异步操作最终完成或者失败的对象。这是MDN上关于Promise的解释。在前端开发中，Promise经常被拿来用于处理异步和回调的问题，来规避回调地狱和更好排布异步相关的代码</p>
+</blockquote>
+<h4 id="1-Promise的三种状态"><a href="#1-Promise的三种状态" class="headerlink" title="1. Promise的三种状态"></a>1. Promise的三种状态</h4><p>从字面的意思理解，Promise即是<strong>承诺</strong>，那承诺的结果就会有成功和失败两种。而且，我们许下承诺之后不会立即得到结果，在获得成功或是失败的结果之前，我们还需要一点时间来履行这个承诺。Promise的构造其实像极了我们生活中的承诺。</p>
+<p><img src="/2019/08/15/ES6%E2%80%94%E2%80%94promise%E4%BD%BF%E7%94%A8/image/promise/pending.png" alt="pending"></p>
+<p>以上是<code>Promise</code>的结构图。其中<code>Promise</code>存在三种状态，一种是pending状态、一种是成功时的<code>Fullfilled</code>状态、一种是失败时的<code>Rejected</code>状态。</p>
+<h5 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> love = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> happy = <span class="built_in">Math</span>.random() &gt;= <span class="number">0.3</span> ? <span class="literal">true</span> : <span class="literal">false</span></span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(happy) &#123;</span><br><span class="line">          resolve(<span class="string">'marry'</span>); <span class="comment">//成功</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          reject(<span class="string">'break'</span>); <span class="comment">//失败</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    love.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;<span class="comment">//成功的回调</span></span><br><span class="line">      <span class="built_in">console</span>.log(result); </span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">e</span> =&gt;</span> &#123;<span class="comment">// 失败的回调</span></span><br><span class="line">      <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>注意：<strong>Promise在经过pending状态达到成功或失败状态时就会凝固，即到达成功状态后再也不会失败，失败以后也不会回到成功状态。</strong>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> love = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      reject(<span class="string">'break'</span>)</span><br><span class="line">      resolve(<span class="string">'marry'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    love.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result)</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(e) <span class="comment">// break</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Promise的then与catch的几种写法"><a href="#2-Promise的then与catch的几种写法" class="headerlink" title="2. Promise的then与catch的几种写法"></a>2. Promise的then与catch的几种写法</h4><ol>
+<li><p>第一种，最常见的就是上面的写法, 使用then来捕捉resolve状态，使用catch来捕捉reject状态</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">love.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;<span class="comment">//成功的回调</span></span><br><span class="line">      <span class="built_in">console</span>.log(result); </span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">e</span> =&gt;</span> &#123;<span class="comment">// 失败的回调</span></span><br><span class="line">      <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二种，不写catch, 把用来捕捉reject状态的函数也写到then里，但是效果和上面一样</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">love.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;, result =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三种，分开写，也是可以的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">love.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;     <span class="comment">//只捕捉和处理成功状态</span></span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">love.catch(<span class="function"><span class="params">result</span> =&gt;</span> &#123;    <span class="comment">//只捕捉和处理失败状态</span></span><br><span class="line">    <span class="built_in">console</span>.log(result)  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="3-快速构建一个成功或是失败状态的Promise"><a href="#3-快速构建一个成功或是失败状态的Promise" class="headerlink" title="3. 快速构建一个成功或是失败状态的Promise"></a>3. 快速构建一个成功或是失败状态的Promise</h4><h5 id="Promise自带了两种方法，我们可以利用它们快速构建一个Promise，一个是Promise-resolve-用于构建成功状态的Promise-另一个是Promise-reject-，用于构建失败状态的Promise"><a href="#Promise自带了两种方法，我们可以利用它们快速构建一个Promise，一个是Promise-resolve-用于构建成功状态的Promise-另一个是Promise-reject-，用于构建失败状态的Promise" class="headerlink" title="Promise自带了两种方法，我们可以利用它们快速构建一个Promise，一个是Promise.resolve(), 用于构建成功状态的Promise;另一个是Promise.reject()，用于构建失败状态的Promise"></a>Promise自带了两种方法，我们可以利用它们快速构建一个Promise，一个是<code>Promise.resolve()</code>, 用于构建成功状态的Promise;另一个是<code>Promise.reject()</code>，用于构建失败状态的Promise</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="built_in">Promise</span>.resolve(<span class="string">'success'</span>);</span><br><span class="line">    p1.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result); <span class="comment">// success</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> p2 = <span class="built_in">Promise</span>.reject(<span class="string">'failed'</span>);</span><br><span class="line">    p2.catch(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result); <span class="comment">// failed</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-使用Promise-all-来处理前端场景"><a href="#4-使用Promise-all-来处理前端场景" class="headerlink" title="4. 使用Promise.all()来处理前端场景"></a>4. 使用<code>Promise.all()</code>来处理前端场景</h4><p>在前端的开发实践中，我们有时会遇到需要发送多个请求并根据请求顺序返回数据的需求，比如，我们要发送a、b、c三个请求，这三个请求返回的数据分别为a1、a2、a3，而我们想要a1、a2、a3按照我们希望的顺序返回。那么，使用<code>Promise.all()</code>方法可以完美的解决这一问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模拟异步请求的函数</span></span><br><span class="line">    <span class="keyword">let</span> request = <span class="function">(<span class="params">name, time</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">let</span> random = <span class="built_in">Math</span>.random()</span><br><span class="line">          <span class="keyword">if</span> (random &gt;= <span class="number">0.2</span>) &#123;</span><br><span class="line">            resolve(<span class="string">`<span class="subst">$&#123;name&#125;</span>成功了`</span>)</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            reject(<span class="string">`<span class="subst">$&#123;name&#125;</span>失败了`</span>)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;, time)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构建三个Promise实例</span></span><br><span class="line">    <span class="keyword">let</span> a = request(<span class="string">'小明'</span>, <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">let</span> b = request(<span class="string">'小红'</span>, <span class="number">500</span>)</span><br><span class="line">    <span class="keyword">let</span> c = request(<span class="string">'小华'</span>, <span class="number">1500</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用Promise.all(), 注意它接收的是一个数组作为参数 </span></span><br><span class="line">    <span class="built_in">Promise</span>.all([c, a, b]).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result) <span class="comment">//["小华成功了", "小明成功了", "小红成功了"]</span></span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>把上面的代码复制下来放到浏览器的调试控制台里多执行几次（第二次执行需要刷新）会发生什么事情呢？你可能猜到了：<strong>如果三个请求都成功的话，那么这三个请求所返回的数据就是按照发送请求的顺序排列的，即[“小华成功了”, “小明成功了”, “小红成功了”]，而且还是以数组形式返回的；而当其中有请求失败了的话，就只会返回最先失败的结果。</strong></p>
+<p>当然，除了这个场景以外，<code>Promise.all()</code>方法还能用于其它地方。比如说，一个页面上有两个请求，只有拿到了这两个请求的数据，页面才会展示，在这之前会显示一个loading加载图。使用<code>Promise.all()</code>也是可以非常简洁的解决这个问题</p>
+<h4 id="5-Promise-race-的使用"><a href="#5-Promise-race-的使用" class="headerlink" title="5. Promise.race()的使用"></a>5. <code>Promise.race()</code>的使用</h4><h5 id="顾名思义，Promse-race就是赛跑的意思，意思就是说，Promise-race-p1-p2-p3-里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态"><a href="#顾名思义，Promse-race就是赛跑的意思，意思就是说，Promise-race-p1-p2-p3-里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态" class="headerlink" title="顾名思义，Promse.race就是赛跑的意思，意思就是说，Promise.race([p1, p2, p3])里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态"></a>顾名思义，Promse.race就是赛跑的意思，意思就是说，Promise.race([p1, p2, p3])里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">'success1'</span>)</span><br><span class="line">  &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    reject(<span class="string">'success2'</span>)</span><br><span class="line">  &#125;, <span class="number">500</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.race([p1, p2]).then(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result) <span class="comment">// success2</span></span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-Promise的链式调用"><a href="#5-Promise的链式调用" class="headerlink" title="5. Promise的链式调用"></a>5. <code>Promise</code>的链式调用</h4><h5 id="上面说过的then方法，在每次使用后依然会继续返回一个Promise对象。"><a href="#上面说过的then方法，在每次使用后依然会继续返回一个Promise对象。" class="headerlink" title="上面说过的then方法，在每次使用后依然会继续返回一个Promise对象。"></a>上面说过的then方法，在每次使用后依然会继续返回一个Promise对象。</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="built_in">Promise</span>.resolve(<span class="string">'success'</span>);</span><br><span class="line">    <span class="keyword">let</span> response = p.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result); <span class="comment">//success</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(response); <span class="comment">//Promise &#123;&lt;pending&gt;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>因为then之后返回的还是一个Promise对象，那我们就可以继续then，只不过后面then拿到的参数是上一个then里return的内容，而这个return的内容既可以是普通的字符串、数字等（最后都会被封装成Promise）也可以是自己写的一个Promise对象。</p>
+<h5 id="Promise链式调用的代码："><a href="#Promise链式调用的代码：" class="headerlink" title="Promise链式调用的代码："></a><code>Promise</code>链式调用的代码：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> love = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> happy = <span class="built_in">Math</span>.random() &gt;= <span class="number">0.3</span> ? <span class="literal">true</span> : <span class="literal">false</span></span><br><span class="line">        <span class="keyword">if</span> (happy) &#123;</span><br><span class="line">          resolve(<span class="string">'marry'</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          reject(<span class="string">'break'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;, <span class="number">500</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> haveChild = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(<span class="string">'孩子生了！'</span>)</span><br><span class="line">      &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    love.then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result) <span class="comment">//marry</span></span><br><span class="line">      <span class="keyword">return</span> haveChild <span class="comment">// 这里返回一个Promise对象,它的resolve会被下一个then捕捉</span></span><br><span class="line">    &#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result) <span class="comment">//孩子生了</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">'最后，他们白头偕老！'</span> <span class="comment">//这里返回的字符串会传给下一个then</span></span><br><span class="line">    &#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result) <span class="comment">// 最后，他们白头偕老</span></span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error) <span class="comment">//break</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>注意：链式调用的最一定要加上一个catch来捕捉链条中可能出现的错误。</p>
+<h4 id="6-Promise链式调用可以处理的一个业务场景"><a href="#6-Promise链式调用可以处理的一个业务场景" class="headerlink" title="6. Promise链式调用可以处理的一个业务场景"></a>6. Promise链式调用可以处理的一个业务场景</h4><h5 id="当我们需要发送多个请求，而后一个请求总是依赖前一个请求的结果时，Promise的链式操作就可以派上用场了"><a href="#当我们需要发送多个请求，而后一个请求总是依赖前一个请求的结果时，Promise的链式操作就可以派上用场了" class="headerlink" title="当我们需要发送多个请求，而后一个请求总是依赖前一个请求的结果时，Promise的链式操作就可以派上用场了"></a>当我们需要发送多个请求，而后一个请求总是依赖前一个请求的结果时，<code>Promise的链式操作</code>就可以派上用场了</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> request = <span class="function">(<span class="params">url</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = axios.get(url)  <span class="comment">//result是Promise对象</span></span><br><span class="line">    result.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'出错了!'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">request(url0).then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> request(response.data.link)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/08/19/ES6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="pre-post btn btn-default" title='ES6基础知识'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            ES6基础知识</span>
+    </a>
+    
+    
+    <a href="/2019/07/22/AJAX/" class="next-post btn btn-default" title='AJAX'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            AJAX</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise的使用"><span class="toc-text">Promise的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Promise的三种状态"><span class="toc-text">1. Promise的三种状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#代码如下："><span class="toc-text">代码如下：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Promise的then与catch的几种写法"><span class="toc-text">2. Promise的then与catch的几种写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-快速构建一个成功或是失败状态的Promise"><span class="toc-text">3. 快速构建一个成功或是失败状态的Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Promise自带了两种方法，我们可以利用它们快速构建一个Promise，一个是Promise-resolve-用于构建成功状态的Promise-另一个是Promise-reject-，用于构建失败状态的Promise"><span class="toc-text">Promise自带了两种方法，我们可以利用它们快速构建一个Promise，一个是Promise.resolve(), 用于构建成功状态的Promise;另一个是Promise.reject()，用于构建失败状态的Promise</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-使用Promise-all-来处理前端场景"><span class="toc-text">4. 使用Promise.all()来处理前端场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Promise-race-的使用"><span class="toc-text">5. Promise.race()的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#顾名思义，Promse-race就是赛跑的意思，意思就是说，Promise-race-p1-p2-p3-里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态"><span class="toc-text">顾名思义，Promse.race就是赛跑的意思，意思就是说，Promise.race([p1, p2, p3])里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Promise的链式调用"><span class="toc-text">5. Promise的链式调用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#上面说过的then方法，在每次使用后依然会继续返回一个Promise对象。"><span class="toc-text">上面说过的then方法，在每次使用后依然会继续返回一个Promise对象。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Promise链式调用的代码："><span class="toc-text">Promise链式调用的代码：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Promise链式调用可以处理的一个业务场景"><span class="toc-text">6. Promise链式调用可以处理的一个业务场景</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#当我们需要发送多个请求，而后一个请求总是依赖前一个请求的结果时，Promise的链式操作就可以派上用场了"><span class="toc-text">当我们需要发送多个请求，而后一个请求总是依赖前一个请求的结果时，Promise的链式操作就可以派上用场了</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

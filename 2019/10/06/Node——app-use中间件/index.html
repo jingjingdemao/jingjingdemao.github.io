@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="node.js" />
+
+
+<meta name="description" content="1. Express中路由和中间件路由：就是如何处理HTTP请求中的路径部分中间件：就是在收到请求后和发送响应之前这个阶段执行的一些函数1.1 应用及中间件1234567891011121314..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Node中app.use中间件 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Node中app.use中间件">
+            
+            Node中app.use中间件
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/node-js/" rel="tag">node.js</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/10/06</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="1-Express中路由和中间件"><a href="#1-Express中路由和中间件" class="headerlink" title="1. Express中路由和中间件"></a>1. Express中路由和中间件</h3><h6 id="路由：就是如何处理HTTP请求中的路径部分"><a href="#路由：就是如何处理HTTP请求中的路径部分" class="headerlink" title="路由：就是如何处理HTTP请求中的路径部分"></a>路由：就是如何处理HTTP请求中的路径部分</h6><h6 id="中间件：就是在收到请求后和发送响应之前这个阶段执行的一些函数"><a href="#中间件：就是在收到请求后和发送响应之前这个阶段执行的一些函数" class="headerlink" title="中间件：就是在收到请求后和发送响应之前这个阶段执行的一些函数"></a>中间件：就是在收到请求后和发送响应之前这个阶段执行的一些函数</h6><h5 id="1-1-应用及中间件"><a href="#1-1-应用及中间件" class="headerlink" title="1.1 应用及中间件"></a>1.1 应用及中间件</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// next方法的作用就是将请求传递到下一个中间件</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  当请求进来，会从第一个中间件开始进行匹配</span></span><br><span class="line"><span class="comment">     如果匹配，则进来</span></span><br><span class="line"><span class="comment">     如果请求进入中间件之后，没有调用 next 则代码会停在当前中间件</span></span><br><span class="line"><span class="comment">     如果调用了 next 则继续向后找到第一个匹配的中间件</span></span><br><span class="line"><span class="comment">     如果不匹配，则继续判断匹配下一个中间件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// 不关心请求路径的请求</span></span><br><span class="line"><span class="comment">// 不管以什么路径请求只要有next()传递</span></span><br><span class="line">app.use(<span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'1'</span>) <span class="comment">// 1</span></span><br><span class="line">    next()</span><br><span class="line">&#125;)</span><br><span class="line">app.use(<span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'2'</span>)  <span class="comment">// 2</span></span><br><span class="line">    next()</span><br><span class="line">&#125;)</span><br><span class="line">app.use(<span class="function">(<span class="params">req,res.next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'3'</span>)  <span class="comment">// 3</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关心请求路径的请求</span></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'1'</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/b'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'b'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以 /a 开头的路径中间件</span></span><br><span class="line">app.use(<span class="string">'/a'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'a'</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当在浏览器中以 /a 开头的请求时，会输出 1 a 2</span></span><br><span class="line"><span class="comment">// 当在浏览器中以 /b 开头的请求时，会输出 1 b,这里不会输出 2 因为当请求/b开头的请求后没有next()方法传递就会停留在那个请求中</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="1-2-错误处理中间件"><a href="#1-2-错误处理中间件" class="headerlink" title="1.2 错误处理中间件"></a>1.2 错误处理中间件</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">'/user'</span>,(req,res,next) =&gt; &#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(has error)</span><br><span class="line">       next()</span><br><span class="line">   &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'error'</span>)</span><br><span class="line">       next(err)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 全局错误处理中间件</span></span><br><span class="line">app.use(<span class="function">(<span class="params">err,req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err.stack)</span><br><span class="line">    res.status(<span class="number">500</span>).send(<span class="string">'error message'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/a'</span>,(req,res,next) =&gt; &#123;</span><br><span class="line">  fs.readFile(path.join(__dirname,<span class="string">'./datas.txt'</span>),<span class="string">'utf8'</span>,(err,data) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="keyword">return</span> next(err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">    next()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/a'</span>, (req,res,next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'/a'</span>)</span><br><span class="line">  res.send(<span class="string">'/a'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当不匹配任何请求路径时 会进去此错误处理</span></span><br><span class="line">app.use(<span class="function">(<span class="params">req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.send(<span class="string">'404 not Found'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局错误处理中间件</span></span><br><span class="line">app.use(<span class="function">(<span class="params">err,req,res,next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.status(<span class="number">500</span>).send(err.message)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'running...'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-3-express中的router"><a href="#1-3-express中的router" class="headerlink" title="1.3 express中的router"></a>1.3 express中的router</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> public = <span class="built_in">require</span>(<span class="string">'./router/public'</span>)</span><br><span class="line"><span class="keyword">const</span> user = <span class="built_in">require</span>(<span class="string">'./router/user'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/public'</span>, public) <span class="comment">// 当请求以/public开头的路径时才会进来</span></span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/user'</span>, user) <span class="comment">// 当请求以/uer开头的路径时才会进来</span></span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>,() =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'running...'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// router</span></span><br><span class="line"><span class="comment">// 1.user.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> router = express.Router()</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/a'</span>, (req,res) =&gt; &#123;</span><br><span class="line">  res.send(<span class="string">'hello node'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.public.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> router = express.Router()</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/b'</span>, (req,res) =&gt; &#123;</span><br><span class="line">  res.send(<span class="string">'hello world'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>app.router() 要挂载在所有第三方中间件的后面，因为前面配置的中间件是app.router()中请求处理函数的依赖</strong></li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/10/21/Node%E2%80%94%E2%80%94express%E4%B8%ADcookie-session%E4%BD%BF%E7%94%A8/" class="pre-post btn btn-default" title='express中cookie,session使用'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            express中cookie,session使用</span>
+    </a>
+    
+    
+    <a href="/2019/09/19/Vue%E7%BB%93%E5%90%88webpack%E7%9A%84%E4%BD%BF%E7%94%A8/" class="next-post btn btn-default" title='Vue结合webpack的使用'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Vue结合webpack的使用</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Express中路由和中间件"><span class="toc-text">1. Express中路由和中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#路由：就是如何处理HTTP请求中的路径部分"><span class="toc-text">路由：就是如何处理HTTP请求中的路径部分</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#中间件：就是在收到请求后和发送响应之前这个阶段执行的一些函数"><span class="toc-text">中间件：就是在收到请求后和发送响应之前这个阶段执行的一些函数</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-应用及中间件"><span class="toc-text">1.1 应用及中间件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-错误处理中间件"><span class="toc-text">1.2 错误处理中间件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-express中的router"><span class="toc-text">1.3 express中的router</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

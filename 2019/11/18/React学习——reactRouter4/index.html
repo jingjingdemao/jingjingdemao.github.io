@@ -1,0 +1,531 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="react" />
+
+
+<meta name="description" content="1. React Router 4
+react-router React Router核心
+react-router-dom 用于DOM绑定的React Router
+react-router-..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    React中的reactRouter |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="React中的reactRouter">
+            
+            React中的reactRouter
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/react/" rel="tag">react</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/11/18</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="1-React-Router-4"><a href="#1-React-Router-4" class="headerlink" title="1. React Router 4"></a>1. React Router 4</h3><ul>
+<li><code>react-router</code> React Router核心</li>
+<li><code>react-router-dom</code> 用于DOM绑定的React Router</li>
+<li><code>react-router-native</code>用于React Native 的 React Router</li>
+<li><code>react-router-redux</code> React Router和 Redux 的集成</li>
+<li><code>react-router-config</code>用于配置静态路由</li>
+</ul>
+<blockquote>
+<p>因此，在实际的 web 项目开发中，<code>react-router</code> 和 <code>react-router-dom</code> 不必同时引用。在 <code>react-router-dom</code> 中包含<code>BrowserRouter</code> 类似  的 DOM 类组件，所以只需要引入 <code>react-router-dom</code>包就可以了</p>
+</blockquote>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法:"></a>使用方法:</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;BrowserRouter <span class="keyword">as</span> Router, Route, Link, Switch&#125; <span class="keyword">from</span> <span class="string">"react-router-dom"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-页面中多个模块同时渲染问题"><a href="#2-页面中多个模块同时渲染问题" class="headerlink" title="2. 页面中多个模块同时渲染问题"></a>2. 页面中多个模块同时渲染问题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render((</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;div className=<span class="string">"container"</span>&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"/"</span> component=&#123;Index&#125; /&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"/card"</span> component=&#123;Card&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>BrowserRouter&gt;</span><br><span class="line">    ),</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当访问 <code>path=&quot;/card&quot;</code> 的页面时，<code>path=&quot;/&quot;</code> 的页面也会被渲染出来。匹配 <code>path=&quot;/card&quot;</code> 的路由会匹配 <code>path=&quot;/&quot;</code> 的路由。那么这个问题怎么解决呢？有以下两种方法</p>
+</blockquote>
+<ol>
+<li><p>使用 <code>&lt;Router&gt;</code>的<code>exact</code>关键字</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render((</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;div className=<span class="string">"container"</span>&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"/"</span> exact component=&#123;Index&#125; /&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"/card"</span> component=&#123;Card&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>BrowserRouter&gt;</span><br><span class="line">    ),</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用独立路由：<code>&lt;switch&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; BrowserRouter, Route, Switch, Redirect &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"></span><br><span class="line">ReactDOM.render((</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;Switch&gt;</span><br><span class="line">            &lt;div className=<span class="string">"container"</span>&gt;</span><br><span class="line">                &lt;Route path=<span class="string">"/"</span> exact component=&#123;Index&#125; /&gt;</span><br><span class="line">                &lt;Route path=<span class="string">"/card"</span> component=&#123;Card&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Switch&gt;</span><br><span class="line">    &lt;<span class="regexp">/BrowserRouter&gt;</span></span><br><span class="line"><span class="regexp">    ),</span></span><br><span class="line"><span class="regexp">    document.getElementById('app')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="首先需要了解下-lt-Router-gt-。它是所有路由组件共用的底层接口，你可以将各种组件及标签放进-lt-Router-gt-组件中，比如："><a href="#首先需要了解下-lt-Router-gt-。它是所有路由组件共用的底层接口，你可以将各种组件及标签放进-lt-Router-gt-组件中，比如：" class="headerlink" title="首先需要了解下&lt;Router&gt;。它是所有路由组件共用的底层接口，你可以将各种组件及标签放进&lt;Router&gt;组件中，比如："></a>首先需要了解下<code>&lt;Router&gt;</code>。它是所有路由组件共用的底层接口，你可以将各种组件及标签放进<code>&lt;Router&gt;</code>组件中，比如：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;Router&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;<span class="xml"><span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">"/"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/u</span>l&gt;</span><br><span class="line">        &lt;hr/&gt;</span><br><span class="line">        &lt;Route exact path=<span class="string">"/"</span> component=&#123;Home&#125;/&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/about"</span> component=&#123;About&#125;/&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>Router&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>需要注意的是：<Router>下值允许存在一个子元素，如存在多个则会报错。所以上面的代码中，需要使用<code>&lt;div&gt;</code>包裹起来</Router></p>
+</blockquote>
+<h5 id="在实际的项目中，我们一般不会直接使用-lt-Router-gt-而是使用如下的更高级的路由。在这里将介绍到第一个问题中用到的-lt-BrowserRouter-gt-以及其他常用的高级路由。"><a href="#在实际的项目中，我们一般不会直接使用-lt-Router-gt-而是使用如下的更高级的路由。在这里将介绍到第一个问题中用到的-lt-BrowserRouter-gt-以及其他常用的高级路由。" class="headerlink" title="在实际的项目中，我们一般不会直接使用&lt;Router&gt;,而是使用如下的更高级的路由。在这里将介绍到第一个问题中用到的&lt;BrowserRouter&gt;以及其他常用的高级路由。"></a>在实际的项目中，我们一般不会直接使用<code>&lt;Router&gt;</code>,而是使用如下的更高级的路由。在这里将介绍到第一个问题中用到的<code>&lt;BrowserRouter&gt;</code>以及其他常用的高级路由。</h5><ol>
+<li><p><code>&lt;BrowserRouter&gt;</code></p>
+<p>使用 HTML5 提供的<code>history API (</code>pushState<code>,</code>replaceState<code>和</code>popstate<code>事件)</code>来保持 UI 和 url 的同步。下面介绍一下该路由组件中的 5 个属性：</p>
+<ul>
+<li><p><code>basename:string</code></p>
+<p>当前位置的基准 <code>url</code> 。如果你的页面部署在服务器的二级（子）目录，你需要将 <code>basename</code> 设置到此子目录。 正确的 <code>url</code> 格式是前面有一个前导斜杠，但不能有尾部斜杠。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;BrowserRouter basename=<span class="string">"/calendar"</span>/&gt;</span><br><span class="line">&lt;Link to=<span class="string">"/today"</span>/&gt; <span class="comment">// 渲染为 &lt;a href="/calendar/today"&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>getUserConfirmation: func</code></p>
+<p>当导航需要确认时执行的函数。默认使用 <code>window.confirm</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用默认的确认函数</span></span><br><span class="line"><span class="keyword">const</span> getConfirmation = <span class="function">(<span class="params">message, callback</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> allowTransition = <span class="built_in">window</span>.confirm(message)</span><br><span class="line">  callback(allowTransition)</span><br><span class="line">&#125;</span><br><span class="line">&lt;BrowserRouter getUserConfirmation=&#123;getConfirmation&#125;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>forceRefresh: bool</code></p>
+<p>当设置为 <code>true</code> 时，在导航的过程中整个页面将会刷新。 只有当浏览器不支持 HTML5 的 history API 时，才设置为 <code>true</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> supportsHistory = <span class="string">'pushState'</span> <span class="keyword">in</span> <span class="built_in">window</span>.history</span><br><span class="line">&lt;BrowserRouter forceRefresh=&#123;!supportsHistory&#125;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>keyLength: number</code></p>
+<p><code>location.key</code> 的长度，默认是 6。点击同一个链接时，每次该路由下的 <code>location.key</code> 都会改变，可以通过 <code>key</code> 的变化来刷新页面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;BrowserRouter keyLength=&#123;<span class="number">12</span>&#125;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>children: node</code></p>
+<p>渲染单一子组件（元素）。</p>
+</li>
+</ul>
+</li>
+<li><p><code>&lt;HashRouter&gt;</code></p>
+<p>HashRouter 是一种特定的 <code>&lt;Router&gt;</code> ， HashRouter 使用 url 的 <code>hash</code> (例如： window.location.hash ) 来保持 UI 和 url 的同步。由于使用 hash 的方式记录导航历史不支持 <code>location.key</code> 和 <code>location.state</code> ，该技术仅用于支持传统的浏览器。</p>
+</li>
+</ol>
+<h5 id="介绍完-，当然也要说下-，我们使用最频繁的组件，主要职责是当页面的访问地址与-Route-上的-path-匹配时渲染出对应的-UI-界面。"><a href="#介绍完-，当然也要说下-，我们使用最频繁的组件，主要职责是当页面的访问地址与-Route-上的-path-匹配时渲染出对应的-UI-界面。" class="headerlink" title="介绍完 ，当然也要说下 ，我们使用最频繁的组件，主要职责是当页面的访问地址与 Route 上的 path 匹配时渲染出对应的 UI 界面。"></a>介绍完 <code>，当然也要说下</code> ，我们使用最频繁的组件，主要职责是当页面的访问地址与 <code>Route</code> 上的 <code>path</code> 匹配时渲染出对应的 UI 界面。</h5><h5 id="lt-Route-gt-属性值主要有："><a href="#lt-Route-gt-属性值主要有：" class="headerlink" title="&lt;Route&gt; 属性值主要有："></a><code>&lt;Route&gt;</code> 属性值主要有：</h5><ul>
+<li>path: string</li>
+</ul>
+<p>可以被 <code>path-to-regexp</code> 解析的有效 url 路径。如果没有 <code>path</code>，路由将总是被匹配。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Route path=<span class="string">"/users/:id"</span> component=&#123;User&#125;/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>exact: bool</li>
+</ul>
+<p>为 <code>true</code> 时，则要求路径与 <code>location.pathname</code> 必须完全匹配。通过下表解释一下：</p>
+<p><img src="https://jdc.jd.com/wp-content/uploads/2018/07/3.png" alt="img"></p>
+<ul>
+<li>strict: bool</li>
+</ul>
+<p>为 <code>true</code> 时，有结尾斜线的路径只能匹配有斜线的 <code>location.pathname</code> 。见下表：</p>
+<p><img src="https://jdc.jd.com/wp-content/uploads/2018/07/4.png" alt="img"></p>
+<p>第二个属性值 <code>exact</code> 就是我们用来解决多个模块同时渲染问题的，默认值为 <code>true</code> 。</p>
+<p>在这里简要提下<code>&lt;Route&gt;</code>渲染的三种方法：</p>
+<ul>
+<li><code>&lt;Route component&gt;</code> 当访问地址和路由匹配时，一个 <code>React component</code> 将会被渲染</li>
+<li><code>&lt;Route render&gt;</code> 此方法适用于内联渲染，而且不会产生重复装载问题</li>
+<li><code>&lt;Route children&gt;</code></li>
+</ul>
+<p>当需要判断访问地址与路由是否匹配时，可以使用此方法。当不匹配时， <code>match</code> 为 null。</p>
+<p>我们上面代码示例中使用的是第一种方法 <code>Route Component</code>，这三种渲染方法都会用到 <code>match</code> 、<code>location</code> 、 <code>history</code> 这些属性值。</p>
+<p>需要注意的是 ：每一种渲染方法都有其适用背景, <code>&lt;Route component&gt;</code>的优先级比 <code>&lt;Route render&gt;</code>高，而他们又都优先于<code>&lt;Route children&gt;</code>，所以在同一个<code>&lt;Route&gt;</code>应该只使用一种方法，我们大多数使用的是 <code>component</code> 方法。</p>
+<h5 id="说完第一种解决方法的原理，来剖析下第二种方法：-Switch-。"><a href="#说完第一种解决方法的原理，来剖析下第二种方法：-Switch-。" class="headerlink" title="说完第一种解决方法的原理，来剖析下第二种方法： Switch 。"></a>说完第一种解决方法的原理，来剖析下第二种方法： <code>Switch</code> 。</h5><p>该组件只渲染第一个与当前访问地址匹配的 <code>Route</code> 或 <code>Redirect</code> 。它和多个堆叠的<code>Route</code>组件之间的区别是： <code>Switch</code> 只渲染一个路由。</p>
+<p>在解决方法 （2）中，当我们访问 <code>/card</code> ， <code>Switch</code> 将会开始寻找与之匹配的路由，查找到<code>&lt;Route path=&quot;/card&quot; /&gt;</code> 匹配后，<code>Switch</code> 将会停止寻找然后开始渲染 <code>/card</code> 。</p>
+<ul>
+<li>children: node</li>
+</ul>
+<p><code>&lt;Switch&gt;</code> 下的子节点只能是 <code>&lt;Route&gt;</code> 或 <code>&lt;Redirect&gt;</code> 元素且只有与当前访问地址匹配的第一个子节点才会被渲染。</p>
+</li>
+</ol>
+<h3 id="3-如何定义默认访问页面"><a href="#3-如何定义默认访问页面" class="headerlink" title="3.如何定义默认访问页面"></a>3.如何定义默认访问页面</h3><blockquote>
+<p>有时我们需要定义一个默认页面，重新引导用户的操作</p>
+</blockquote>
+<p>使用 <code>&lt;Redirect&gt;</code> 。比如当用户手动输入 <code>/test</code> 之后，我们需要跳转至首页，则代码如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render((</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;div className=<span class="string">"container"</span>&gt;</span><br><span class="line">            &lt;Switch&gt;</span><br><span class="line">                &lt;Route path=&#123;routePaths.INDEX&#125; exact component=&#123;Index&#125; /&gt;</span><br><span class="line">                &lt;Route path=&#123;routePaths.CARD&#125; component=&#123;Card&#125; /&gt;</span><br><span class="line">                &lt;Redirect to=<span class="string">"/"</span> /&gt;</span><br><span class="line">            &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/BrowserRouter&gt;</span></span><br><span class="line"><span class="regexp">    ),</span></span><br><span class="line"><span class="regexp">    document.getElementById('app')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方法解析：<code>&lt;Redirect&gt;</code> 渲染时将会导向一个新的地址，这个新的地址将会覆盖掉 <code>history</code> 堆栈中的当前地址。</p>
+</blockquote>
+<h5 id="lt-Redirect-gt-其常用的属性是："><a href="#lt-Redirect-gt-其常用的属性是：" class="headerlink" title="&lt;Redirect&gt;其常用的属性是："></a><code>&lt;Redirect&gt;</code>其常用的属性是：</h5><ul>
+<li>to: string</li>
+</ul>
+<p>重定向的 url 地址。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Redirect to=<span class="string">"/somewhere/else"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>to: object</li>
+</ul>
+<p>重定向的 <code>location</code> 对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Redirect to=&#123;&#123;</span><br><span class="line">  pathname: <span class="string">'/login'</span>,</span><br><span class="line">  search: <span class="string">'?utm=your+face'</span>,</span><br><span class="line">  state: &#123; <span class="attr">referrer</span>: currentLocation &#125;</span><br><span class="line">&#125;&#125;/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>push: bool</li>
+</ul>
+<p>取值为 <code>true</code> 时，重定向操作将会把新地址加入到访问的历史记录里面，并不会替换掉当前的地址。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Redirect push to=<span class="string">"/somewhere/else"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>from: string</li>
+</ul>
+<p>需要匹配的将要被重定向的路径。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Switch&gt;</span><br><span class="line">  &lt;Redirect <span class="keyword">from</span>=<span class="string">'/old-path'</span> to=<span class="string">'/new-path'</span>/&gt;</span><br><span class="line">  &lt;Route path=<span class="string">'/new-path'</span> component=&#123;Place&#125;/&gt;</span><br><span class="line">&lt;<span class="regexp">/Switch&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>需要注意的是：<code>&lt;Route&gt;</code> 元素使用 <code>path</code> 属性进行匹配，<code>Redirect</code> 元素使用 <code>from</code> 属性进行匹配。如果元素中没有对应的 <code>path</code> 或 <code>from</code>，那么它们将匹配任何当前的访问地址。</p>
+</blockquote>
+<h3 id="4-路由激活状态的控制"><a href="#4-路由激活状态的控制" class="headerlink" title="4. 路由激活状态的控制"></a>4. 路由激活状态的控制</h3><blockquote>
+<p>使用<Link>组件或者<NavLink></NavLink></Link></p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;NavLink</span><br><span class="line">  to=<span class="string">"/faq"</span></span><br><span class="line">  activeClassName=<span class="string">"selected"</span></span><br><span class="line">&gt;FAQs&lt;<span class="regexp">/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="lt-NavLink-gt-是-lt-Link-gt-的特殊版本，当遇到匹配的-URL-渲染元素时会添加样式属性，适用于页面导航部分。"><a href="#lt-NavLink-gt-是-lt-Link-gt-的特殊版本，当遇到匹配的-URL-渲染元素时会添加样式属性，适用于页面导航部分。" class="headerlink" title="&lt;NavLink&gt;是&lt;Link&gt; 的特殊版本，当遇到匹配的 URL 渲染元素时会添加样式属性，适用于页面导航部分。"></a><code>&lt;NavLink&gt;</code>是<code>&lt;Link&gt;</code> 的特殊版本，当遇到匹配的 URL 渲染元素时会添加样式属性，适用于页面导航部分。</h5><ul>
+<li>activeClassName: string</li>
+</ul>
+<p>导航选中时的样式名，默认样式名为 <code>active</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;NavLink</span><br><span class="line">  to=<span class="string">"/faq"</span></span><br><span class="line">  activeClassName=<span class="string">"selected"</span></span><br><span class="line">&gt;FAQs&lt;<span class="regexp">/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>activeStyle: object</li>
+</ul>
+<p>导航选中时的样式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;NavLink</span><br><span class="line">  to=<span class="string">"/faq"</span></span><br><span class="line">  activeStyle=&#123;&#123;</span><br><span class="line">    fontWeight: <span class="string">'bold'</span>,</span><br><span class="line">    color: <span class="string">'red'</span></span><br><span class="line">   &#125;&#125;</span><br><span class="line">&gt;FAQs&lt;<span class="regexp">/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>exact: bool</li>
+</ul>
+<p>若值为 <code>true</code>，当访问地址严格匹配时激活样式才会生效。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;NavLink</span><br><span class="line">  exact</span><br><span class="line">  to=<span class="string">"/profile"</span></span><br><span class="line">&gt;Profile&lt;<span class="regexp">/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>strict: bool</li>
+</ul>
+<p>若值为 <code>true</code>，只有当访问地址后缀斜杠严格匹配（有或无）时激活样式才会生效</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;NavLink</span><br><span class="line">  strict</span><br><span class="line">  to=<span class="string">"/events/"</span></span><br><span class="line">&gt;Events&lt;<span class="regexp">/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>isActive: func</li>
+</ul>
+<p>用于添加页面激活时的操作逻辑。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> oddEvent = <span class="function">(<span class="params">match, location</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!match) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> eventID = <span class="built_in">parseInt</span>(match.params.eventID)</span><br><span class="line">  <span class="keyword">return</span> !<span class="built_in">isNaN</span>(eventID) &amp;&amp; eventID % <span class="number">2</span> === <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;NavLink</span><br><span class="line">  to=<span class="string">"/events/123"</span></span><br><span class="line">  isActive=&#123;oddEvent&#125;</span><br><span class="line">&gt;Event <span class="number">123</span>&lt;<span class="regexp">/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-页面跳转"><a href="#5-页面跳转" class="headerlink" title="5. 页面跳转"></a>5. 页面跳转</h3><ol>
+<li><h5 id="使用-history-控制路由的跳转"><a href="#使用-history-控制路由的跳转" class="headerlink" title="使用 history 控制路由的跳转"></a>使用 history 控制路由的跳转</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.props.history.push(<span class="string">'/some/path'</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>history</code> 指的是 <code>history</code> 包，是 4.x 中的重要依赖之一。常见的 <code>history</code> 路由方案有三种形式，分别是：</p>
+<ul>
+<li>browser history 在 DOM 上的实现，用于支持 HTML5 history API 的浏览器；</li>
+<li>hash history 在 DOM 上的实现，用于旧版浏览器；</li>
+<li>memory history 在内存上的实现，用于测试或非 DOM 环境（如 <code>React Native</code>）</li>
+</ul>
+<p><code>history</code> 对象包含的属性和方法如下所示：</p>
+<ul>
+<li><code>length</code>: number history 堆栈中的地址数目</li>
+<li><code>action</code>: string 当前的动作 (PUSH , REPLACE , 或者是 POP )</li>
+<li><code>location</code>: object 当前访问地址信息组成的对象</li>
+<li><code>push(path, [state])</code>: func 在 history 堆栈信息里加入一个新路径</li>
+<li><code>replace(path, [state])</code> : func 替换 history 堆栈信息里的当前路径</li>
+<li><code>go(n)</code> : func 将 history 堆栈中的指针向前移动 n</li>
+<li><code>goBack()</code>: func 等同于 go(-1)</li>
+<li><code>goForward()</code>: func 等同于 go(1)</li>
+<li><code>block(prompt)</code> : func 阻止跳转</li>
+</ul>
+<h5 id="需要注意的是：history-对象是可变的，所以不要从-history-location-直接获取，而是需要通过-lt-Route-gt-的prop-来获取-location。"><a href="#需要注意的是：history-对象是可变的，所以不要从-history-location-直接获取，而是需要通过-lt-Route-gt-的prop-来获取-location。" class="headerlink" title="需要注意的是：history 对象是可变的，所以不要从 history.location 直接获取，而是需要通过 &lt;Route&gt; 的prop 来获取 location。"></a>需要注意的是：<code>history</code> 对象是可变的，所以不要从 <code>history.location</code> 直接获取，而是需要通过 <code>&lt;Route&gt;</code> 的<code>prop</code> 来获取 <code>location</code>。</h5></li>
+<li><h5 id="使用-Context，获得-router-对象"><a href="#使用-Context，获得-router-对象" class="headerlink" title="使用 Context，获得 router 对象"></a>使用 <code>Context</code>，获得 <code>router</code> 对象</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> PropTypes <span class="keyword">from</span> <span class="string">"prop-types"</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> contextTypes = &#123;</span><br><span class="line">    router: PropTypes.object</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">constructor</span>(props, context) &#123;</span><br><span class="line">     <span class="keyword">super</span>(props, context);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">  myFunction() &#123;</span><br><span class="line">    <span class="keyword">this</span>.context.router.history.push(<span class="string">"/some/Path"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="6-切换路由后，页面仍然停留在上一个页面的位置"><a href="#6-切换路由后，页面仍然停留在上一个页面的位置" class="headerlink" title="6.切换路由后，页面仍然停留在上一个页面的位置"></a>6.切换路由后，页面仍然停留在上一个页面的位置</h3><h5 id="问题：由-A-页面跳转到-B-页面，B-页面停留在-A-页面的位置，没有返回到顶部。"><a href="#问题：由-A-页面跳转到-B-页面，B-页面停留在-A-页面的位置，没有返回到顶部。" class="headerlink" title="问题：由 A 页面跳转到 B 页面，B 页面停留在 A 页面的位置，没有返回到顶部。"></a>问题：由 A 页面跳转到 B 页面，B 页面停留在 A 页面的位置，没有返回到顶部。</h5><p>用户可以对 window 和独立组件的滚动位置进行管理。可以使用 <code>withRouter</code> 组件： <code>withRouter</code> 可以访问历史对象的属性和最近的 <code>&lt;Route&gt;</code> 匹配项，当路由的属性值 { <code>match</code>, <code>location</code>, <code>history</code> } 改变时，<code>withRouter</code> 都会重新渲染。该组件可以携带组件的路由信息，避免组件之间一层层传递。使用方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">withRouter(MyComponent)</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以获取到 MyComponent 组件的路由信息了。</p>
+<p>解决方法：使用 <code>withRouter</code> 封装 <code>ScrollToTop</code> 组件。这里就用到了 <code>withRouter</code> 携带路由信息的特性，通过对比<code>props</code> 中 <code>location</code> 的变化，实现页面的滚动</p>
+<ol>
+<li><h5 id="定义-ScrollToTop-组件，代码如下："><a href="#定义-ScrollToTop-组件，代码如下：" class="headerlink" title="定义 ScrollToTop 组件，代码如下："></a>定义 <code>ScrollToTop</code> 组件，代码如下：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Route, withRouter &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScrollToTop</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    componentDidUpdate(prevProps) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.props.location !== prevProps.location) &#123;</span><br><span class="line">          <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.props.children</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> withRouter(ScrollToTop);</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="在定义路由处引用该组件，例如："><a href="#在定义路由处引用该组件，例如：" class="headerlink" title="在定义路由处引用该组件，例如："></a>在定义路由处引用该组件，例如：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render((</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;ScrollToTop&gt;</span><br><span class="line">            &lt;div className=<span class="string">"container"</span>&gt;</span><br><span class="line">                &lt;Route path=&#123;routePaths.INDEX&#125; exact component=&#123;Index&#125; /&gt;</span><br><span class="line">                &lt;Route path=&#123;routePaths.CARD&#125; component=&#123;Card&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>ScrollToTop&gt;</span><br><span class="line">    &lt;<span class="regexp">/BrowserRouter&gt;</span></span><br><span class="line"><span class="regexp">    ),</span></span><br><span class="line"><span class="regexp">    document.getElementById('app')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<p>这样处理之后，当跳转页面时都会自动回到该页面的顶部位置。</p>
+</li>
+</ol>
+<h3 id="7-页面之间如何传值"><a href="#7-页面之间如何传值" class="headerlink" title="7.页面之间如何传值"></a>7.页面之间如何传值</h3><p>问题背景：当路由发生跳转时我们可能需要携带一些参数</p>
+<p>解决方法：使用 <code>props</code> 属性，介绍以下三种传值方法：</p>
+<ol>
+<li><h5 id="props-params"><a href="#props-params" class="headerlink" title="props.params"></a><code>props.params</code></h5><p>指定一个 path ，然后指定通配符可以携带参数到指定的 <code>path</code> ：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Route path=<span class="string">'/user/:name'</span> component=&#123;UserPage&#125;&gt;&lt;<span class="regexp">/Route&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>跳转 UserPage 页面时，可以这样写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//link方法</span></span><br><span class="line">&lt;Link to=<span class="string">"/user/sam"</span>&gt;用户&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/push方法</span></span><br><span class="line"><span class="regexp">this.props.history.push("/u</span>ser/sam<span class="string">");</span></span><br></pre></td></tr></table></figure>
+
+<p>在 UserPage 页面中通过 <code>this.props.params.name</code> 获取值。</p>
+<p>上面的方法可以传递一个或多个值，但是每个值的类型都是字符串，没法传递一个对象。如果要传的话可以将 json 对象转换为字符串，传递过去之后再将 json 字符串转换为对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123;<span class="attr">id</span>:<span class="number">3</span>,<span class="attr">name</span>:sam,<span class="attr">age</span>:<span class="number">36</span>&#125;;</span><br><span class="line">data = <span class="built_in">JSON</span>.stringify(data);</span><br><span class="line"><span class="keyword">let</span> path = <span class="string">'/user/$&#123;data&#125;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在页面中获取值时</span></span><br><span class="line"><span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(<span class="keyword">this</span>.props.params.data);</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="query"><a href="#query" class="headerlink" title="query"></a><code>query</code></h5><p><code>query</code> 方式可以传递任意类型的值，但是页面的 <code>url</code> 也是由 <code>query</code> 的值拼接的，<code>url</code> 很长且是明文传输。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义路由</span></span><br><span class="line">&lt;Route path=<span class="string">'/user'</span> component=&#123;UserPage&#125;&gt;&lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/数据定义</span></span><br><span class="line"><span class="regexp">let data = &#123;id:3,name:sam,age:36&#125;;</span></span><br><span class="line"><span class="regexp">let path = &#123;</span></span><br><span class="line"><span class="regexp">    pathname: '/u</span>ser<span class="string">',</span></span><br><span class="line"><span class="string">    query: data,</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//页面跳转</span></span><br><span class="line"><span class="string">&lt;Link to=&#123;path&#125;&gt;用户&lt;/Link&gt;</span></span><br><span class="line"><span class="string">this.props.history.push(path);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//页面取值</span></span><br><span class="line"><span class="string">let data = this.props.location.query;</span></span><br><span class="line"><span class="string">let &#123;id,name,age&#125; = data;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="state"><a href="#state" class="headerlink" title="state"></a><code>state</code></h5><p><code>state</code> 方式类似于 <code>post</code>，依然可以传递任意类型的数据，而且可以不以明文方式传输。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义路由</span></span><br><span class="line">&lt;Route path=<span class="string">'/user'</span> component=&#123;UserPage&#125;&gt;&lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/数据定义</span></span><br><span class="line"><span class="regexp">let data = &#123;id:3,name:sam,age:36&#125;;</span></span><br><span class="line"><span class="regexp">let path = &#123;</span></span><br><span class="line"><span class="regexp">    pathname: '/u</span>ser<span class="string">',</span></span><br><span class="line"><span class="string">    state: data,</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//页面跳转</span></span><br><span class="line"><span class="string">&lt;Link to=&#123;path&#125;&gt;用户&lt;/Link&gt;</span></span><br><span class="line"><span class="string">this.props.history.push(path);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//页面取值</span></span><br><span class="line"><span class="string">let data = this.props.location.state;</span></span><br><span class="line"><span class="string">let &#123;id,name,age&#125; = data;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="8-使用-lt-BrowserRouter-gt-配置路由，上传页面至服务器后页面出现-404"><a href="#8-使用-lt-BrowserRouter-gt-配置路由，上传页面至服务器后页面出现-404" class="headerlink" title="8.使用 &lt;BrowserRouter&gt; 配置路由，上传页面至服务器后页面出现 404"></a>8.使用 <code>&lt;BrowserRouter&gt;</code> 配置路由，上传页面至服务器后页面出现 404</h3><h5 id="问题背景：项目中控制路由跳转使用的是-lt-BrowserRouter-gt-，代码如下："><a href="#问题背景：项目中控制路由跳转使用的是-lt-BrowserRouter-gt-，代码如下：" class="headerlink" title="问题背景：项目中控制路由跳转使用的是 &lt;BrowserRouter&gt;，代码如下："></a>问题背景：项目中控制路由跳转使用的是 <code>&lt;BrowserRouter&gt;</code>，代码如下：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render((</span><br><span class="line">    &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;div className=<span class="string">"container"</span>&gt;</span><br><span class="line">            &lt;Route path=&#123;routePaths.INDEX&#125; exact component=&#123;Index&#125; /&gt;</span><br><span class="line">            &lt;Route path=&#123;routePaths.CARD&#125; component=&#123;Card&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>BrowserRouter&gt;</span><br><span class="line">    ),</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>在开发过程中使用是没有问题的，但是将页面上传至服务器之后，问题就来了：用户访问的资源不存在，页面是空白的。</p>
+<p>问题分析：`` 是使用 React-Router 应用推荐的 <code>history</code> 方案。它使用浏览器中的 History API 用于处理 url，创建一个像 <code>example.com/list/123</code> 这样真实的 url。当通过真实 url 访问网站的时候，由于路径是指向服务器的真实路径，但该路径下并没有相关资源，所以用户访问的资源不存在。</p>
+<p>解决方法：</p>
+<h5 id="1-使用-lt-HashRouter-gt-。"><a href="#1-使用-lt-HashRouter-gt-。" class="headerlink" title="1. 使用 &lt;HashRouter&gt;。"></a>1. 使用 <code>&lt;HashRouter&gt;</code>。</h5><p>它使用 url 中的 hash（#）部分去创建路由，举例来说，用户访问 <code>http://www.example.com/</code> ，实际会看到的是 <code>http://www.example.com/#/</code> 。<br>为什么本地开发时没有问题呢？那是因为我们的 <code>React</code> 脚手架中使用 <code>webpack-dev-server</code> 做了配置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">webpackConfig.devServer = &#123;</span><br><span class="line">    disableHostCheck: <span class="literal">true</span>,</span><br><span class="line">    contentBase: path.resolve(__dirname, <span class="string">'build'</span>),</span><br><span class="line">    compress: <span class="literal">true</span>, <span class="comment">//gzip压缩</span></span><br><span class="line">    historyApiFallback: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-如果要使用-lt-BrowserRouter-gt-的话，服务器需要进行相关路由配置"><a href="#2-如果要使用-lt-BrowserRouter-gt-的话，服务器需要进行相关路由配置" class="headerlink" title="2.如果要使用 &lt;BrowserRouter&gt; 的话，服务器需要进行相关路由配置"></a>2.如果要使用 <code>&lt;BrowserRouter&gt;</code> 的话，服务器需要进行相关路由配置</h5>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/12/13/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94setState%E8%AF%A6%E8%A7%A3/" class="pre-post btn btn-default" title='React关于setState详解'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            React关于setState详解</span>
+    </a>
+    
+    
+    <a href="/2019/11/02/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Create-React-App/" class="next-post btn btn-default" title='React中的Create-React-App'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            React中的Create-React-App</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-React-Router-4"><span class="toc-text">1. React Router 4</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用方法"><span class="toc-text">使用方法:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-页面中多个模块同时渲染问题"><span class="toc-text">2. 页面中多个模块同时渲染问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#首先需要了解下-lt-Router-gt-。它是所有路由组件共用的底层接口，你可以将各种组件及标签放进-lt-Router-gt-组件中，比如："><span class="toc-text">首先需要了解下&lt;Router&gt;。它是所有路由组件共用的底层接口，你可以将各种组件及标签放进&lt;Router&gt;组件中，比如：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在实际的项目中，我们一般不会直接使用-lt-Router-gt-而是使用如下的更高级的路由。在这里将介绍到第一个问题中用到的-lt-BrowserRouter-gt-以及其他常用的高级路由。"><span class="toc-text">在实际的项目中，我们一般不会直接使用&lt;Router&gt;,而是使用如下的更高级的路由。在这里将介绍到第一个问题中用到的&lt;BrowserRouter&gt;以及其他常用的高级路由。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#介绍完-，当然也要说下-，我们使用最频繁的组件，主要职责是当页面的访问地址与-Route-上的-path-匹配时渲染出对应的-UI-界面。"><span class="toc-text">介绍完 ，当然也要说下 ，我们使用最频繁的组件，主要职责是当页面的访问地址与 Route 上的 path 匹配时渲染出对应的 UI 界面。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#lt-Route-gt-属性值主要有："><span class="toc-text">&lt;Route&gt; 属性值主要有：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#说完第一种解决方法的原理，来剖析下第二种方法：-Switch-。"><span class="toc-text">说完第一种解决方法的原理，来剖析下第二种方法： Switch 。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-如何定义默认访问页面"><span class="toc-text">3.如何定义默认访问页面</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#lt-Redirect-gt-其常用的属性是："><span class="toc-text">&lt;Redirect&gt;其常用的属性是：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-路由激活状态的控制"><span class="toc-text">4. 路由激活状态的控制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#lt-NavLink-gt-是-lt-Link-gt-的特殊版本，当遇到匹配的-URL-渲染元素时会添加样式属性，适用于页面导航部分。"><span class="toc-text">&lt;NavLink&gt;是&lt;Link&gt; 的特殊版本，当遇到匹配的 URL 渲染元素时会添加样式属性，适用于页面导航部分。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-页面跳转"><span class="toc-text">5. 页面跳转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用-history-控制路由的跳转"><span class="toc-text">使用 history 控制路由的跳转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#需要注意的是：history-对象是可变的，所以不要从-history-location-直接获取，而是需要通过-lt-Route-gt-的prop-来获取-location。"><span class="toc-text">需要注意的是：history 对象是可变的，所以不要从 history.location 直接获取，而是需要通过 &lt;Route&gt; 的prop 来获取 location。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用-Context，获得-router-对象"><span class="toc-text">使用 Context，获得 router 对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-切换路由后，页面仍然停留在上一个页面的位置"><span class="toc-text">6.切换路由后，页面仍然停留在上一个页面的位置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#问题：由-A-页面跳转到-B-页面，B-页面停留在-A-页面的位置，没有返回到顶部。"><span class="toc-text">问题：由 A 页面跳转到 B 页面，B 页面停留在 A 页面的位置，没有返回到顶部。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#定义-ScrollToTop-组件，代码如下："><span class="toc-text">定义 ScrollToTop 组件，代码如下：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在定义路由处引用该组件，例如："><span class="toc-text">在定义路由处引用该组件，例如：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-页面之间如何传值"><span class="toc-text">7.页面之间如何传值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#props-params"><span class="toc-text">props.params</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#query"><span class="toc-text">query</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#state"><span class="toc-text">state</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-使用-lt-BrowserRouter-gt-配置路由，上传页面至服务器后页面出现-404"><span class="toc-text">8.使用 &lt;BrowserRouter&gt; 配置路由，上传页面至服务器后页面出现 404</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#问题背景：项目中控制路由跳转使用的是-lt-BrowserRouter-gt-，代码如下："><span class="toc-text">问题背景：项目中控制路由跳转使用的是 &lt;BrowserRouter&gt;，代码如下：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-使用-lt-HashRouter-gt-。"><span class="toc-text">1. 使用 &lt;HashRouter&gt;。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-如果要使用-lt-BrowserRouter-gt-的话，服务器需要进行相关路由配置"><span class="toc-text">2.如果要使用 &lt;BrowserRouter&gt; 的话，服务器需要进行相关路由配置</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

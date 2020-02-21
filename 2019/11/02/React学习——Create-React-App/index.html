@@ -1,0 +1,439 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="react" />
+
+
+<meta name="description" content="1. create-react-app 创建及使用
+Create React App是FaceBook的React团队官方出的一个构建React单页面应用的脚手架工具。它本身集成了Webpack..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    React中的Create-React-App |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="React中的Create-React-App">
+            
+            React中的Create-React-App
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/react/" rel="tag">react</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/11/02</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="1-create-react-app-创建及使用"><a href="#1-create-react-app-创建及使用" class="headerlink" title="1. create-react-app 创建及使用"></a>1. <code>create-react-app</code> 创建及使用</h2><blockquote>
+<h5 id="Create-React-App是FaceBook的React团队官方出的一个构建React单页面应用的脚手架工具。它本身集成了Webpack，并配置了一系列内置的loader和默认的npm的脚本，可以很轻松的实现零配置就可以快速开发React的应用"><a href="#Create-React-App是FaceBook的React团队官方出的一个构建React单页面应用的脚手架工具。它本身集成了Webpack，并配置了一系列内置的loader和默认的npm的脚本，可以很轻松的实现零配置就可以快速开发React的应用" class="headerlink" title="Create React App是FaceBook的React团队官方出的一个构建React单页面应用的脚手架工具。它本身集成了Webpack，并配置了一系列内置的loader和默认的npm的脚本，可以很轻松的实现零配置就可以快速开发React的应用"></a><code>Create React App</code>是<strong>FaceBook</strong>的React团队官方出的一个构建<code>React</code>单页面应用的脚手架工具。它本身集成了<code>Webpack</code>，并配置了一系列内置的<code>loader</code>和默认的npm的脚本，可以很轻松的实现零配置就可以快速开发React的应用</h5></blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 全局安装</span></span><br><span class="line">npm install -g create-react-app</span><br><span class="line"><span class="meta">#</span><span class="bash"> 构建一个my-app的项目(my-app 是你的项目的名称)</span></span><br><span class="line">npx create-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动编译当前的React项目，并自动打开 http://localhost:3000/</span></span><br><span class="line">npm start</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">yard start</span><br></pre></td></tr></table></figure>
+
+<h5 id="注意：如果你不能确保最新版本，可以尝试卸载：npm-uninstall-g-create-react-app然后全局安装"><a href="#注意：如果你不能确保最新版本，可以尝试卸载：npm-uninstall-g-create-react-app然后全局安装" class="headerlink" title="注意：如果你不能确保最新版本，可以尝试卸载：npm uninstall -g create-react-app然后全局安装"></a>注意：如果你不能确保最新版本，可以尝试卸载：<code>npm uninstall -g create-react-app</code>然后全局安装</h5><h4 id="1-1-项目目录（默认）："><a href="#1-1-项目目录（默认）：" class="headerlink" title="1.1 项目目录（默认）："></a>1.1 项目目录（默认）：</h4><p><img src="/2019/11/02/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Create-React-App/image/create-react-app/react%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9B%AE%E5%BD%95.png" alt="react初始化目录"></p>
+<h5 id="对于要创建的项目，这些文件必须以明确的文件名存在："><a href="#对于要创建的项目，这些文件必须以明确的文件名存在：" class="headerlink" title="对于要创建的项目，这些文件必须以明确的文件名存在："></a>对于要创建的项目，这些文件必须以明确的文件名存在：</h5><ul>
+<li><code>public/index.html</code> 是页面模板;</li>
+<li><code>src/index.js</code> 是 JavaScript 入口点。</li>
+<li>在 <code>src</code> 中创建子目录。 为了加快重新构建的速度，<code>Webpack</code>只处理 <code>src</code> 中的文件。 你需要<strong>将任何 JS 和 CSS 文件放在 <code>src</code> 中</strong>，否则 <code>Webpack</code>将发现不了它们 </li>
+</ul>
+<blockquote>
+<h5 id="在package-json中：-只有三个依赖，分别是react，react-dom-react-scripts-依赖为什么这么少，是因为像webpack，babel等等都是被creat-react-app封装到了react-scripts这个项目当中，包括基本启动命令-都是通过调用react-scripts这个依赖下面的命令进行启动的-creat-react-app搭建出来的项目默认支持这4种命令，start以开发模式启动项目，build将整个项目进行构建，test进行测试，eject会将原本creat-react-app对webpack，babel等相关配置的封装弹射出来，-如果我们要将creat-react-app配置文件进行修改，现有目录下是没有地方修改的，此时，我们就可以通过eject命令将原本被封装到脚手架当中的命令弹射出来，然后就可以在项目的目录下看到很多配置文件"><a href="#在package-json中：-只有三个依赖，分别是react，react-dom-react-scripts-依赖为什么这么少，是因为像webpack，babel等等都是被creat-react-app封装到了react-scripts这个项目当中，包括基本启动命令-都是通过调用react-scripts这个依赖下面的命令进行启动的-creat-react-app搭建出来的项目默认支持这4种命令，start以开发模式启动项目，build将整个项目进行构建，test进行测试，eject会将原本creat-react-app对webpack，babel等相关配置的封装弹射出来，-如果我们要将creat-react-app配置文件进行修改，现有目录下是没有地方修改的，此时，我们就可以通过eject命令将原本被封装到脚手架当中的命令弹射出来，然后就可以在项目的目录下看到很多配置文件" class="headerlink" title="在package.json中： 只有三个依赖，分别是react，react-dom,react-scripts,依赖为什么这么少，是因为像webpack，babel等等都是被creat-react-app封装到了react-scripts这个项目当中，包括基本启动命令 都是通过调用react-scripts这个依赖下面的命令进行启动的, creat-react-app搭建出来的项目默认支持这4种命令，start以开发模式启动项目，build将整个项目进行构建，test进行测试，eject会将原本creat-react-app对webpack，babel等相关配置的封装弹射出来， 如果我们要将creat-react-app配置文件进行修改，现有目录下是没有地方修改的，此时，我们就可以通过eject命令将原本被封装到脚手架当中的命令弹射出来，然后就可以在项目的目录下看到很多配置文件"></a>在<code>package.json</code>中： 只有三个依赖，分别是<code>react，react-dom,react-scripts</code>,依赖为什么这么少，是因为像<code>webpack，babel</code>等等都是被<code>creat-react-app</code>封装到了react-scripts这个项目当中，包括基本启动命令 都是通过调用<code>react-scripts</code>这个依赖下面的命令进行启动的, <code>creat-react-app</code>搭建出来的项目默认支持这4种命令，<code>start</code>以开发模式启动项目，<code>build</code>将整个项目进行构建，<code>test</code>进行测试，<code>eject</code>会将原本<code>creat-react-app</code>对webpack，babel等相关配置的封装弹射出来， 如果我们要将<code>creat-react-app</code>配置文件进行修改，现有目录下是没有地方修改的，此时，我们就可以通过<code>eject</code>命令将原本被封装到脚手架当中的命令弹射出来，然后就可以在项目的目录下看到很多配置文件</h5></blockquote>
+<h5 id="1-1-1-可用的Scripts"><a href="#1-1-1-可用的Scripts" class="headerlink" title="1.1.1 可用的Scripts"></a>1.1.1 可用的Scripts</h5><ul>
+<li><p><code>npm start</code></p>
+<p>在开发模式下运行应用程序 </p>
+</li>
+<li><p><code>npm test</code></p>
+<p>以交互式监视模式启动测试运行器 </p>
+</li>
+<li><p><code>npm run build</code></p>
+<p>将生产应用程序构建到 <code>build</code> 文件夹 </p>
+</li>
+<li><p><code>npm run eject</code></p>
+</li>
+</ul>
+<h4 id="1-2在create-react-app中使用css-module两种方式"><a href="#1-2在create-react-app中使用css-module两种方式" class="headerlink" title="1.2在create-react-app中使用css module两种方式"></a>1.2在<code>create-react-app</code>中使用<code>css module</code>两种方式</h4><h5 id="1-2-1-使用-css-module-的第一种方式"><a href="#1-2-1-使用-css-module-的第一种方式" class="headerlink" title="1.2.1 使用 css module 的第一种方式"></a>1.2.1 使用 <code>css module</code> 的第一种方式</h5><blockquote>
+<h6 id="create-react-app-中内置了使用-CSS-Modules-的配置，当前方式就是使用-create-react-app内置的用法"><a href="#create-react-app-中内置了使用-CSS-Modules-的配置，当前方式就是使用-create-react-app内置的用法" class="headerlink" title="create-react-app 中内置了使用 CSS Modules 的配置，当前方式就是使用 create-react-app内置的用法"></a><code>create-react-app</code> 中内置了使用 <code>CSS Modules</code> 的配置，当前方式就是使用 <code>create-react-app</code>内置的用法</h6></blockquote>
+<h5 id="方式："><a href="#方式：" class="headerlink" title="方式："></a>方式：</h5><blockquote>
+<h6 id="将所有的-css-scss等样式文件都修改成-module-css-module-scss-等。即可使用-CSS-Modules的方式进行引入使用了"><a href="#将所有的-css-scss等样式文件都修改成-module-css-module-scss-等。即可使用-CSS-Modules的方式进行引入使用了" class="headerlink" title="将所有的 .css/.scss等样式文件都修改成 .module.css/.module.scss 等。即可使用 CSS Modules的方式进行引入使用了"></a>将所有的 <code>.css/.scss</code>等样式文件都修改成 <code>.module.css/.module.scss</code> 等。即可使用 <code>CSS Modules</code>的方式进行引入使用了</h6></blockquote>
+<h5 id="用法：编写一个css文件：union-module-css"><a href="#用法：编写一个css文件：union-module-css" class="headerlink" title="用法：编写一个css文件：union.module.css"></a>用法：编写一个css文件：<code>union.module.css</code></h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.error</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="在编写一个普通的-css-文件：common-css"><a href="#在编写一个普通的-css-文件：common-css" class="headerlink" title="在编写一个普通的 css 文件：common.css"></a>在编写一个普通的 css 文件：<code>common.css</code></h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.error</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="在App-jsx-文件中使用-CSS-Modules的方式进行引用：union-module-css"><a href="#在App-jsx-文件中使用-CSS-Modules的方式进行引用：union-module-css" class="headerlink" title="在App. jsx 文件中使用 CSS Modules的方式进行引用：union.module.css"></a>在<code>App. jsx</code> 文件中使用 <code>CSS Modules</code>的方式进行引用：<code>union.module.css</code></h5><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> union <span class="keyword">from</span> <span class="string">'./css/union.module.css'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./css/common.css'</span></span><br><span class="line"><span class="built_in">console</span>.log(union)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p className=&#123;union.error&#125;&gt;悲催的一天开始了&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<h4 id="在浏览器中查看效果"><a href="#在浏览器中查看效果" class="headerlink" title="在浏览器中查看效果:"></a>在浏览器中查看效果:</h4><blockquote>
+<p>此时 App组件的背景颜色是红色，但是字体颜色却不是红色，因为使用了 <code>Css Modules</code> 之后，普通的 css 样式就不起效果了，需要用全局的方式编写才可以(:global)。 最后添加到元素上的样式结果为：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"union_error_3UaRT"</span>&gt;</span>悲催的一天开始了<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="使用scss的效果和css效果一样-但是使用scsss时需要安装："><a href="#使用scss的效果和css效果一样-但是使用scsss时需要安装：" class="headerlink" title="使用scss的效果和css效果一样,但是使用scsss时需要安装："></a>使用<code>scss</code>的效果和<code>css</code>效果一样,但是使用<code>scsss</code>时需要安装：</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i node-sass -D // 因为create-react-app中没有内置</span><br></pre></td></tr></table></figure>
+
+<h5 id="然后就可以使用-scss的文件编译了"><a href="#然后就可以使用-scss的文件编译了" class="headerlink" title="然后就可以使用.scss的文件编译了"></a>然后就可以使用<code>.scss</code>的文件编译了</h5><h5 id="1-2-2-使用-css-Module的第二种方式"><a href="#1-2-2-使用-css-Module的第二种方式" class="headerlink" title="1.2.2 使用 css Module的第二种方式"></a>1.2.2 使用 <code>css Module</code>的第二种方式</h5><h5 id="方式：-1"><a href="#方式：-1" class="headerlink" title="方式："></a>方式：</h5><blockquote>
+<h6 id="在命令行运行-npm-run-eject-命令-此命令会将脚手架中隐藏的配置都展示出来，此过程不可逆"><a href="#在命令行运行-npm-run-eject-命令-此命令会将脚手架中隐藏的配置都展示出来，此过程不可逆" class="headerlink" title="在命令行运行 npm run eject 命令,  此命令会将脚手架中隐藏的配置都展示出来，此过程不可逆"></a>在命令行运行 <code>npm run eject</code> 命令,  此命令会将脚手架中隐藏的配置都展示出来，此过程不可逆</h6></blockquote>
+<blockquote>
+<h6 id="运行完成之后，打开-config-目录下的webpack-config-js-文件，找到-test-cssRegex-这一行"><a href="#运行完成之后，打开-config-目录下的webpack-config-js-文件，找到-test-cssRegex-这一行" class="headerlink" title="运行完成之后，打开 config 目录下的webpack.config.js 文件，找到 test: cssRegex 这一行"></a>运行完成之后，打开 config 目录下的<code>webpack.config.js</code> 文件，找到 <code>test: cssRegex</code> 这一行</h6></blockquote>
+<blockquote>
+<h6 id="在-use-属性执行的方法中添加-modules-true，如下图："><a href="#在-use-属性执行的方法中添加-modules-true，如下图：" class="headerlink" title="在 use 属性执行的方法中添加 modules: true，如下图："></a>在 use 属性执行的方法中添加 <code>modules: true</code>，如下图：</h6></blockquote>
+<p><img src="/2019/11/02/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Create-React-App/Blog/HexoBlog/source/image/create-react-app/css_modules.png" alt="css_modules"></p>
+<h5 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h5><blockquote>
+<h6 id="和第一种方式的用法一致，只是不需要在-css-文件后面加-module-后缀了"><a href="#和第一种方式的用法一致，只是不需要在-css-文件后面加-module-后缀了" class="headerlink" title="和第一种方式的用法一致，只是不需要在 css 文件后面加 .module 后缀了"></a>和第一种方式的用法一致，只是不需要在 css 文件后面加 .module 后缀了</h6></blockquote>
+<h5 id="在浏览器中查看效果-1"><a href="#在浏览器中查看效果-1" class="headerlink" title="在浏览器中查看效果:"></a>在浏览器中查看效果:</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class="_2elxDxwd6P93-x9qDZkogR"&gt;悲催的一天开始了&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<h6 id="如想使用第二种方式对-sass-和-less-也使用-CSS-Modules-的方式进行引用，则类似的在-sass-和-less-解析配置上也添加modules-true-即可。"><a href="#如想使用第二种方式对-sass-和-less-也使用-CSS-Modules-的方式进行引用，则类似的在-sass-和-less-解析配置上也添加modules-true-即可。" class="headerlink" title="如想使用第二种方式对 sass 和 less 也使用 CSS Modules 的方式进行引用，则类似的在 sass 和 less 解析配置上也添加modules: true 即可。"></a><strong>如想使用第二种方式对 sass 和 less 也使用 CSS Modules 的方式进行引用，则类似的在 sass 和 less 解析配置上也添加<code>modules: true</code> 即可。</strong></h6></blockquote>
+<hr>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><blockquote>
+<h6 id="默认-create-react-app-脚手架不能直接使用-sass-和-less-直接编写-css，需要先进行相应配置"><a href="#默认-create-react-app-脚手架不能直接使用-sass-和-less-直接编写-css，需要先进行相应配置" class="headerlink" title="默认 create-react-app 脚手架不能直接使用 sass 和 less 直接编写 css，需要先进行相应配置"></a>默认 <code>create-react-app</code> 脚手架不能直接使用 sass 和 less 直接编写 css，需要先进行相应配置</h6></blockquote>
+<h4 id="1-3-在-Create-React-App-中启用-Sass-和-Less"><a href="#1-3-在-Create-React-App-中启用-Sass-和-Less" class="headerlink" title="1.3 在 Create-React-App 中启用 Sass 和 Less"></a>1.3 在 <code>Create-React-App</code> 中启用 Sass 和 Less</h4><h5 id="1-3-1-启用-sass-语法编写-css"><a href="#1-3-1-启用-sass-语法编写-css" class="headerlink" title="1.3.1 启用 sass 语法编写 css"></a>1.3.1 启用 sass 语法编写 css</h5><blockquote>
+<p> <code>create-react-app</code>脚手架中已经添加了 sass-loader 的支持，所以只需要安装 <code>node-sass</code>插件即可 </p>
+</blockquote>
+<h5 id="安装：node-sass插件"><a href="#安装：node-sass插件" class="headerlink" title="安装：node-sass插件"></a>安装：node-sass插件</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install node-sass --save</span><br><span class="line"><span class="meta">#</span><span class="bash">or</span></span><br><span class="line">yarn add node-sass</span><br></pre></td></tr></table></figure>
+
+<h5 id="用法：编写-sass文件：-App-scss"><a href="#用法：编写-sass文件：-App-scss" class="headerlink" title="用法：编写 sass文件： App.scss"></a>用法：编写 sass文件： App.scss</h5><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.App</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: hotpink;</span><br><span class="line">  <span class="selector-class">.common</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">color</span>: pink;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="在js文件中直接使用："><a href="#在js文件中直接使用：" class="headerlink" title="在js文件中直接使用："></a>在js文件中直接使用：</h5><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> User <span class="keyword">from</span> <span class="string">'./components/User'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.scss'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;p className=<span class="string">"common"</span>&gt;悲催的一天开始了&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;User /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span>*</span><br><span class="line">因为此时scss中没有开启模块化 所以在全局中引用该样式属性都会被使用该类的样式</span><br><span class="line">*<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="1-3-2-启用-less-语法编写-css"><a href="#1-3-2-启用-less-语法编写-css" class="headerlink" title="1.3.2 启用 less 语法编写 css"></a>1.3.2 启用 less 语法编写 css</h5><blockquote>
+<p> 由于 <code>create-react-app</code>脚手架中并没有配置关于 less 文件的解析，所以我们需要自己进行配置。需要安装的插件 <code>less</code>， <code>less-loader</code> </p>
+</blockquote>
+<h5 id="安装：less-、less-loader"><a href="#安装：less-、less-loader" class="headerlink" title="安装：less 、less-loader"></a>安装：less 、less-loader</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i less -S</span><br><span class="line">npm i less-loader -S</span><br></pre></td></tr></table></figure>
+
+<h5 id="打开web-config-js文件-找到-style-files-regexes-注释位置，仿照其解析-sass-的规则，在下面添加两行代码"><a href="#打开web-config-js文件-找到-style-files-regexes-注释位置，仿照其解析-sass-的规则，在下面添加两行代码" class="headerlink" title="打开web.config.js文件  找到 // style files regexes 注释位置，仿照其解析 sass 的规则，在下面添加两行代码"></a>打开<code>web.config.js</code>文件  找到 <code>// style files regexes</code> 注释位置，仿照其解析 sass 的规则，在下面添加两行代码</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 添加 less 解析规则</span><br><span class="line">const lessRegex = /\.less$/;</span><br><span class="line">const lessModuleRegex = /\.module\.less$/;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/11/02/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Create-React-App/image/create-react-app/less.png" alt="less"></p>
+<h5 id="找到-rules-属性配置，在其中添加-less-解析配置"><a href="#找到-rules-属性配置，在其中添加-less-解析配置" class="headerlink" title="找到 rules 属性配置，在其中添加 less 解析配置"></a>找到 rules 属性配置，在其中添加 less 解析配置</h5><blockquote>
+<blockquote>
+<h6 id="注意：-这里有一个需要注意的地方，下面的这些-less-配置规则放在-sass-的解析规则下面即可，如果放在了-file-loader-的解析规则下面，less-文件解析不会生效。"><a href="#注意：-这里有一个需要注意的地方，下面的这些-less-配置规则放在-sass-的解析规则下面即可，如果放在了-file-loader-的解析规则下面，less-文件解析不会生效。" class="headerlink" title="注意： 这里有一个需要注意的地方，下面的这些 less 配置规则放在 sass 的解析规则下面即可，如果放在了 file-loader 的解析规则下面，less 文件解析不会生效。"></a><strong>注意：</strong> 这里有一个需要注意的地方，下面的这些 <code>less</code> 配置规则放在 <code>sass</code> 的解析规则下面即可，如果放在了 <code>file-loader</code> 的解析规则下面，<code>less</code> 文件解析不会生效。</h6></blockquote>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Less 解析配置</span></span><br><span class="line">&#123;</span><br><span class="line">    test: lessRegex,</span><br><span class="line">    exclude: lessModuleRegex,</span><br><span class="line">    use: getStyleLoaders(</span><br><span class="line">        &#123;</span><br><span class="line">            importLoaders: <span class="number">2</span>,</span><br><span class="line">            sourceMap: isEnvProduction &amp;&amp; shouldUseSourceMap,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'less-loader'</span></span><br><span class="line">    ),</span><br><span class="line">    sideEffects: <span class="literal">true</span>,</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">    test: lessModuleRegex,</span><br><span class="line">    use: getStyleLoaders(</span><br><span class="line">        &#123;</span><br><span class="line">            importLoaders: <span class="number">2</span>,</span><br><span class="line">            sourceMap: isEnvProduction &amp;&amp; shouldUseSourceMap,</span><br><span class="line">            modules: <span class="literal">true</span>,</span><br><span class="line">            getLocalIdent: getCSSModuleLocalIdent,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'less-loader'</span></span><br><span class="line">    )</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/11/02/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Create-React-App/image/create-react-app/less_module.png" alt="less_module"></p>
+<h5 id="用法-编写-less-文件：App-less"><a href="#用法-编写-less-文件：App-less" class="headerlink" title="用法: 编写 less 文件：App.less"></a>用法: 编写 less 文件：<code>App.less</code></h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.App</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#00a4ff</span>;</span><br><span class="line">  <span class="selector-class">.common</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">color</span>: hotpink;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="在js文件中直接使用：改写App-js"><a href="#在js文件中直接使用：改写App-js" class="headerlink" title="在js文件中直接使用：改写App.js"></a>在js文件中直接使用：改写App.js</h5><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> User <span class="keyword">from</span> <span class="string">'./components/User'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.less'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;p className=<span class="string">"common"</span>&gt;悲催的一天开始了&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;User /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="注意：刚刚启用的scss、less是没有启动模块化的，在web-config-js中启动模块化"><a href="#注意：刚刚启用的scss、less是没有启动模块化的，在web-config-js中启动模块化" class="headerlink" title="注意：刚刚启用的scss、less是没有启动模块化的，在web.config.js中启动模块化"></a>注意：刚刚启用的scss、less是没有启动模块化的，在<code>web.config.js</code>中启动模块化</h4><h4 id="然后在css中不要启动模块化-确保引入第三方插件时能够正常使用"><a href="#然后在css中不要启动模块化-确保引入第三方插件时能够正常使用" class="headerlink" title="然后在css中不要启动模块化,确保引入第三方插件时能够正常使用"></a>然后在css中不要启动模块化,确保引入第三方插件时能够正常使用</h4></blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Less 解析配置</span></span><br><span class="line">            &#123;</span><br><span class="line">              test: lessRegex,</span><br><span class="line">              exclude: lessModuleRegex,</span><br><span class="line">              use: getStyleLoaders(</span><br><span class="line">                &#123;</span><br><span class="line">                  importLoaders: <span class="number">2</span>,</span><br><span class="line">                  modules: <span class="literal">true</span>,</span><br><span class="line">                  localIdentName: <span class="string">'[name]__[local]-[hash:base64:5]'</span>,</span><br><span class="line">                  sourceMap: isEnvProduction &amp;&amp; shouldUseSourceMap,</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="string">'less-loader'</span></span><br><span class="line">              ),</span><br><span class="line">              sideEffects: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/11/02/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Create-React-App/image/create-react-app/less%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%9D%97%E5%8C%96.png" alt="less启动模块化"></p>
+<h4 id="1-4-添加图片、字体图标、文件"><a href="#1-4-添加图片、字体图标、文件" class="headerlink" title="1.4 添加图片、字体图标、文件"></a>1.4 添加图片、字体图标、文件</h4><h5 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h5><blockquote>
+<h6 id="在js文件中使用"><a href="#在js文件中使用" class="headerlink" title="在js文件中使用:"></a>在<code>js</code>文件中使用:</h6></blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 引用</span><br><span class="line">// 例如</span><br><span class="line">import logo from './logo.png'</span><br><span class="line"></span><br><span class="line">// &lt;img src=&#123;logo&#125; alt="Logo" /&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h6 id="在css文件中使用："><a href="#在css文件中使用：" class="headerlink" title="在css文件中使用："></a>在<code>css</code>文件中使用：</h6></blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 例如</span><br><span class="line"><span class="selector-class">.Logo</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(./logo.png);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用：-1"><a href="#使用：-1" class="headerlink" title="使用："></a>使用：</h5><blockquote>
+<h5 id="在index-js或者App根组件中直接引入iconfont-css"><a href="#在index-js或者App根组件中直接引入iconfont-css" class="headerlink" title="在index.js或者App根组件中直接引入iconfont.css"></a>在<code>index.js或者App根组件</code>中直接引入<code>iconfont.css</code></h5></blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 例如</span><br><span class="line">import './style/iconfont.css'</span><br><span class="line"></span><br><span class="line">//引用</span><br><span class="line">&lt;p className="icon-fenxiang"&gt;子组件&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-配置代理"><a href="#2-配置代理" class="headerlink" title="2.配置代理"></a>2.配置代理</h2><p><strong>环境变量：</strong></p>
+<blockquote>
+<p>在根目录直接新建文件：<br><code>.env.production</code><br>就是生产环境的变量 </p>
+<p>变量规则：<br>必须是 <code>REACT_APP_</code>开头的 </p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REACT_APP_ROOT='/api'</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 读取不变还是 </p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let root = process.env.REACT_APP_ROOT</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>设置代理</strong></p>
+<p>在src 根目录新建：<code>setupProxy.js</code><br>配置还是一样的</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = <span class="built_in">require</span>(<span class="string">'http-proxy-middleware'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">app</span>) </span>&#123;</span><br><span class="line">  app.use(proxy(<span class="string">'/api'</span>, &#123;</span><br><span class="line">    target: <span class="string">'http://192.168.152.55:6666'</span>,</span><br><span class="line">    changeOrigin: <span class="literal">true</span>,</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">"^/api"</span>: <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>*<em>react会自动加载这个文件 *</em></p>
+<h2 id="3-Redux使用"><a href="#3-Redux使用" class="headerlink" title="3. Redux使用"></a>3. <code>Redux</code>使用</h2><h4 id="3-1-Redux介绍"><a href="#3-1-Redux介绍" class="headerlink" title="3.1 Redux介绍"></a>3.1 <code>Redux</code>介绍</h4><p> <code>Redux</code>是一个用来管理管理数据状态和UI状态的JavaScript应用工具。随着JavaScript单页应用（SPA）开发日趋复杂，JavaScript需要管理比任何时候都要多的<code>state</code>（状态），Redux就是降低管理难度的 </p>
+<p><img src="/2019/11/02/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Create-React-App/image/create-react-app/redux_flow.png" alt="redux_flow"></p>
+<h5 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i redux -S</span><br></pre></td></tr></table></figure>
+
+<h4 id="项目src下新建TodoList-jsx："><a href="#项目src下新建TodoList-jsx：" class="headerlink" title="项目src下新建TodoList.jsx："></a>项目src下新建<code>TodoList.jsx</code>：</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./store/index'</span>  <span class="comment">// src下的创建的store文件</span></span><br><span class="line"><span class="keyword">import</span> &#123; changeInputAction, addItemAction, deleteItemAction, getList &#125; <span class="keyword">from</span> <span class="string">'./store/actionCreators'</span></span><br><span class="line"><span class="keyword">import</span> TodoListUI <span class="keyword">from</span> <span class="string">'./TodoListUI'</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoList</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="comment">// store.getState() 会拿到store中存储的值</span></span><br><span class="line">    <span class="keyword">this</span>.state = store.getState()</span><br><span class="line">    <span class="keyword">this</span>.changeInputValue = <span class="keyword">this</span>.changeInputValue.bind(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">this</span>.storeChange = <span class="keyword">this</span>.storeChange.bind(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">this</span>.clickBtn = <span class="keyword">this</span>.clickBtn.bind(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">this</span>.deleteItem = <span class="keyword">this</span>.deleteItem.bind(<span class="keyword">this</span>)</span><br><span class="line">    <span class="comment">// 订阅Redux的状态</span></span><br><span class="line">    store.subscribe(<span class="keyword">this</span>.storeChange)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">TodoListUI</span></span></span></span><br><span class="line"><span class="xml">      inputValue=&#123;this.state.inputValue&#125;</span></span><br><span class="line"><span class="xml">      list=&#123;this.state.list&#125;</span></span><br><span class="line"><span class="xml">      changeInputValue=&#123;this.changeInputValue&#125;</span></span><br><span class="line"><span class="xml">      clickBtn=&#123;this.clickBtn&#125;</span></span><br><span class="line"><span class="xml">      deleteItem=&#123;this.deleteItem&#125;</span></span><br><span class="line"><span class="xml">    /&gt;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    axios.get(<span class="string">'http://localhost:3000/List.json'</span>)</span><br><span class="line">    .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// console.log(res.data)</span></span><br><span class="line">      <span class="keyword">const</span> action = getList(res.data.data)</span><br><span class="line">      store.dispatch(action)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  changeInputValue(e) &#123;</span><br><span class="line">    <span class="keyword">const</span> action = changeInputAction(e.target.value)</span><br><span class="line">    store.dispatch(action)</span><br><span class="line">  &#125;</span><br><span class="line">  clickBtn() &#123;</span><br><span class="line">    <span class="keyword">const</span> action = addItemAction()</span><br><span class="line">    store.dispatch(action)</span><br><span class="line">  &#125;</span><br><span class="line">  deleteItem(index) &#123;</span><br><span class="line">    <span class="keyword">const</span> action = deleteItemAction(index)</span><br><span class="line">    store.dispatch(action)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 订阅Redux的状态</span></span><br><span class="line">  storeChange() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(store.getState())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoList;</span><br></pre></td></tr></table></figure>
+
+<h4 id="项目src下新建TodoListUI-jsx"><a href="#项目src下新建TodoListUI-jsx" class="headerlink" title="项目src下新建TodoListUI.jsx"></a>项目src下新建<code>TodoListUI.jsx</code></h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'antd/dist/antd.css'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Input, Button, List &#125; <span class="keyword">from</span> <span class="string">'antd'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoListUI = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(props)</span></span><br><span class="line">  <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Input</span><br><span class="line">        placeholder=&#123;props.inputValue&#125;</span><br><span class="line">        style=&#123;&#123; width: '250px', marginRight: '10px' &#125;&#125;</span><br><span class="line">        onChange=&#123;props.changeInputValue&#125;</span><br><span class="line">        value=&#123;props.inputValue&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      &lt;Button</span><br><span class="line">        type="primary"</span><br><span class="line">        onClick=&#123;props.clickBtn&#125;&gt;增加&lt;/Button&gt;</span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &lt;div style=&#123;&#123; margin: '10px', width: '300px' &#125;&#125;&gt;</span><br><span class="line">      &lt;List</span><br><span class="line">        bordered</span><br><span class="line">        dataSource=&#123;props.list&#125;</span><br><span class="line">        renderItem=&#123;(item, index) =&gt; (&lt;List.Item onClick=&#123;() =&gt; &#123; props.deleteItem(index) &#125;&#125;&gt;&#123;item&#125;&lt;/List.Item&gt;)&#125;</span><br><span class="line">      /&gt;</span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TodoListUI;</span><br></pre></td></tr></table></figure>
+
+<h4 id="项目src下新建store文件夹，然后创建index-js"><a href="#项目src下新建store文件夹，然后创建index-js" class="headerlink" title="项目src下新建store文件夹，然后创建index.js"></a>项目src下新建store文件夹，然后创建<code>index.js</code></h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入createStore方法</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">'./reducer'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建数据存储仓库</span></span><br><span class="line"><span class="keyword">const</span> store = createStore(</span><br><span class="line">    reducer,</span><br><span class="line">    <span class="built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__()</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+
+<h4 id="在创建reducer-jsx-reducer配合index-js使用"><a href="#在创建reducer-jsx-reducer配合index-js使用" class="headerlink" title="在创建reducer.jsx(reducer配合index.js使用)"></a>在创建<code>reducer.jsx</code>(reducer配合<code>index.js</code>使用)</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST&#125; <span class="keyword">from</span> <span class="string">'./actionType'</span></span><br><span class="line"><span class="comment">// 默认数据</span></span><br><span class="line"><span class="keyword">const</span> defaultState = &#123;</span><br><span class="line">  inputValue: <span class="string">'Write SomeThing...'</span>,</span><br><span class="line">  list: []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Reducer里只能接收state，不能改变state</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (state = defaultState, action) =&gt; &#123; <span class="comment">// 就是一个方法函数</span></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * state: 指的是原始仓库里的状态</span></span><br><span class="line"><span class="comment">   * action: 指的是action新传递的状态</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span>(action.type === CHANGE_INPUT) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(state)) <span class="comment">// 深度拷贝</span></span><br><span class="line">    newState.inputValue = action.value</span><br><span class="line">    <span class="keyword">return</span> newState</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(action.type === ADD_ITEM) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(state)) <span class="comment">// 深度拷贝</span></span><br><span class="line">    newState.list.unshift(newState.inputValue)</span><br><span class="line">    newState.inputValue = <span class="string">''</span></span><br><span class="line">    <span class="keyword">return</span> newState</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(action.type === DELETE_ITEM) &#123;</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(state)) <span class="comment">// 深度拷贝</span></span><br><span class="line">    newState.list.splice(action.index,<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> newState</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(action.type === GET_LIST) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(action)</span><br><span class="line">    <span class="keyword">let</span> newState = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(state))</span><br><span class="line">    newState.list = action.list.list</span><br><span class="line">    <span class="keyword">return</span> newState</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> state</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="public文件夹下创建List-json"><a href="#public文件夹下创建List-json" class="headerlink" title="public文件夹下创建List.json"></a>public文件夹下创建<code>List.json</code></h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当作axios请求的数据</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"data"</span>: &#123;</span><br><span class="line">    <span class="attr">"list"</span>: [</span><br><span class="line">      <span class="string">"早上起不来，起床困难族"</span>,</span><br><span class="line">      <span class="string">"中午没精神,没办法,我太难了"</span>,</span><br><span class="line">      <span class="string">"别说了,晚上加班搞工作、学习、学习使我快乐"</span>,</span><br><span class="line">      <span class="string">"我要加班、我要加班、我要加班、重要的事情说三遍!!!"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Redux的三个小坑"><a href="#Redux的三个小坑" class="headerlink" title="Redux的三个小坑"></a><code>Redux</code>的三个小坑</h4><blockquote>
+<h5 id="1-store-必须是唯一的，多个store是坚决不被允许的，只能有一个store空间"><a href="#1-store-必须是唯一的，多个store是坚决不被允许的，只能有一个store空间" class="headerlink" title="1. store 必须是唯一的，多个store是坚决不被允许的，只能有一个store空间"></a>1. <code>store</code> 必须是唯一的，多个<code>store</code>是坚决不被允许的，只能有一个<code>store</code>空间</h5><h5 id="2-只有store能改变自己的内容，Reducer不能改变"><a href="#2-只有store能改变自己的内容，Reducer不能改变" class="headerlink" title="2. 只有store能改变自己的内容，Reducer不能改变"></a>2. 只有<code>store</code>能改变自己的内容，<code>Reducer</code>不能改变</h5><h5 id="3-Reducer必须是纯函数"><a href="#3-Reducer必须是纯函数" class="headerlink" title="3. Reducer必须是纯函数"></a>3. <code>Reducer</code>必须是纯函数</h5></blockquote>
+<h5 id="纯函数的定义是："><a href="#纯函数的定义是：" class="headerlink" title="纯函数的定义是："></a>纯函数的定义是：</h5><blockquote>
+<p>如果函数的调用参数相同，则永远返回相同的结果。它不依赖于程序执行期间函数外部任何状态或数据的变化，必须只依赖于其输入参数 </p>
+</blockquote>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/11/18/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94reactRouter4/" class="pre-post btn btn-default" title='React中的reactRouter'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            React中的reactRouter</span>
+    </a>
+    
+    
+    <a href="/2019/10/21/Node%E2%80%94%E2%80%94express%E4%B8%ADcookie-session%E4%BD%BF%E7%94%A8/" class="next-post btn btn-default" title='express中cookie,session使用'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            express中cookie,session使用</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-create-react-app-创建及使用"><span class="toc-text">1. create-react-app 创建及使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Create-React-App是FaceBook的React团队官方出的一个构建React单页面应用的脚手架工具。它本身集成了Webpack，并配置了一系列内置的loader和默认的npm的脚本，可以很轻松的实现零配置就可以快速开发React的应用"><span class="toc-text">Create React App是FaceBook的React团队官方出的一个构建React单页面应用的脚手架工具。它本身集成了Webpack，并配置了一系列内置的loader和默认的npm的脚本，可以很轻松的实现零配置就可以快速开发React的应用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意：如果你不能确保最新版本，可以尝试卸载：npm-uninstall-g-create-react-app然后全局安装"><span class="toc-text">注意：如果你不能确保最新版本，可以尝试卸载：npm uninstall -g create-react-app然后全局安装</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-项目目录（默认）："><span class="toc-text">1.1 项目目录（默认）：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#对于要创建的项目，这些文件必须以明确的文件名存在："><span class="toc-text">对于要创建的项目，这些文件必须以明确的文件名存在：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在package-json中：-只有三个依赖，分别是react，react-dom-react-scripts-依赖为什么这么少，是因为像webpack，babel等等都是被creat-react-app封装到了react-scripts这个项目当中，包括基本启动命令-都是通过调用react-scripts这个依赖下面的命令进行启动的-creat-react-app搭建出来的项目默认支持这4种命令，start以开发模式启动项目，build将整个项目进行构建，test进行测试，eject会将原本creat-react-app对webpack，babel等相关配置的封装弹射出来，-如果我们要将creat-react-app配置文件进行修改，现有目录下是没有地方修改的，此时，我们就可以通过eject命令将原本被封装到脚手架当中的命令弹射出来，然后就可以在项目的目录下看到很多配置文件"><span class="toc-text">在package.json中： 只有三个依赖，分别是react，react-dom,react-scripts,依赖为什么这么少，是因为像webpack，babel等等都是被creat-react-app封装到了react-scripts这个项目当中，包括基本启动命令 都是通过调用react-scripts这个依赖下面的命令进行启动的, creat-react-app搭建出来的项目默认支持这4种命令，start以开发模式启动项目，build将整个项目进行构建，test进行测试，eject会将原本creat-react-app对webpack，babel等相关配置的封装弹射出来， 如果我们要将creat-react-app配置文件进行修改，现有目录下是没有地方修改的，此时，我们就可以通过eject命令将原本被封装到脚手架当中的命令弹射出来，然后就可以在项目的目录下看到很多配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-1-可用的Scripts"><span class="toc-text">1.1.1 可用的Scripts</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2在create-react-app中使用css-module两种方式"><span class="toc-text">1.2在create-react-app中使用css module两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-使用-css-module-的第一种方式"><span class="toc-text">1.2.1 使用 css module 的第一种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#create-react-app-中内置了使用-CSS-Modules-的配置，当前方式就是使用-create-react-app内置的用法"><span class="toc-text">create-react-app 中内置了使用 CSS Modules 的配置，当前方式就是使用 create-react-app内置的用法</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方式："><span class="toc-text">方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#将所有的-css-scss等样式文件都修改成-module-css-module-scss-等。即可使用-CSS-Modules的方式进行引入使用了"><span class="toc-text">将所有的 .css&#x2F;.scss等样式文件都修改成 .module.css&#x2F;.module.scss 等。即可使用 CSS Modules的方式进行引入使用了</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#用法：编写一个css文件：union-module-css"><span class="toc-text">用法：编写一个css文件：union.module.css</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在编写一个普通的-css-文件：common-css"><span class="toc-text">在编写一个普通的 css 文件：common.css</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在App-jsx-文件中使用-CSS-Modules的方式进行引用：union-module-css"><span class="toc-text">在App. jsx 文件中使用 CSS Modules的方式进行引用：union.module.css</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在浏览器中查看效果"><span class="toc-text">在浏览器中查看效果:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用scss的效果和css效果一样-但是使用scsss时需要安装："><span class="toc-text">使用scss的效果和css效果一样,但是使用scsss时需要安装：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#然后就可以使用-scss的文件编译了"><span class="toc-text">然后就可以使用.scss的文件编译了</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-使用-css-Module的第二种方式"><span class="toc-text">1.2.2 使用 css Module的第二种方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方式：-1"><span class="toc-text">方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#在命令行运行-npm-run-eject-命令-此命令会将脚手架中隐藏的配置都展示出来，此过程不可逆"><span class="toc-text">在命令行运行 npm run eject 命令,  此命令会将脚手架中隐藏的配置都展示出来，此过程不可逆</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#运行完成之后，打开-config-目录下的webpack-config-js-文件，找到-test-cssRegex-这一行"><span class="toc-text">运行完成之后，打开 config 目录下的webpack.config.js 文件，找到 test: cssRegex 这一行</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#在-use-属性执行的方法中添加-modules-true，如下图："><span class="toc-text">在 use 属性执行的方法中添加 modules: true，如下图：</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#用法："><span class="toc-text">用法：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#和第一种方式的用法一致，只是不需要在-css-文件后面加-module-后缀了"><span class="toc-text">和第一种方式的用法一致，只是不需要在 css 文件后面加 .module 后缀了</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在浏览器中查看效果-1"><span class="toc-text">在浏览器中查看效果:</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#如想使用第二种方式对-sass-和-less-也使用-CSS-Modules-的方式进行引用，则类似的在-sass-和-less-解析配置上也添加modules-true-即可。"><span class="toc-text">如想使用第二种方式对 sass 和 less 也使用 CSS Modules 的方式进行引用，则类似的在 sass 和 less 解析配置上也添加modules: true 即可。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意："><span class="toc-text">注意：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#默认-create-react-app-脚手架不能直接使用-sass-和-less-直接编写-css，需要先进行相应配置"><span class="toc-text">默认 create-react-app 脚手架不能直接使用 sass 和 less 直接编写 css，需要先进行相应配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-在-Create-React-App-中启用-Sass-和-Less"><span class="toc-text">1.3 在 Create-React-App 中启用 Sass 和 Less</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-1-启用-sass-语法编写-css"><span class="toc-text">1.3.1 启用 sass 语法编写 css</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#安装：node-sass插件"><span class="toc-text">安装：node-sass插件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#用法：编写-sass文件：-App-scss"><span class="toc-text">用法：编写 sass文件： App.scss</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在js文件中直接使用："><span class="toc-text">在js文件中直接使用：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-2-启用-less-语法编写-css"><span class="toc-text">1.3.2 启用 less 语法编写 css</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#安装：less-、less-loader"><span class="toc-text">安装：less 、less-loader</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#打开web-config-js文件-找到-style-files-regexes-注释位置，仿照其解析-sass-的规则，在下面添加两行代码"><span class="toc-text">打开web.config.js文件  找到 &#x2F;&#x2F; style files regexes 注释位置，仿照其解析 sass 的规则，在下面添加两行代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#找到-rules-属性配置，在其中添加-less-解析配置"><span class="toc-text">找到 rules 属性配置，在其中添加 less 解析配置</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#注意：-这里有一个需要注意的地方，下面的这些-less-配置规则放在-sass-的解析规则下面即可，如果放在了-file-loader-的解析规则下面，less-文件解析不会生效。"><span class="toc-text">注意： 这里有一个需要注意的地方，下面的这些 less 配置规则放在 sass 的解析规则下面即可，如果放在了 file-loader 的解析规则下面，less 文件解析不会生效。</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#用法-编写-less-文件：App-less"><span class="toc-text">用法: 编写 less 文件：App.less</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在js文件中直接使用：改写App-js"><span class="toc-text">在js文件中直接使用：改写App.js</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意：刚刚启用的scss、less是没有启动模块化的，在web-config-js中启动模块化"><span class="toc-text">注意：刚刚启用的scss、less是没有启动模块化的，在web.config.js中启动模块化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#然后在css中不要启动模块化-确保引入第三方插件时能够正常使用"><span class="toc-text">然后在css中不要启动模块化,确保引入第三方插件时能够正常使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-添加图片、字体图标、文件"><span class="toc-text">1.4 添加图片、字体图标、文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用："><span class="toc-text">使用：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#在js文件中使用"><span class="toc-text">在js文件中使用:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#在css文件中使用："><span class="toc-text">在css文件中使用：</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用：-1"><span class="toc-text">使用：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在index-js或者App根组件中直接引入iconfont-css"><span class="toc-text">在index.js或者App根组件中直接引入iconfont.css</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置代理"><span class="toc-text">2.配置代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Redux使用"><span class="toc-text">3. Redux使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-Redux介绍"><span class="toc-text">3.1 Redux介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#安装："><span class="toc-text">安装：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目src下新建TodoList-jsx："><span class="toc-text">项目src下新建TodoList.jsx：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目src下新建TodoListUI-jsx"><span class="toc-text">项目src下新建TodoListUI.jsx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目src下新建store文件夹，然后创建index-js"><span class="toc-text">项目src下新建store文件夹，然后创建index.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在创建reducer-jsx-reducer配合index-js使用"><span class="toc-text">在创建reducer.jsx(reducer配合index.js使用)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#public文件夹下创建List-json"><span class="toc-text">public文件夹下创建List.json</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redux的三个小坑"><span class="toc-text">Redux的三个小坑</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-store-必须是唯一的，多个store是坚决不被允许的，只能有一个store空间"><span class="toc-text">1. store 必须是唯一的，多个store是坚决不被允许的，只能有一个store空间</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-只有store能改变自己的内容，Reducer不能改变"><span class="toc-text">2. 只有store能改变自己的内容，Reducer不能改变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-Reducer必须是纯函数"><span class="toc-text">3. Reducer必须是纯函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#纯函数的定义是："><span class="toc-text">纯函数的定义是：</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

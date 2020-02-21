@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="AJAX" />
+
+
+<meta name="description" content="AJAX1.什么是AJAX？ 
+Ajax（Asynchronous JavaScript and XML的缩写）是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。简单地说..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    AJAX |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="AJAX">
+            
+            AJAX
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/AJAX/" rel="tag">AJAX</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/07/22</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><h2 id="1-什么是AJAX？"><a href="#1-什么是AJAX？" class="headerlink" title="1.什么是AJAX？"></a>1.什么是AJAX？</h2><p> <img src="/2019/07/22/AJAX/1.jpg" alt></p>
+<p>Ajax（Asynchronous JavaScript and XML的缩写）是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。简单地说，在不需要重新刷新页面的情况下，Ajax 通过异步请求加载后台数据，并在网页上呈现出来。常见运用场景有表单验证是否登入成功、百度搜索下拉框提示和快递单号查询等等。</p>
+<p><strong>AJAX的好处</strong>：可以通过<code>js</code>代码发送get或者post的请求去从后台获取到相应数据，并只对页面中的部分标签进行刷新渲染，而不需要刷新整个页面，节约了带宽，优化了性能</p>
+<h2 id="2-创建AJAX对象"><a href="#2-创建AJAX对象" class="headerlink" title="2.创建AJAX对象"></a>2.创建AJAX对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;兼容性写法  ActiveXObject(&#39;Microsoft.XMLHTTP&#39;);是为了兼容IE5 IE6</span><br><span class="line">var ajax &#x3D; window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject(&#39;Microsoft.XMLHTTP&#39;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-AJAX的方法"><a href="#3-AJAX的方法" class="headerlink" title="3.AJAX的方法"></a>3.AJAX的方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;设置请求方式</span><br><span class="line">ajax.open(&quot;post&quot;,&quot;url&quot;,true);  &#x2F;&#x2F;第三个参数如果为true，则是异步，反之同步</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;设置请求头格式（post请求时一定要加请求头，这是因为在传输过程中会出现转码的情况，可能导致乱码的情况）</span><br><span class="line">xhr.setRequestHeader(&#39;Content-Type&#39;, &#39;application&#x2F;x-www-form-urlencoded&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;发送请求:get请求参数放在url后面，post请求参数send()方法里面</span><br><span class="line">ajax.send(&quot;数据&quot;); </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;监听ajax状态，当ajax的状态发生改变的时候执行</span><br><span class="line">ajax.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">    &#x2F;&#x2F;响应完成，浏览器已经可以获取到服务器响应结果了</span><br><span class="line">    if(this.readyState &#x3D;&#x3D; 4)&#123;  &#x2F;&#x2F;这是AJAX的状态码 区别与http的状态码 状态码还有 1 2 3 其中3是数据正在传输时的状态，他不保证数据的完整性</span><br><span class="line">        &#x2F;&#x2F;http响应的状态码</span><br><span class="line">        if(this.state &#x3D;&#x3D; 200)&#123;  &#x2F;&#x2F;还有302  301  404...</span><br><span class="line">            &#x2F;&#x2F;获取响应内容</span><br><span class="line">            console.log(this.responseText); &#x2F;&#x2F;用ajax.responseText获取服务器返回的数据</span><br><span class="line">            	&#x2F;&#x2F;responseText 获得字符串形式的响应数据。</span><br><span class="line">			   &#x2F;&#x2F;responseXML 获得XML 形式的响应数据</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-数据渲染的两种方式"><a href="#4-数据渲染的两种方式" class="headerlink" title="4.数据渲染的两种方式"></a>4.数据渲染的两种方式</h2><h3 id="4-1数据在服务器中渲染完毕，返回给客户端一个完整页面"><a href="#4-1数据在服务器中渲染完毕，返回给客户端一个完整页面" class="headerlink" title="4.1数据在服务器中渲染完毕，返回给客户端一个完整页面"></a>4.1数据在服务器中渲染完毕，返回给客户端一个完整页面</h3><ol>
+<li>浏览器发送请求至服务器</li>
+<li>服务器接收到请求的信息，根据请求找到相应的信息（如JSON数据），在读取相应的页面文件，并渲染成一个完整的页面，将这个页面返回给客户端</li>
+<li>客户端接收到此页面，并显示 (此方式要在服务器端安装art-template express-art-template等第三方模板）</li>
+</ol>
+<h3 id="4-2服务器只返回相应的数据，客户端接收到数据后，在客户端进行渲染，并显示"><a href="#4-2服务器只返回相应的数据，客户端接收到数据后，在客户端进行渲染，并显示" class="headerlink" title="4.2服务器只返回相应的数据，客户端接收到数据后，在客户端进行渲染，并显示"></a>4.2服务器只返回相应的数据，客户端接收到数据后，在客户端进行渲染，并显示</h3><ol>
+<li>客户端发送数据请求给服务器</li>
+<li>服务器拿到请求，找到相应的数据（如JSON），直接将此数据返回给客户端</li>
+<li>客户端拿到数据后，在客户端进行渲染，并显示。（此方式要用到前端渲染插件template-web.js）</li>
+</ol>
+<h2 id="5-XML"><a href="#5-XML" class="headerlink" title="5.XML"></a>5.XML</h2><p>XML extensible Markup Language 扩展的标记语言，XML的标签可以自定义<br>HTML Hyper Text Markup Lanaguage HTML的标签是由W3C规范的，大概一共200多个</p>
+<p><strong>XML用途：</strong><br>1、 定义数据结构<br>2、 作为配置文件出现</p>
+<p><strong>XML组成：</strong><br>1、 XML文档声明<br>2、 XML标签<br>3、 XML属性<br>4、 XML注释</p>
+<p><strong>XML文档注意点：</strong><br>1）xml的标签必须成对出现如，为成对出现时的标签也必须要是自关闭标签 如<br>2）xml标签名称区分大小写。<br>3）xml标签一定要正确配对。<br>4）xml标签名中间不能使用空格<br>5）xml标签名不能以数字开头<br>6）注意： 在一个xml文档中，有且仅有一个根标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;使用xml设计一个通讯录</span><br><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;contact&gt;</span><br><span class="line">	&lt;person id&#x3D;&quot;100&quot;&gt;</span><br><span class="line">		 &lt;name&gt;张三&lt;&#x2F;name&gt;</span><br><span class="line">		 &lt;age&gt;18&lt;&#x2F;age&gt;</span><br><span class="line">		 &lt;phone&gt;12345678&lt;&#x2F;phone&gt;</span><br><span class="line">		 &lt;email&gt;12453@qq.com&lt;&#x2F;email&gt;</span><br><span class="line">	&lt;&#x2F;person&gt;</span><br><span class="line">	&lt;person id&#x3D;&quot;101&quot;&gt;</span><br><span class="line">		 &lt;name&gt;李四&lt;&#x2F;name&gt;</span><br><span class="line">		 &lt;age&gt;20&lt;&#x2F;age&gt;</span><br><span class="line">		 &lt;phone&gt;22345678&lt;&#x2F;phone&gt;</span><br><span class="line">		 &lt;email&gt;34453@qq.com&lt;&#x2F;email&gt;</span><br><span class="line">	&lt;&#x2F;person&gt;</span><br><span class="line">&lt;&#x2F;contact&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>xml的使用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;服务器代码</span><br><span class="line">&#x2F;&#x2F;返回XML格式的数据</span><br><span class="line">app.get(&quot;&#x2F;getXML&quot;,(req,res)&#x3D;&gt;&#123;</span><br><span class="line">	&#x2F;&#x2F;设置响应头，指定返回的数据是XML</span><br><span class="line">	res.header(&quot;content-type&quot;,&quot;application&#x2F;xml&quot;);</span><br><span class="line"></span><br><span class="line">	var xml &#x3D;  &#39;&lt;?xml version&#x3D;&quot;1.1&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;&#39;;&#x2F;&#x2F;XML文档声明</span><br><span class="line">	xml +&#x3D; &#39;&lt;person&gt;&#39;;</span><br><span class="line">	xml +&#x3D; &#39;&lt;name&gt;羊杨&lt;&#x2F;name&gt;&#39;;</span><br><span class="line">	xml +&#x3D; &#39;&lt;age&gt;16&lt;&#x2F;age&gt;&#39;;</span><br><span class="line">	xml +&#x3D; &#39;&lt;gender&gt;男&lt;&#x2F;gender&gt;&#39;;</span><br><span class="line">	xml +&#x3D; &#39;&lt;&#x2F;person&gt;&#39;;</span><br><span class="line">	</span><br><span class="line">	res.send(xml);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;客户端代码</span><br><span class="line">ajax.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">	if(this.readyState &#x3D;&#x3D; 4)&#123;</span><br><span class="line">		&#x2F;&#x2F;获取响应的XML数据</span><br><span class="line">		var xml &#x3D; this.responseXML.documentElement;&#x2F;&#x2F;ajax.responseXML.documentElement拿到文档数据</span><br><span class="line">		var age &#x3D; xml.querySelector(&quot;age&quot;);&#x2F;&#x2F;用标签选择器获取到age数据  但此时age是&lt;age&gt;16&lt;&#x2F;age&gt;</span><br><span class="line">		console.log(age.innerHTML);&#x2F;&#x2F;此处用innerText拿不到数据</span><br><span class="line">		console.log(xml.children);&#x2F;&#x2F;xml的语法几乎与html语法类似</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>JSON</p>
+<p>json数据的使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;服务器代码</span><br><span class="line">&#x2F;&#x2F;返回JSON格式的数据</span><br><span class="line">app.get(&quot;&#x2F;getJSON&quot;,(req,res)&#x3D;&gt;&#123;</span><br><span class="line">	&#x2F;&#x2F;数组</span><br><span class="line">	let arr &#x3D; [</span><br><span class="line">		&#123;</span><br><span class="line">			name:&quot;zhangsan&quot;,</span><br><span class="line">			age:&quot;18&quot;,</span><br><span class="line">			gender:&quot;男&quot;,</span><br><span class="line">			id:001</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			name:&quot;lisi&quot;,</span><br><span class="line">			age:&quot;28&quot;,</span><br><span class="line">			gender:&quot;男&quot;,</span><br><span class="line">			id:002</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">	&#x2F;&#x2F;将数组转换为JSON数据</span><br><span class="line">	res.status(200).send(JSON.stringify(arr));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;客户端代码</span><br><span class="line">ajax.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">	if(this.readyState &#x3D;&#x3D; 4)&#123;</span><br><span class="line">		console.log(this.responseText); &#x2F;&#x2F;这是JSON字符串，在使用的时候往往需要转换为对象</span><br><span class="line">		var students &#x3D; JSON.parse(this.responseText);</span><br><span class="line">		var html &#x3D; template(&quot;generatorTable&quot;,&#123;students:students&#125;);</span><br><span class="line">		container.innerHTML &#x3D; html;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-jQuery中的AJAX"><a href="#6-jQuery中的AJAX" class="headerlink" title="6.jQuery中的AJAX"></a>6.jQuery中的AJAX</h2><p>推荐使用 方便的一批</p>
+<h3 id="6-1使用"><a href="#6-1使用" class="headerlink" title="6.1使用"></a>6.1使用</h3><p>客户端代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    &#x2F;&#x2F;请求方式</span><br><span class="line">    type:&quot;get&quot;, &#x2F;&#x2F;post</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;请求路径</span><br><span class="line">    url:&quot;&quot;, &#x2F;&#x2F;如http:&#x2F;&#x2F;localhost:3000&#x2F;index</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;请求参数，无论是get还是post请求，请求参数都可以写在这里</span><br><span class="line">    &#x2F;&#x2F;注意：请求为get时  在服务器得到请求参数时 仍然使用res.query</span><br><span class="line">    &#x2F;&#x2F;这里的data数据必须为字符串 若要传入json数据 需要将json数据转换为字符串如 JSON.stringify(&#123;[&#123;&#125;,&#123;&#125;]&#125;)</span><br><span class="line">    data:&#123;name:&quot;zhangsan&quot;&#125;,</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;规定所要请求的数据的类型</span><br><span class="line">    dataType: &#39;&#39;,</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;在jQuery中如果请求已经是post，默认的contentType就是application&#x2F;x-www-form-urlencoded,不需要单独再去写</span><br><span class="line">    &#x2F;&#x2F;contentType: &quot;application&#x2F;x-www-form-urlencoded&quot;,</span><br><span class="line">    &#x2F;&#x2F;请求成功的回调</span><br><span class="line">    success:function(res)&#123;</span><br><span class="line">        console.log(res);&#x2F;&#x2F;res是请求的到的数据</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;请求出错的回调 推荐写</span><br><span class="line">    error:function(err)&#123;</span><br><span class="line">    	console.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">	&#x2F;&#x2F;无论请求的成功与否，只要请求结束都会执行此函数</span><br><span class="line">	complete:function(xhr)&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>服务器代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">let express &#x3D; require(&quot;express&quot;);</span><br><span class="line">let app &#x3D; express();</span><br><span class="line">const bodyParser &#x3D; require(&#39;body-parser&#39;);</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;extended:false&#125;));</span><br><span class="line">&#x2F;&#x2F;注意 当客户端中的data:JSON.stringify([&#123;name:&#39;zhangsan&#39;&#125;,&#123;name:&#39;lisi&#39;&#125;])时，服务器需要此配置</span><br><span class="line">&#x2F;&#x2F;以解析body中的json数据</span><br><span class="line">app.use(bodyParser.json(&#123;extended:false&#125;));</span><br><span class="line"></span><br><span class="line">app.use(express.static(&quot;.&#x2F;views&quot;));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;当ajax的url为&#39;&#x2F;getJSON&#39;时 此接口响应 返回JSON格式的数据</span><br><span class="line">&#x2F;&#x2F;此时ajax的dataType要设置为&#39;json&#39;</span><br><span class="line">app.get(&quot;&#x2F;getJSON&quot;,(req,res)&#x3D;&gt;&#123;</span><br><span class="line">    &#x2F;&#x2F;数组</span><br><span class="line">    let arr &#x3D; [</span><br><span class="line">        &#123;</span><br><span class="line">            name:&quot;zhangsan&quot;,</span><br><span class="line">            age:&quot;18&quot;,</span><br><span class="line">            gender:&quot;男&quot;,</span><br><span class="line">            id:001</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            name:&quot;lisi&quot;,</span><br><span class="line">            age:&quot;28&quot;,</span><br><span class="line">            gender:&quot;男&quot;,</span><br><span class="line">            id:002</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    arr.forEach((user,idx)&#x3D;&#123;</span><br><span class="line">        if(user.name &#x3D;&#x3D; req.body.name)&#123;</span><br><span class="line">            res.status(200).send(JSON.stringify(user));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;当ajax的url为&#39;&#x2F;getXML&#39;时 此接口响应 返回XML格式的数据</span><br><span class="line">&#x2F;&#x2F;此时ajax的dataType要设置为&#39;xml&#39;</span><br><span class="line">app.get(&quot;&#x2F;getXML&quot;,(req,res)&#x3D;&gt;&#123;</span><br><span class="line">    &#x2F;&#x2F;设置响应头，指定返回的数据是XML</span><br><span class="line">    res.header(&quot;content-type&quot;,&quot;application&#x2F;xml&quot;);</span><br><span class="line"></span><br><span class="line">    var xml &#x3D;  &#39;&lt;?xml version&#x3D;&quot;1.1&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;&#39;;</span><br><span class="line">    xml +&#x3D; &#39;&lt;person&gt;&#39;;</span><br><span class="line">    xml +&#x3D; &#39;&lt;name&gt;zhangsan&lt;&#x2F;name&gt;&#39;;</span><br><span class="line">    xml +&#x3D; &#39;&lt;age&gt;16&lt;&#x2F;age&gt;&#39;;</span><br><span class="line">    xml +&#x3D; &#39;&lt;gender&gt;男&lt;&#x2F;gender&gt;&#39;;</span><br><span class="line">    xml +&#x3D; &#39;&lt;&#x2F;person&gt;&#39;;</span><br><span class="line"></span><br><span class="line">    res.send(xml);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>发送也接受html或script数据</p>
+<p>服务器代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">const app &#x3D; express();</span><br><span class="line">const bodyParser &#x3D; require(&#39;body-parser&#39;);</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;extended:false&#125;));</span><br><span class="line"></span><br><span class="line">app.use(express.static(&#39;views&#39;));</span><br><span class="line"></span><br><span class="line">app.get(&#39;&#x2F;getScript&#39;,(req,res)&#x3D;&gt;&#123;</span><br><span class="line">    res.header(&#39;content-type&#39;,&#39;application&#x2F;javascript;charset&#x3D;utf-8&#39;);</span><br><span class="line">    res.send(&#39;alert(123);&#39;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.get(&#39;&#x2F;getHtml&#39;,(req,res)&#x3D;&gt;&#123;</span><br><span class="line"></span><br><span class="line">    res.header(&#39;content-type&#39;,&#39;text&#x2F;html;charset&#x3D;utf-8&#39;)</span><br><span class="line">    res.send(&#39;&lt;h1&gt;HTML&lt;&#x2F;h1&gt;&#39;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000,()&#x3D;&gt;&#123;</span><br><span class="line">    console.log(&#39;running...&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>客户端代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">$(&#39;#btn1&#39;).click(function()&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type: &#39;get&#39;,</span><br><span class="line">        url: &#39;&#x2F;getHtml&#39;,</span><br><span class="line">        data: &#39;&#39;,</span><br><span class="line">        dataType: &#39;html&#39;,</span><br><span class="line">        success:function(res)&#123;</span><br><span class="line">            &#x2F;&#x2F;因为dataType为html  jQuery。AJAX会自动设置响应头为text&#x2F;html  则 可以直接追加res到页面中</span><br><span class="line">            $(&#39;#info&#39;).append(res);</span><br><span class="line">        &#125;,</span><br><span class="line">        error:function(err)&#123;</span><br><span class="line">            console.log(err);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(&#39;#btn2&#39;).click(function()&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type: &#39;get&#39;,</span><br><span class="line">        url: &#39;&#x2F;getScript&#39;,</span><br><span class="line">        data: &#39;&#39;,</span><br><span class="line">        dataType: &#39;script&#39;,</span><br><span class="line">        success:function(res)&#123;</span><br><span class="line">            &#x2F;&#x2F;之所以alert()能执行  是因为将script代码打印到控制台  控制台会执行script代码</span><br><span class="line">            &#x2F;&#x2F;也可以用script标签的对res进行封装 追加到页面中 也可以执行</span><br><span class="line">            console.log(res);</span><br><span class="line">        &#125;,</span><br><span class="line">        error:function(err)&#123;</span><br><span class="line">            console.log(err);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2dataType"><a href="#6-2dataType" class="headerlink" title="6.2dataType"></a>6.2dataType</h3><p><strong>dataType取值有xml、html、json、jsonp、script或者text</strong></p>
+<p>当dataType取值为<strong>json</strong>，会自动将服务器返回的文本数据通过JSON.parse()转换成对象。<br>服务器应该设置这个响应头：<strong>res.header(“content-type”, “application/json;charset=utf-8”);</strong></p>
+<p>当dataType为<strong>xml或者text</strong>的时候，返回的数据不会另做处理<br>服务器应该设置这个响应头：<strong>res.header(“content-type”,”application/xml”);</strong><br><strong>res.header(“content-type”,”text/plain;charset=utf-8”);</strong></p>
+<p>当dataType为<strong>html</strong>的时候，返回的内容中的script标签会在网页内容被拼接到页面的时候执行<br>服务器应该设置这个响应头：<strong>res.header(“content-type”,”text/html;charset=utf-8”);</strong></p>
+<p>当dataType为<strong>script</strong>的时候，会将服务器返回的结果当成js代码执行并且将js代码的文本内容返回给客户端<br>服务器应该设置这个响应头：<strong>res.header(“content-type”,”application/javascript”);</strong></p>
+<p>当dataType为<strong>jsonp</strong>的时候，会向服务器发送一个jsonp请求<br>服务器应该设置这个响应头：<strong>res.header(“content-type”,”application/javascript”);</strong></p>
+<h2 id="6-3nprogress的使用（全局事件处理）"><a href="#6-3nprogress的使用（全局事件处理）" class="headerlink" title="6.3nprogress的使用（全局事件处理）"></a>6.3nprogress的使用（全局事件处理）</h2><p>1、在html文件中引入nprogress.js 和 nprogress.css</p>
+<p>2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(document).ajaxStart(function()&#123;&#x2F;&#x2F;请求数据开始</span><br><span class="line">    NProgress.start();&#x2F;&#x2F;数据加载动画</span><br><span class="line">&#125;).ajaxStop(function()&#123;&#x2F;&#x2F;请求数据结束</span><br><span class="line">    NProgress.done();&#x2F;&#x2F;数据加载完毕动画</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-跨域请求"><a href="#7-跨域请求" class="headerlink" title="7.跨域请求"></a>7.跨域请求</h2><p><strong>同源策略</strong>是浏览器的一种安全策略，所谓同源是指 <strong>域名，协议，端口完全相同</strong> ，只有同源的地址才可以相互通过AJAX的方式请求。</p>
+<p>同源或者不同源说的是两个地址之间的关系，不同源地址之间请求我们称之为<strong>跨域请求</strong></p>
+<p>例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8000  是不可以通过ajax访问  http:&#x2F;&#x2F;locally.uieee.com&#x2F;categories的</span><br><span class="line">因为两者不满足同源的条件</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-1如何进行跨域请求"><a href="#7-1如何进行跨域请求" class="headerlink" title="7.1如何进行跨域请求"></a>7.1如何进行跨域请求</h3><ol>
+<li>CORS</li>
+<li>JSONP</li>
+<li>代理服务器</li>
+<li>修改document.domain</li>
+<li>Iframe</li>
+<li>Location.hash</li>
+<li>Window.postMessage()</li>
+<li>Websocket</li>
+</ol>
+<h4 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h4><p>只需要改动服务器，不用改动客户端代码，客户端可以直接使用$.ajax()</p>
+<p>Cross Origin Resource Share，跨域资源共享。这种方案无需客户端作出任何变化（客户端不用改代码），只是在被请求的服务端响应的时候添加一个Access- Control-Allow-Origin 的响应头，表示这个资源是否允许指定域请求。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;直接在服务器配置如下,客户端代码和以前一样写</span><br><span class="line">app.all(&#39;*&#39;, function(req, res, next) &#123;</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</span><br><span class="line">    res.header(&#39;Access-Control-Allow-Headers&#39;, &#39;Content-type&#39;);</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;PUT,POST,GET,DELETE,OPTIONS,PATCH&quot;);</span><br><span class="line">    res.header(&#39;Access-Control-Max-Age&#39;,6000);&#x2F;&#x2F;预请求缓存10分钟</span><br><span class="line">    next();  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h4><p>JSON with Padding 实质上是通过script的src属性进行数据请求。本质上不是AJAX请求</p>
+<p>需要服务器和客户端配合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;此时客户端的地址为http:&#x2F;&#x2F;localhost:3000</span><br><span class="line">实现要点</span><br><span class="line">&#x2F;&#x2F;客户端代码</span><br><span class="line">var script &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">script.src &#x3D; &#39;http:&#x2F;&#x2F;localhost:9999&#x2F;testJSONP&#39;;&#x2F;&#x2F;向http:&#x2F;&#x2F;localhost:9999发送跨域请求</span><br><span class="line">document.body.appendChild(script)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;服务器代码</span><br><span class="line">app.get(&quot;&#x2F;testJSONP&quot;,(req,res)&#x3D;&gt;&#123;</span><br><span class="line">	&#x2F;&#x2F;设置响应头 服务器给客户端发送了一个js代码块</span><br><span class="line">	res.header(&quot;content-type&quot;,&quot;application&#x2F;javascript&quot;);</span><br><span class="line">	let data &#x3D; JSON.stringify(&#123;&quot;name&quot;:&quot;zhangsan&quot;&#125;) ;</span><br><span class="line">	&#x2F;&#x2F;服务器发送 &#96;foo(&#39;&#123;&quot;name&quot;:&quot;zhangsan&quot;&#125;&#39;)&#96; 这个字符串给客户端</span><br><span class="line">	res.send(&#96;foo($&#123;data&#125;)&#96;);</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F;如果服务器给客户端返回的js代码块中有函数调用，必须提前在客户端中声明要调用的那个函数</span><br><span class="line">function foo(data)&#123;</span><br><span class="line">	console.log(data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>jQuery代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;客户端代码</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    type:&quot;get&quot;,</span><br><span class="line">    url:&quot;http:&#x2F;&#x2F;localhost:9999&#x2F;testJSONP&quot;,</span><br><span class="line">    data:&#39;&#39;,</span><br><span class="line">    dataType: &#39;jsonp&#39;,</span><br><span class="line">    success:function(res)&#123;</span><br><span class="line">        $(&#39;body&#39;).append(res);</span><br><span class="line">    &#125;</span><br><span class="line">    error:function(err)&#123;</span><br><span class="line">    	console.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">	complete:function(xhr)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">function foo(data)&#123;</span><br><span class="line">	console.log(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;服务器http:&#x2F;&#x2F;localhost:3000代码</span><br><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">const app &#x3D; express();</span><br><span class="line">const bodyParser &#x3D; require(&#39;body-parser&#39;);</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;extended:false&#125;));</span><br><span class="line"></span><br><span class="line">app.use(express.static(&#39;views&#39;));</span><br><span class="line"></span><br><span class="line">app.listen(3000,()&#x3D;&gt;&#123;</span><br><span class="line">    console.log(&#39;running...&#39;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;服务器http:&#x2F;&#x2F;localhost:8888代码</span><br><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">const app &#x3D; express();</span><br><span class="line">const bodyParser &#x3D; require(&#39;body-parser&#39;);</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;extended:false&#125;));</span><br><span class="line"></span><br><span class="line">app.get(&#39;&#x2F;getJsonp&#39;,(req,res)&#x3D;&gt;&#123;</span><br><span class="line">    res.send(&#39;foo(&quot;你拿到了http:&#x2F;&#x2F;localhost:8888的jsonp&quot;);&#39;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.listen(8888,()&#x3D;&gt;&#123;</span><br><span class="line">    console.log(&#39;running...&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-结束语"><a href="#8-结束语" class="headerlink" title="8.结束语"></a>8.结束语</h2><p>AJAX是通过<code>XMLHttpRequest</code>或者封装后的框架进行网络请求，由于这种方式的配置和调用方式非常混乱，已被Fetch取代</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/08/15/ES6%E2%80%94%E2%80%94promise%E4%BD%BF%E7%94%A8/" class="pre-post btn btn-default" title='ES6中promise使用'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            ES6中promise使用</span>
+    </a>
+    
+    
+    <a href="/2019/06/16/CSS3%E5%8A%A8%E7%94%BB/" class="next-post btn btn-default" title='CSS3动画'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            CSS3动画</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AJAX"><span class="toc-text">AJAX</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-什么是AJAX？"><span class="toc-text">1.什么是AJAX？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-创建AJAX对象"><span class="toc-text">2.创建AJAX对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AJAX的方法"><span class="toc-text">3.AJAX的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-数据渲染的两种方式"><span class="toc-text">4.数据渲染的两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1数据在服务器中渲染完毕，返回给客户端一个完整页面"><span class="toc-text">4.1数据在服务器中渲染完毕，返回给客户端一个完整页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2服务器只返回相应的数据，客户端接收到数据后，在客户端进行渲染，并显示"><span class="toc-text">4.2服务器只返回相应的数据，客户端接收到数据后，在客户端进行渲染，并显示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-XML"><span class="toc-text">5.XML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-jQuery中的AJAX"><span class="toc-text">6.jQuery中的AJAX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1使用"><span class="toc-text">6.1使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2dataType"><span class="toc-text">6.2dataType</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3nprogress的使用（全局事件处理）"><span class="toc-text">6.3nprogress的使用（全局事件处理）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-跨域请求"><span class="toc-text">7.跨域请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1如何进行跨域请求"><span class="toc-text">7.1如何进行跨域请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CORS"><span class="toc-text">CORS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JSONP"><span class="toc-text">JSONP</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-结束语"><span class="toc-text">8.结束语</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

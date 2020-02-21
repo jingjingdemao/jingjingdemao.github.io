@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="react" />
+
+
+<meta name="description" content="React中的state1. 不能直接修改 state12345// wrongthis.state.comment = 'Hello'// correctthis.setState(&#123..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    React关于setState详解 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="React关于setState详解">
+            
+            React关于setState详解
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/react/" rel="tag">react</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/13</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="React中的state"><a href="#React中的state" class="headerlink" title="React中的state"></a>React中的state</h3><h4 id="1-不能直接修改-state"><a href="#1-不能直接修改-state" class="headerlink" title="1. 不能直接修改 state"></a>1. 不能直接修改 <code>state</code></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// wrong</span></span><br><span class="line"><span class="keyword">this</span>.state.comment = <span class="string">'Hello'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// correct</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;<span class="attr">comment</span>: <span class="string">'Hello'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-state中数据的修改"><a href="#2-state中数据的修改" class="headerlink" title="2.state中数据的修改"></a>2.<code>state</code>中数据的修改</h4><ul>
+<li>通过<code>setState</code>修改<code>state</code>中的数据</li>
+</ul>
+<blockquote>
+<h6 id="setState中的关键点"><a href="#setState中的关键点" class="headerlink" title="setState中的关键点"></a><code>setState</code>中的关键点</h6></blockquote>
+<ol>
+<li><p><code>setState</code>不会立刻改变<code>React</code>组件中<code>state</code>的值 </p>
+</li>
+<li><p><code>setState</code>通过引发一次组件的更新过程来引发重新绘制</p>
+<p>重绘指的就是引起<code>React</code>的更新生命周期函数4个函数：</p>
+<ul>
+<li><code>shouldComponentUpdate</code>（被调用时<code>this.state</code>没有更新；如果返回了<code>false</code>，生命周期被中断，虽然不调用之后的函数了，但是<code>state</code>仍然会被更新）</li>
+<li><code>componentWillUpdate</code>（被调用时<code>this.state</code>没有更新）</li>
+<li><code>render</code>（被调用时<code>this.state</code>得到更新）</li>
+<li><code>componentDidUpdate</code></li>
+</ul>
+</li>
+<li><p>多次<code>setState</code>函数调用产生的效果会合并。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(&#123;<span class="attr">name</span>: <span class="string">'Pororo'</span>&#125;)</span><br><span class="line"><span class="keyword">this</span>.setState(&#123;<span class="attr">age</span>: <span class="number">20</span>&#125;)</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;<span class="attr">name</span>: <span class="string">'Pororo'</span>，age: <span class="number">20</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>上面两块代码的效果是一样的。<strong>如果每次调用都引发一次生命周期更新，那性能就会消耗很大了。</strong>所以，<code>React</code>会将多个<code>this.setState</code>产生的修改<strong>放进一个队列里，</strong>等差不多的时候就会引发一次生命周期更新。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Eg</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> () &#123;</span><br><span class="line">    <span class="keyword">super</span>()</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      value: <span class="number">0</span>,</span><br><span class="line">      index: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// react生命周期</span></span><br><span class="line">  componentDidMount () &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value) <span class="comment">// 第一次输出</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value) <span class="comment">// 第二次输出</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value) <span class="comment">// 第三次输出</span></span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value) <span class="comment">// 第四次输出</span></span><br><span class="line">    &#125;, <span class="number">0</span>)</span><br><span class="line">     <span class="comment">// 通过 addEventListener 监听的会同步执行setState()</span></span><br><span class="line">    <span class="keyword">this</span>.refs.button.addEventListener(<span class="string">'click'</span>, <span class="keyword">this</span>.click)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  click = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">index</span>: <span class="keyword">this</span>.state.index + <span class="number">1</span>&#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.index) <span class="comment">// 同步时输出 1 异步时（通过react事件机制定义的事件处理函数）输出 0</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">index</span>: <span class="keyword">this</span>.state.index + <span class="number">1</span>&#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.index) <span class="comment">// 同步时输出 2 异步时（通过react事件机制定义的事件处理函数）输出 0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;<span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>value: &#123;this.state.value&#125; index: &#123;this.state.index&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">        &lt;button ref=<span class="string">"button"</span> onClick=&#123;<span class="keyword">this</span>.click&#125;&gt;点击&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h5><h5 id="前两次setState："><a href="#前两次setState：" class="headerlink" title="前两次setState："></a>前两次<code>setState</code>：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 异步</span></span><br><span class="line"> <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value); <span class="comment">// 第一次输出0</span></span><br><span class="line">         <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value); <span class="comment">// 第二次输出0</span></span><br></pre></td></tr></table></figure>
+
+<p>由于<code>setState</code>不会立即改变React组件中<code>state</code>的值，所以两次<code>setState</code>中<code>this.state.value</code>都是同一个值0，故而，这两次输出都是0。因而value只被加1。</p>
+<p>既然这样，那么是不是可以直接操作<code>this.state</code>呢？比如：<code>this.state.value=this.state.value+1;</code>这样的确可以修改<code>this.state.value</code>的状态但是却不可以引发重复渲染。所以，就必须通过React设定的<code>setState</code>函数去改变<code>this.state</code>，从而引发重新渲染。</p>
+<h5 id="setTimeout里面的两次setState"><a href="#setTimeout里面的两次setState" class="headerlink" title="setTimeout里面的两次setState:"></a><code>setTimeout</code>里面的两次<code>setState</code>:</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同步</span></span><br><span class="line"> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value) <span class="comment">// 第三次输出2</span></span><br><span class="line">           <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value) <span class="comment">// 第四次输出3</span></span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在<code>React</code>中，<strong>如果是由React引发的事件处理（比如：<code>onClick</code>引发的事件处理），调用<code>setState</code>不会同步更新<code>this.state</code>，除此之外的<code>setState</code>调用会同步执行t<code>his.setState</code>。</strong> “除此之外”指的是：绕过React通过<code>addEventListener</code>直接添加的事件处理函数和<code>setTimeout/setInterval</code>产生的异步调用。</p>
+<p><img src="/2019/12/13/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94setState%E8%AF%A6%E8%A7%A3/Blog/HexoBlog/source/image/setState/setState.png" alt="setState"></p>
+<blockquote>
+<p>每次setState产生新的state会依次被存入一个队列，然后会根据<strong>isBathingUpdates</strong>变量判断是直接更新this.state还是放进dirtyComponent里回头再说。isBatchingUpdates默认是false，也就表示setState会同步更新this.state。但是，当React在调用事件处理函数之前就会调用batchedUpdates，这个函数会把isBatchingUpdates修改为true，造成的后果就是由React控制的事件处理过程setState不会同步更新this.state。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="3-同步更新state的办法—函数式setState"><a href="#3-同步更新state的办法—函数式setState" class="headerlink" title="3.同步更新state的办法—函数式setState"></a>3.同步更新state的办法—函数式setState</h4><p>如果this.setState的参数不是一个对象而是一个函数时，这个函数会接收到两个参数，第一个是当前的state值，第二个是当前的props，这个函数应该返回一个对象，这个对象代表想要对this.state的更改，换句话说，之前你想给this.setState传递什么对象参数，在这种函数里就返回什么对象。不过，计算这个对象的方法有些改变，不再依赖于this.state，而是依赖于输入参数state。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">increment</span>(<span class="params">state, props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + <span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">incrementMultiple</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.setState(increment);</span><br><span class="line">  <span class="keyword">this</span>.setState(increment);</span><br><span class="line">  <span class="keyword">this</span>.setState(increment);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假如当前this.state.count的值是0，第一次调用this.setState(increment)，传给increment的state参数是0，第二次调用时，state参数是1，第三次调用时参数是2，最终incrementMultiple让this.state.count变成了3。</p>
+<p>对于多次调用函数式setState的情况，React会保证调用每次increment时，state都已经合并了之前的状态修改结果。</p>
+<h4 id="4-把两种setState的用法混用"><a href="#4-把两种setState的用法混用" class="headerlink" title="4.把两种setState的用法混用"></a>4.把两种setState的用法混用</h4><h5 id="把incrementMultiple改成这样"><a href="#把incrementMultiple改成这样" class="headerlink" title="把incrementMultiple改成这样"></a>把incrementMultiple改成这样</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">incrementMultiple</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.setState(increment);</span><br><span class="line">  <span class="keyword">this</span>.setState(increment);</span><br><span class="line">  <span class="keyword">this</span>.setState(&#123;<span class="attr">count</span>: <span class="keyword">this</span>.state.count + <span class="number">1</span>&#125;);</span><br><span class="line">  <span class="keyword">this</span>.setState(increment);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在几个函数式setState调用中插入一个传统式setState调用，最后得到的结果是让this.state.count增加了2，而不是增加4。</p>
+<p>这是因为React会依次合并所有setState产生的效果，虽然前两个函数式setState调用产生的效果是count加2，但是中间出现一个传统式setState调用，一下子强行把积攒的效果清空，用count加1取代。</p>
+<p>所以，传统式setState与函数式setState一定不要混用。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/12/21/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94react-hook%E5%AE%9E%E7%8E%B0redux%E7%9A%84%E5%8A%9F%E8%83%BD/" class="pre-post btn btn-default" title='react hook实现redux的功能'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            react hook实现redux的功能</span>
+    </a>
+    
+    
+    <a href="/2019/11/18/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94reactRouter4/" class="next-post btn btn-default" title='React中的reactRouter'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            React中的reactRouter</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#React中的state"><span class="toc-text">React中的state</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-不能直接修改-state"><span class="toc-text">1. 不能直接修改 state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-state中数据的修改"><span class="toc-text">2.state中数据的修改</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#setState中的关键点"><span class="toc-text">setState中的关键点</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#分析："><span class="toc-text">分析：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#前两次setState："><span class="toc-text">前两次setState：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#setTimeout里面的两次setState"><span class="toc-text">setTimeout里面的两次setState:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-同步更新state的办法—函数式setState"><span class="toc-text">3.同步更新state的办法—函数式setState</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-把两种setState的用法混用"><span class="toc-text">4.把两种setState的用法混用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#把incrementMultiple改成这样"><span class="toc-text">把incrementMultiple改成这样</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="JavaScript" />
+
+
+<meta name="description" content="JS中原型链与继承1. 原型链原型链一直都是一个在JS中比较让人费解的知识点，在js中十分重要，首先引入一个关系图：
+
+一. 要理解原型链，首先可以从上图开始入手，图中有三个概念：
+构造函数：J..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    JavaScript原型链与继承 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JavaScript原型链与继承">
+            
+            JavaScript原型链与继承
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/03/12</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                345</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="JS中原型链与继承"><a href="#JS中原型链与继承" class="headerlink" title="JS中原型链与继承"></a><code>JS</code>中原型链与继承</h3><h4 id="1-原型链"><a href="#1-原型链" class="headerlink" title="1. 原型链"></a>1. 原型链</h4><p>原型链一直都是一个在<code>JS</code>中比较让人费解的知识点，在<code>js</code>中十分重要，首先引入一个关系图：</p>
+<p><img src="/2019/03/12/JavaScript%E2%80%94%E2%80%94%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/image/%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt="原型链"></p>
+<h5 id="一-要理解原型链，首先可以从上图开始入手，图中有三个概念："><a href="#一-要理解原型链，首先可以从上图开始入手，图中有三个概念：" class="headerlink" title="一. 要理解原型链，首先可以从上图开始入手，图中有三个概念："></a>一. 要理解原型链，首先可以从上图开始入手，图中有三个概念：</h5><ol>
+<li><p>构造函数：<code>JS</code>中所有函数都可以作为构造函数，前提是被new操作符操作；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'parent'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这是一个JS函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> parent1 = <span class="keyword">new</span> Parent()</span><br><span class="line"><span class="comment">//这里函数被new操作符操作了，所以我们称Parent为一个构造函数；</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实例： <code>parent1</code> 接收了<code>new Parent()</code>,<code>parent1</code>可以称之为实例；</p>
+</li>
+<li><p>原型对象： 构造函数有一个<code>prototype</code>属性，这个属性会初始化一个原型对象；</p>
+</li>
+</ol>
+<h5 id="二-弄清楚了这三个概念，下面我们来说说这三个概念的关系（参考上图）："><a href="#二-弄清楚了这三个概念，下面我们来说说这三个概念的关系（参考上图）：" class="headerlink" title="二. 弄清楚了这三个概念，下面我们来说说这三个概念的关系（参考上图）："></a>二. 弄清楚了这三个概念，下面我们来说说这三个概念的关系（参考上图）：</h5><ol>
+<li>通过new操作符作用于<code>JS</code>函数，那么就得到了一个实例；</li>
+<li>构造函数会初始化一个prototype，这个prototype会初始化一个原型对象，那么原型对象是怎么知道自己是被哪个函数初始化的呢？原来原型对象会有一个constructor属性，这个属性指向了构造函数；</li>
+<li>那么关键来了实例对象是怎么和原型对象关联起来的呢？原来实例对象会有一个<code>__proto__</code>属性，这个属性指向了该实例对象的构造函数对应的原型对象；</li>
+<li>假如我们从一个对象中去找一个属性name，如果在当前对象中没有找到，那么会通过<code>__proto__</code>属性一直往上找，直到找到Object对象还没有找到name属性，才证明这个属性name是不存在，否则只要找到了，那么这个属性就是存在的，从这里可以看出<code>JS</code>对象和上级的关系就像一条链条一样，这个称之为原型链；</li>
+</ol>
+<h5 id="三-new操作符的工作原理"><a href="#三-new操作符的工作原理" class="headerlink" title="三. new操作符的工作原理"></a>三. new操作符的工作原理</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newObj = <span class="function"><span class="keyword">function</span>(<span class="params">func</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> t = &#123;&#125;</span><br><span class="line">    t.prototype = func.prototype</span><br><span class="line">    <span class="keyword">var</span> o = t</span><br><span class="line">    <span class="keyword">var</span> k =func.call(o);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> k === <span class="string">'object'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> k;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> parent1 = newObj(Parent)等价于<span class="keyword">new</span>操作</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>一个新对象被创建，它继承自func.prototype。</span><br><span class="line"><span class="number">2.</span>构造函数func 被执行，执行的时候，相应的参数会被传入，同时上下文（<span class="keyword">this</span>） 会被指定为这个新实例。</span><br><span class="line"><span class="number">3.</span>如果构造函数返回了一个新对象，那么这个对象会取代整个<span class="keyword">new</span>出来的结果，如果构造函数没有返回对象，</span><br><span class="line">那么<span class="keyword">new</span>出来的结果为步骤<span class="number">1</span>创建的对象。</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h4><h5 id="一-构造函数实现继承（构造继承）"><a href="#一-构造函数实现继承（构造继承）" class="headerlink" title="一.构造函数实现继承（构造继承）"></a>一.构造函数实现继承（构造继承）</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'parent1'</span></span><br><span class="line">    <span class="keyword">this</span>.play = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span></span>&#123;</span><br><span class="line">    Parent.call(<span class="keyword">this</span>);<span class="comment">//apply</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'parent2'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Parent.prototype.id = <span class="string">'1'</span></span><br><span class="line"><span class="keyword">var</span> child1 = <span class="keyword">new</span> Child()</span><br><span class="line"><span class="built_in">console</span>.log(child1.name)<span class="comment">//parent1</span></span><br><span class="line"><span class="built_in">console</span>.log(child1.id)<span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//以下代码看完继承方式2，再回过头来看</span></span><br><span class="line"><span class="keyword">var</span> child2 = <span class="keyword">new</span> Child();</span><br><span class="line">child1.play[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(child2.play)<span class="comment">//[1,2,3]</span></span><br><span class="line"></span><br><span class="line">从上面构造继承的代码可以看出，构造继承实现了继承，</span><br><span class="line">打印出来父级的name属性，但是实例对象并没有访问到父级原型上面到属性；</span><br></pre></td></tr></table></figure>
+
+<h5 id="二-原型链实现继承"><a href="#二-原型链实现继承" class="headerlink" title="二.原型链实现继承"></a>二.原型链实现继承</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'parent'</span></span><br><span class="line">    <span class="keyword">this</span>.play = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'child'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent();</span><br><span class="line">Parent.prototype.id = <span class="string">'1'</span>;</span><br><span class="line"><span class="keyword">var</span> child1 = <span class="keyword">new</span> Child();    </span><br><span class="line"><span class="built_in">console</span>.log(child1.name)<span class="comment">//parent1</span></span><br><span class="line"><span class="built_in">console</span>.log(child1.id)<span class="comment">//1</span></span><br><span class="line"></span><br><span class="line">从这里可以看出，原型继承弥补了构造继承到缺点，继承了原型上到属性;</span><br><span class="line">但是下面再做一个操作：</span><br><span class="line"><span class="keyword">var</span> child2 = <span class="keyword">new</span> Child();</span><br><span class="line">child1.play[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(child2.play)<span class="comment">//[2,2,3]</span></span><br><span class="line">这里我只是改变了实例对象child1到play数组，但是实例打印实例对象child2到paly数组，发现也跟着变化</span><br><span class="line">了，所以可以得出结论，原型链继承引用类型到属性，在所有实例对象上面改变该属性，所有实例对象该属性都会</span><br><span class="line">变化，这样肯定就存在问题，现在我们回到继承方式<span class="number">1</span>（构造继承），会发现构造继承不会存在这个问题，所以</span><br><span class="line">其实构造继承和原型链继承完全可以互补，由此我们引入第三种继承方式；</span><br><span class="line"></span><br><span class="line">额外解释：这里通过一个原型链继承，我们再来回顾一下对原型链的理解，上面代码，我们进行了一个操作：</span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent();</span><br><span class="line">这个操作把父类的实例赋值给子类的原型，然后结合上面原型链的关系图，我们再来理一下（为了阅读方便，复</span><br><span class="line">制上图到此处）：</span><br></pre></td></tr></table></figure>
+
+<h5 id="三-组合继承"><a href="#三-组合继承" class="headerlink" title="三.组合继承"></a>三.组合继承</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'parent1'</span></span><br><span class="line">    <span class="keyword">this</span>.play = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span></span>&#123;</span><br><span class="line">    Parent.call(<span class="keyword">this</span>);<span class="comment">//apply</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'parent2'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent();</span><br><span class="line">Parent.prototype.id = <span class="string">'1'</span></span><br><span class="line"><span class="keyword">var</span> child1 = <span class="keyword">new</span> Child()</span><br><span class="line"><span class="built_in">console</span>.log(child1.name)<span class="comment">//parent1</span></span><br><span class="line"><span class="built_in">console</span>.log(child1.id)<span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> child2 = <span class="keyword">new</span> Child();</span><br><span class="line">child1.play[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(child2.play)<span class="comment">//[1,2,3]</span></span><br><span class="line"></span><br><span class="line">从上面代码可以看出，组合继承就是把构造继承和原型链继承组合在一起，把他们的优势互补，从而弥补了各自的</span><br><span class="line">缺点；那么组合继承就完美了吗？我们继续思考，从代码中可以发现，我们调用了两次Parent函数，一次是</span><br><span class="line"><span class="keyword">new</span> Parent()，一次是Parent.call(<span class="keyword">this</span>)，是否可以优化呢？我们引入第四种继承方式；</span><br></pre></td></tr></table></figure>
+
+<h5 id="四-组合继承（优化）"><a href="#四-组合继承（优化）" class="headerlink" title="四.组合继承（优化）"></a>四.组合继承（优化）</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'parent1'</span></span><br><span class="line">    <span class="keyword">this</span>.play = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span></span>&#123;</span><br><span class="line">    Parent.call(<span class="keyword">this</span>);<span class="comment">//apply</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'parent2'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = Parent.prototype;</span><br><span class="line">Child.prototype.constructor = Child<span class="comment">//这里改变了</span></span><br><span class="line">Parent.prototype.id = <span class="string">'1'</span></span><br><span class="line"><span class="keyword">var</span> child1 = <span class="keyword">new</span> Child()</span><br><span class="line"><span class="built_in">console</span>.log(child1.name)<span class="comment">//parent1</span></span><br><span class="line"><span class="built_in">console</span>.log(child1.id)<span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> child2 = <span class="keyword">new</span> Child();</span><br><span class="line">child1.play[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(child2.play)<span class="comment">//[1,2,3]</span></span><br><span class="line"></span><br><span class="line">现在我们打印</span><br><span class="line"><span class="built_in">console</span>.log(Child.prototype.constructor)<span class="comment">//Child</span></span><br><span class="line">这里就解决了问题，但是我们继续打印</span><br><span class="line"><span class="built_in">console</span>.log(Parent.prototype.constructor)<span class="comment">//Child</span></span><br><span class="line">发现父类的构造器也出现了紊乱，所有我们通过一个中间值来解决这个问题，最终版本为：</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'parent1'</span></span><br><span class="line">    <span class="keyword">this</span>.play = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span></span>&#123;</span><br><span class="line">    Parent.call(<span class="keyword">this</span>);<span class="comment">//apply</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'parent2'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.prototype = Parent.prototype;</span><br><span class="line">Child.prototype = obj;</span><br><span class="line"><span class="comment">//上面三行代码也可以简化成Child.prototype = Object.create(Parent.prototype);</span></span><br><span class="line">Child.prototype.constructor = Child</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Child.prototype.constructor)<span class="comment">//Child</span></span><br><span class="line"><span class="built_in">console</span>.log(Parent.prototype.constructor)<span class="comment">//Parent</span></span><br><span class="line">用一个中间obj，完美解决了这个问题</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/03/20/JavaScript%E2%80%94%E2%80%94%E2%80%94%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="pre-post btn btn-default" title='JavaScript关于深浅拷贝'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            JavaScript关于深浅拷贝</span>
+    </a>
+    
+    
+    <a href="/2019/03/05/js%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="next-post btn btn-default" title='JavaScript基础知识'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            JavaScript基础知识</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JS中原型链与继承"><span class="toc-text">JS中原型链与继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-原型链"><span class="toc-text">1. 原型链</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一-要理解原型链，首先可以从上图开始入手，图中有三个概念："><span class="toc-text">一. 要理解原型链，首先可以从上图开始入手，图中有三个概念：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二-弄清楚了这三个概念，下面我们来说说这三个概念的关系（参考上图）："><span class="toc-text">二. 弄清楚了这三个概念，下面我们来说说这三个概念的关系（参考上图）：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三-new操作符的工作原理"><span class="toc-text">三. new操作符的工作原理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-继承"><span class="toc-text">2. 继承</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#一-构造函数实现继承（构造继承）"><span class="toc-text">一.构造函数实现继承（构造继承）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二-原型链实现继承"><span class="toc-text">二.原型链实现继承</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三-组合继承"><span class="toc-text">三.组合继承</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#四-组合继承（优化）"><span class="toc-text">四.组合继承（优化）</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

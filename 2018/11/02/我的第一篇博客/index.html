@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="前端,博客" />
+
+
+<meta name="description" content="
+一，安装环境1.搭建Node.js环境搭建博客网站首先需要安装Node.js环境，下载地址：http://nodejs.cn/download 。
+测试安装：命令行使用node -v 、npm..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    搭建博客流程 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="搭建博客流程">
+            
+            搭建博客流程
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a> <a class="tag-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/11/02</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                475</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%870.jpg" alt></p>
+<h3 id="一，安装环境"><a href="#一，安装环境" class="headerlink" title="一，安装环境"></a>一，安装环境</h3><h4 id="1-搭建Node-js环境"><a href="#1-搭建Node-js环境" class="headerlink" title="1.搭建Node.js环境"></a><strong>1.搭建Node.js环境</strong></h4><p>搭建博客网站首先需要安装Node.js环境，下载地址：<a href="http://nodejs.cn/download" target="_blank" rel="noopener">http://nodejs.cn/download</a> 。</p>
+<p>测试安装：命令行使用node -v 、npm -v，查看显示版本号即成功。</p>
+<p>注意：</p>
+<p>1.安装node时基本一路next即可，最后有一步可以选择Add to Path,自动添加到环境变            量，可以在电脑任何位置使用node。</p>
+<p>2.如果安装的是5.0.0版本， hexo的初始化步骤中可能会报错，最好安装10.0.0以上版本</p>
+<h4 id="2-安装Hexo博客框架工具"><a href="#2-安装Hexo博客框架工具" class="headerlink" title="2. 安装Hexo博客框架工具"></a>2. <strong>安装Hexo博客框架工具</strong></h4><p> Hexo是一个建站工具，可以帮助我们快速生成基本的博客文件，安装它需要在控制台下（cmd）使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli –g</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-安装Git版本工具"><a href="#3-安装Git版本工具" class="headerlink" title="3.安装Git版本工具"></a><strong>3.安装Git版本工具</strong></h4><p> Git是目前世界上最流行的分布式版本控制系统</p>
+<p>使用Git可以帮助我们把本地的网页和文章等内容提交到Github上，实现同步。 </p>
+<p>下载地址：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a>  </p>
+<p><strong>测试安装</strong>:右击鼠标，如果有Git Bash Here,Git GUI Here两个选项即安装成功。</p>
+<h4 id="4-注册Github账号"><a href="#4-注册Github账号" class="headerlink" title="4.注册Github账号"></a><strong>4.注册Github账号</strong></h4><p> gitHub是一个面向开源及私有软件项目的托管平台，因为只支持git 作为唯一的版本库格式</p>
+<p>进行托管，故名gitHub。这里用到Github，是因为我们需要通过Github得到自己的博客网</p>
+<p>站域名，而且需要使用gitHub同步我们个人博客的相关文件。 </p>
+<p>注册地址：<a href="https://github.com" target="_blank" rel="noopener">https://github.com</a>  </p>
+<h3 id="二，开始搭建博客"><a href="#二，开始搭建博客" class="headerlink" title="二，开始搭建博客"></a>二，开始搭建博客</h3><h4 id="1-在GitHub新建一个仓库"><a href="#1-在GitHub新建一个仓库" class="headerlink" title="1.在GitHub新建一个仓库"></a>1.在GitHub新建一个仓库</h4><p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%871.png" alt></p>
+<p>新仓库的名字，最好是是UserName+“github.io”的形式，这样我们最后的博客网站的链接就会是：<a href="https://UserName.github.io的形式。" target="_blank" rel="noopener">https://UserName.github.io的形式。</a></p>
+<p>点击Create Repository之后，随后选择Settings进入设置，找到Github Pages如下：</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%872.png" alt></p>
+<p>这里我们需要点击Choose a theme任意选择一个选择主题，然后界面会跳转到仓库，我们看到有两个文件如下：</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%873.png" alt></p>
+<p>再查看setting，我们会看到开启GitHub Pages之后得到的域名如下：</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%874.png" alt></p>
+<p>现在，可以使用<a href="https://dreamcoffeezs.github.io/" target="_blank" rel="noopener">https://UserName.github.io</a>，访问自己的博客网站了，浏览器打开链接我们会看到默认主题的个人博客样式如下：</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%875.png" alt></p>
+<h4 id="2-创建本地博客站点"><a href="#2-创建本地博客站点" class="headerlink" title="2.创建本地博客站点"></a>2.创建本地博客站点</h4><p>我们当然想要创建自己个性化的博客网站，就可以使用Hexo在本地先创建一个本地博客站点，优化后再把它部署到github上。</p>
+<p>首先在本地一个合适的位置创建博客站点文件夹，如在D盘创建一个文件夹Blog ，然后进入Blog文件夹，右击同时按shift键，在此处打开命令窗口，输入下面命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>可以看到生成以下文件：</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%876.png" alt></p>
+<p>测试本地博客站点，在本地博客根目录（Blog内），右击Git Bash Here输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g &#x2F;&#x2F;g是generetor的缩写，生成博客 </span><br><span class="line">hexo s &#x2F;&#x2F;s是server的缩写，启动服务</span><br></pre></td></tr></table></figure>
+
+<p>此时打开浏览器，输入 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>，我们将会看到Hexo自带默认主题显示的博客样式如下:</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%877.png" alt></p>
+<h4 id="3-同步Github-允许公共访问"><a href="#3-同步Github-允许公共访问" class="headerlink" title="3.同步Github,允许公共访问"></a><strong>3.同步Github,允许公共访问</strong></h4><p>初次安装git需要配置用户名和邮箱，否则git会提示：please tell me who you are.&gt;</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%878.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;superGG1990&quot;</span><br><span class="line">$ git config --global user.email &quot;superGG1990@163.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>用Git配置SSH Key</p>
+<p>1、 打开git，右击Git Bash Here</p>
+<p>2、检查是否已经有SSH Key  (此步骤可以省略)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~&#x2F;.ssh</span><br></pre></td></tr></table></figure>
+
+<p>3、生成SSH Key </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
+
+<p>第一次生成的话，直接一路回车，不需要输入密码。</p>
+<p>不是第一次生成的话，会提示 overwrite (y/n)? 问你是否覆盖旧的 SSH Key ，直接填 y ，然后一直回车就行了，最后得到了两个文件：id_rsa和id_rsa.pub。</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%879.png" alt></p>
+<p>4.复制公钥</p>
+<p>打开/C/Users/Administrator/.ssh/下id_rsa.pub文件，复制里面全部信息；</p>
+<p>登录github账户，点击头像进入Settings -&gt; SSH and GPG keys -&gt; New SSH key，将复制的信息粘贴到该处（如图），点击Add SSH Key</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%8710.png" alt></p>
+<p>5.测试是否成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>提示“Hi xxx! You’ve successfully authenticated, but GitHub does not provide shell access.”说明添加成功。</p>
+<p>6.找到我们的博客仓库，并拷贝仓库地址：</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%8711.png" alt></p>
+<p>7.修改本次博客根目录的_config.yml文件，修改deploy下的配置如下：</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%8712.png" alt></p>
+<p>注意：</p>
+<p>上面的type：与git 之间有一个空格，书写时需要注意，否则会部署不上去</p>
+<p>repository：空格+上面拷贝的仓库地址</p>
+<p>8.执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git &#x2F;&#x2F;安装部署插件   &#x2F;&#x2F;可以在node或git中执行</span><br><span class="line">hexo d                        &#x2F;&#x2F;部署到github   &#x2F;&#x2F;git中执行</span><br></pre></td></tr></table></figure>
+
+<p>再次访问链接：<a href="https://dreamcoffeezs.github.io/" target="_blank" rel="noopener">https://userName.github.io</a>，就会发现这里的界面和本地的一样了。如此一来我们搭建的个人博客网站就基本完成了。</p>
+<h3 id="三，发布博客"><a href="#三，发布博客" class="headerlink" title="三，发布博客"></a>三，<strong>发布博客</strong></h3><p>在本地博客文件夹根目录(git bash)输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;我个人博客的第一篇博客&quot; </span><br><span class="line">hexo g &#x2F;&#x2F;生成网页 </span><br><span class="line">hexo s &#x2F;&#x2F;启动本地服务器，用于预览（此步骤可省）</span><br><span class="line">hexo d &#x2F;&#x2F;部署到远端(github)</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以使用Markdown写博客了，可以使用Typora软件进行书写</p>
+<h3 id="四，更换主题"><a href="#四，更换主题" class="headerlink" title="四，更换主题"></a>四，更换主题</h3><p>找到主题地址，在博客根目录下git bash执行命令，下载主题文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<p>修改博客根目录下的_config.yml文件，搜索theme字段，并将其值修改为next</p>
+<p><img src="/2018/11/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%8713.png" alt></p>
+<p>然后在控制台（git bash）下输入如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  &#x2F;&#x2F;清理缓存</span><br><span class="line">hexo g      &#x2F;&#x2F;重新生成博客代码 </span><br><span class="line">hexo d      &#x2F;&#x2F;部署到本地</span><br></pre></td></tr></table></figure>
+
+<p>详情可见：<a href="https://blog.csdn.net/qq_32454537/article/details/79482896" target="_blank" rel="noopener">https://blog.csdn.net/qq_32454537/article/details/79482896</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/12/08/%E9%A2%84%E8%A7%A3%E6%9E%90%E8%A7%84%E5%88%99/" class="pre-post btn btn-default" title='预解析规则'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            预解析规则</span>
+    </a>
+    
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一，安装环境"><span class="toc-text">一，安装环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-搭建Node-js环境"><span class="toc-text">1.搭建Node.js环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-安装Hexo博客框架工具"><span class="toc-text">2. 安装Hexo博客框架工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-安装Git版本工具"><span class="toc-text">3.安装Git版本工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-注册Github账号"><span class="toc-text">4.注册Github账号</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二，开始搭建博客"><span class="toc-text">二，开始搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-在GitHub新建一个仓库"><span class="toc-text">1.在GitHub新建一个仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-创建本地博客站点"><span class="toc-text">2.创建本地博客站点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-同步Github-允许公共访问"><span class="toc-text">3.同步Github,允许公共访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三，发布博客"><span class="toc-text">三，发布博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四，更换主题"><span class="toc-text">四，更换主题</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

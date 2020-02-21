@@ -1,0 +1,324 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="webpack,Vue" />
+
+
+<meta name="description" content="Vue结合webpack的使用
+1.基本使用123456789101112131415161718192021222324252627282930313233343536373839404142..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Vue结合webpack的使用 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Vue结合webpack的使用">
+            
+            Vue结合webpack的使用
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Vue/" rel="tag">Vue</a> <a class="tag-link" href="/tags/webpack/" rel="tag">webpack</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/09/19</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="Vue结合webpack的使用"><a href="#Vue结合webpack的使用" class="headerlink" title="Vue结合webpack的使用"></a>Vue结合webpack的使用</h2><p><img src="/2019/09/19/Vue%E7%BB%93%E5%90%88webpack%E7%9A%84%E4%BD%BF%E7%94%A8/1.jpg" alt></p>
+<h3 id="1-基本使用"><a href="#1-基本使用" class="headerlink" title="1.基本使用"></a>1.基本使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#1.安装vue</span><br><span class="line">   运行npm i vue@2.3.4将vue安装为运行依赖</span><br><span class="line">   </span><br><span class="line">#2.main.js</span><br><span class="line">&#x2F;*</span><br><span class="line"> 注意：在webpack中使用 import Vue from &#39;vue&#39;导入的Vue构造函数功能不完整，只提供了runtime-only的方式，并没有提供像网页中那样的使用方式；</span><br><span class="line"> import Vue from &#39;vue&#39; 导入包的规则：</span><br><span class="line">   1. 找项目根目录中有没有 node_modules 的文件夹</span><br><span class="line">   2. 在node_modules中根据包名，找对应的vue文件夹</span><br><span class="line">   3. 在vue文件夹中，找一个叫做 package.json 的包配置文件</span><br><span class="line">   4. 在package.json文件中，查找一个 main 属性【main属性指定了这个包在被加载时候的入口文件】，这里我们发现入口文件为vue.runtime.common.js，并不是vue.js文件</span><br><span class="line"></span><br><span class="line"> 解决方案有两种：</span><br><span class="line">   1.在webpack.config.js下新增配置：</span><br><span class="line">       resolve: &#123;</span><br><span class="line">            alias: &#123;</span><br><span class="line">                &#39;vue$&#39;: &#39;vue&#x2F;dist&#x2F;vue.js&#39;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        然后使用 import Vue from &#39;vue&#39;  就可以了</span><br><span class="line">        </span><br><span class="line">   2.手动修改导包的路径为：import Vue from &#39;vue&#x2F;dist&#x2F;vue&#39;&#39;，此时无需修改配置文件</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line"></span><br><span class="line">var login &#x3D; &#123;</span><br><span class="line">   template: &#39;&lt;h1&gt;这是login组件，是使用网页中形式创建出来的组件&lt;&#x2F;h1&gt;&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var vm &#x3D; new Vue(&#123;</span><br><span class="line">    el: &#39;#app&#39;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        msg: &#39;123&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;</span><br><span class="line">        login</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">#3.index.html</span><br><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">	&lt;login&gt;&lt;&#x2F;login&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">#4.webpack.config.js</span><br><span class="line">resolve: &#123;</span><br><span class="line">    alias: &#123;</span><br><span class="line">        &#39;vue$&#39;: &#39;vue&#x2F;dist&#x2F;vue.js&#39;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#5.package.json、.babelrc还有webpack的所需要安装的内容和之前一致</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用-vue的方式生成组件"><a href="#2-使用-vue的方式生成组件" class="headerlink" title="2.使用.vue的方式生成组件"></a>2.使用.vue的方式生成组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vscode中安装vetur插件，可以格式化html、标准css（有分号 、大括号的那种）、标准js（有分号 、双引号的那种）、vue文件webstorm中支持vue文件的提示，需要安装插件</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">#1. 新建login.vue文件</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;这是登录组件，使用 .vue 文件定义出来的 &lt;&#x2F;h1&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#2.main.js引入.vue文件，并使用</span><br><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line"></span><br><span class="line">import login from &#39;.&#x2F;login.vue&#39;</span><br><span class="line"></span><br><span class="line">var vm &#x3D; new Vue(&#123;</span><br><span class="line">    el: &#39;#app&#39;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        msg: &#39;123&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;</span><br><span class="line">        login</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">#3. index.html</span><br><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;login&gt;&lt;&#x2F;login&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">#4.安装vue-loader和 vue-template-compiler(默认情况下不支持import方式引入.vue文件，需要安装下面两个文件)</span><br><span class="line">npm i vue-loader@15.4.2 vue-template-compiler@2.3.4</span><br><span class="line">&#x2F;&#x2F;注意：这里vue-template-compiler版本需要和当前使用的vue版本一致</span><br><span class="line"></span><br><span class="line">#5.webpack.config.js</span><br><span class="line">const path &#x3D; require(&#39;path&#39;)</span><br><span class="line">var htmlWebpackPlugin &#x3D; require(&#39;html-webpack-plugin&#39;);</span><br><span class="line">&#x2F;&#x2F;1.引入VueLoaderPlugin插件(在vue-loader15版本以后需要配置这个)</span><br><span class="line">const VueLoaderPlugin &#x3D; require(&#39;vue-loader&#x2F;lib&#x2F;plugin&#39;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    entry: path.join(__dirname, &#39;.&#x2F;src&#x2F;main.js&#39;),</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.join(__dirname, &#39;.&#x2F;dist&#39;),</span><br><span class="line">        filename: &#39;bundle.js&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new htmlWebpackPlugin(&#123;</span><br><span class="line">            template:path.resolve(__dirname, &#39;src&#x2F;index.html&#39;),&#x2F;&#x2F;模板路径</span><br><span class="line">            filename:&#39;index.html&#39;&#x2F;&#x2F;自动生成的HTML文件的名称</span><br><span class="line">        &#125;),</span><br><span class="line">        &#x2F;&#x2F; 2.配置VueLoaderPlugin插件</span><br><span class="line">        new VueLoaderPlugin()</span><br><span class="line">    ],</span><br><span class="line">    module: &#123; </span><br><span class="line">        rules: [ </span><br><span class="line">            &#123; test: &#x2F;\.css$&#x2F;, use: [&#39;style-loader&#39;, &#39;css-loader&#39;] &#125;,</span><br><span class="line">            &#123; test: &#x2F;\.less$&#x2F;, use: [&#39;style-loader&#39;, &#39;css-loader&#39;, &#39;less-loader&#39;] &#125;,</span><br><span class="line">            &#123; test: &#x2F;\.scss$&#x2F;, use: [&#39;style-loader&#39;, &#39;css-loader&#39;, &#39;sass-loader&#39;] &#125;,</span><br><span class="line">            &#123; test: &#x2F;\.(png|jpg|gif|bmp|jpeg)$&#x2F;, use: &#39;url-loader?limit&#x3D;1024&amp;name&#x3D;[hash:8]-[name].[ext]&#39; &#125;,</span><br><span class="line">            &#123; test: &#x2F;\.(ttf|eot|svg|woff|woff2)$&#x2F;, use: &#39;url-loader&#39; &#125;, </span><br><span class="line">            &#123; test: &#x2F;\.js$&#x2F;, use: &#39;babel-loader&#39;, exclude: &#x2F;node_modules&#x2F; &#125;,</span><br><span class="line">            &#x2F;&#x2F;3.处理 .vue 文件的 loader</span><br><span class="line">            &#123; test: &#x2F;\.vue$&#x2F;, use: &#39;vue-loader&#39; &#125; </span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        alias: &#123;</span><br><span class="line">           &#39;vue$&#39;: &#39;vue&#x2F;dist&#x2F;vue.js&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-render渲染组件"><a href="#3-render渲染组件" class="headerlink" title="3.render渲染组件"></a>3.render渲染组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#main.js</span><br><span class="line"></span><br><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line"></span><br><span class="line">import login from &#39;.&#x2F;login.vue&#39;</span><br><span class="line"></span><br><span class="line">var vm &#x3D; new Vue(&#123;</span><br><span class="line">    el: &#39;#app&#39;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        msg: &#39;123&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    render: c &#x3D;&gt; c(login)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;注意：此种方式会替换页面内容</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-vue组件中的数据"><a href="#4-vue组件中的数据" class="headerlink" title="4.vue组件中的数据"></a>4.vue组件中的数据</h3><h4 id="2-4-1-模块的导出"><a href="#2-4-1-模块的导出" class="headerlink" title="2.4.1 模块的导出"></a>2.4.1 模块的导出</h4><p>   ES6语法：</p>
+<blockquote>
+<ol>
+<li><p>在ES6中使用 export default 和 export 导出模块中的成员;</p>
+<p>(Node中使用 module.exports 和 export导出成员)</p>
+</li>
+<li><p>使用 import ** from ** 和 import ‘路径’ 还有 import {a, b} from ‘模块标识’ 导入其他模块</p>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#1. 新建test.js</span><br><span class="line"><span class="comment">// 在 ES6 中，使用 export default 和 export 向外暴露成员：</span></span><br><span class="line"><span class="keyword">var</span> info = &#123;</span><br><span class="line">  name: <span class="string">'zs'</span>,</span><br><span class="line">  age: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> info</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 注意：</span></span><br><span class="line"><span class="comment">   export default 向外暴露的成员，可以使用任意的变量来接收</span></span><br><span class="line"><span class="comment">   在一个模块中，export default 只允许向外暴露1次</span></span><br><span class="line"><span class="comment">   在一个模块中，可以同时使用 export default 和 export 向外暴露成员</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> title = <span class="string">'小星星'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> content = <span class="string">'哈哈哈'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*注意：</span></span><br><span class="line"><span class="comment">     使用 export 向外暴露的成员，只能使用 &#123; &#125; 的形式来接收，这种形式叫做 【按需导出】</span></span><br><span class="line"><span class="comment">     export 可以向外暴露多个成员， 同时如果某些成员在我们import 的时候不需要，则可以不在 &#123;&#125;  中定义</span></span><br><span class="line"><span class="comment">     使用 export 导出的成员，必须严格按照导出时候的名称来使用  &#123;&#125;  按需接收；</span></span><br><span class="line"><span class="comment">     使用 export 导出的成员，如果想换个名称来接收，可以使用 as 来起别名；</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">#2. main.js</span><br><span class="line"><span class="keyword">import</span> minfo3, &#123; title <span class="keyword">as</span> title123, content &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="built_in">console</span>.log(minfo3)    <span class="comment">//这里的minfo3就是test.js中所暴露出来的default info</span></span><br><span class="line"><span class="built_in">console</span>.log(title123 + <span class="string">' --- '</span> + content)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-2-vue中的数据导出"><a href="#2-4-2-vue中的数据导出" class="headerlink" title="2.4.2 .vue中的数据导出"></a>2.4.2 .vue中的数据导出</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#login.vue</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;这是登录组件，使用 .vue 文件定义出来的 --- &#123;&#123;msg&#125;&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button @click="show"&gt;点我&lt;/</span>button&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="comment">// 注意：组件中的 data 必须是 function</span></span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        msg: <span class="string">"123321"</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      show() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"调用了 login.vue 中的 show 方法"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/10/06/Node%E2%80%94%E2%80%94app-use%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="pre-post btn btn-default" title='Node中app.use中间件'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Node中app.use中间件</span>
+    </a>
+    
+    
+    <a href="/2019/09/07/Vue%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" class="next-post btn btn-default" title='Vue相关问题'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Vue相关问题</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue结合webpack的使用"><span class="toc-text">Vue结合webpack的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本使用"><span class="toc-text">1.基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-使用-vue的方式生成组件"><span class="toc-text">2.使用.vue的方式生成组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-render渲染组件"><span class="toc-text">3.render渲染组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-vue组件中的数据"><span class="toc-text">4.vue组件中的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-模块的导出"><span class="toc-text">2.4.1 模块的导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-vue中的数据导出"><span class="toc-text">2.4.2 .vue中的数据导出</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

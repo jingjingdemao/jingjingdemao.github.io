@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Welcome to my Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="JavaScript" />
+
+
+<meta name="description" content="JavaScript基础知识1.JavaScript 是什么？
+JavaScript 是一种轻量级的编程语言。
+JavaScript 是可插入 HTML 页面的编程代码。
+JavaScript ..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    JavaScript基础知识 |
+    
+    Welcome to my Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Welcome to my Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/sen-bg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='jingjing'>
+            <img src="/img/wulian.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Welcome to my Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JavaScript基础知识">
+            
+            JavaScript基础知识
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/03/05</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                352</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="JavaScript基础知识"><a href="#JavaScript基础知识" class="headerlink" title="JavaScript基础知识"></a>JavaScript基础知识</h2><h3 id="1-JavaScript-是什么？"><a href="#1-JavaScript-是什么？" class="headerlink" title="1.JavaScript 是什么？"></a>1.JavaScript 是什么？</h3><ul>
+<li>JavaScript 是一种轻量级的编程语言。</li>
+<li>JavaScript 是可插入 HTML 页面的编程代码。</li>
+<li>JavaScript 插入 HTML 页面后，可由所有的现代浏览器执行。</li>
+</ul>
+<h3 id="2-js的基本数据类型"><a href="#2-js的基本数据类型" class="headerlink" title="2.js的基本数据类型"></a>2.js的基本数据类型</h3><ol>
+<li>Number</li>
+<li>String</li>
+<li>null</li>
+<li>undefined</li>
+<li>Boolean</li>
+</ol>
+<p>复杂的数据类型：Array  Function  Object</p>
+<h3 id="3-typeof的类型"><a href="#3-typeof的类型" class="headerlink" title="3.typeof的类型"></a>3.typeof的类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typeof &quot;John&quot;                 &#x2F;&#x2F; 返回 string </span><br><span class="line">typeof 3.14                   &#x2F;&#x2F; 返回 number</span><br><span class="line">typeof NaN                    &#x2F;&#x2F; 返回 number</span><br><span class="line">typeof false                  &#x2F;&#x2F; 返回 boolean</span><br><span class="line">typeof [1,2,3,4]              &#x2F;&#x2F; 返回 object</span><br><span class="line">typeof &#123;name:&#39;John&#39;, age:34&#125;  &#x2F;&#x2F; 返回 object</span><br><span class="line">typeof new Date()             &#x2F;&#x2F; 返回 object</span><br><span class="line">typeof function () &#123;&#125;         &#x2F;&#x2F; 返回 function</span><br><span class="line">typeof myCar                  &#x2F;&#x2F; 返回 undefined (如果 myCar 没有声明)</span><br><span class="line">typeof null                   &#x2F;&#x2F; 返回 object</span><br></pre></td></tr></table></figure>
+
+<p><code>typeof只能区分值类型，对引用类型无能为力，只能区分函数function</code><br><code>NaN</code>表示特殊的非数字值，<code>null</code>是空指针，并没有指向任何一个地址<br><code>typeof</code>能区分的五种基本类型：<code>string</code>、<code>boolean</code>、<code>number</code>、<code>undefined</code>、<code>symbol</code>和函数<code>function</code></p>
+<h3 id="4-判断一个变量是否为数组"><a href="#4-判断一个变量是否为数组" class="headerlink" title="4.判断一个变量是否为数组"></a>4.判断一个变量是否为数组</h3><ol>
+<li><p>instanceof 判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3,4];</span><br><span class="line">console.log(arr instanceof Array)&#x2F;&#x2F;true;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原型链方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [1,23,4];</span><br><span class="line">console.log(arr.__proto__.constructor&#x3D;&#x3D;Array);&#x2F;&#x2F;true</span><br><span class="line">console.log(arr.constructor&#x3D;&#x3D;Array)&#x2F;&#x2F;true 这两段代码是一样的</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Object.prototype.toString 的用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function isArray(o)&#123;</span><br><span class="line">return Object.prototype.toString.call(o)&#x3D;&#x3D;&#39;[object Array]&#39;;</span><br><span class="line">&#125;</span><br><span class="line">console.log(isArray(ary));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Array.isArray()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Array.isArray([1, 2, 3]);  </span><br><span class="line">&#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="5-use-strict严格模式"><a href="#5-use-strict严格模式" class="headerlink" title="5.use strict严格模式"></a>5.use strict严格模式</h3><p><code>&quot;use strict&quot;</code> 是 <strong>ES5</strong> 特性，它使我们的代码在函数或整个脚本中处于<strong>严格模式</strong>。<strong>严格模式</strong>帮助我们在代码的早期避免 bug，并为其添加限制。</p>
+<p><strong>严格模式</strong>的一些限制：</p>
+<ol>
+<li>变量必须声明后再使用</li>
+<li>函数的参数不能有同名属性，否则报错</li>
+<li>不能使用<code>with</code>语句</li>
+<li>不能对只读属性赋值，否则报错</li>
+<li>不能使用前缀 0 表示八进制数，否则报错</li>
+<li>不能删除不可删除的属性，否则报错</li>
+<li>不能删除变量<code>delete prop</code>，会报错，只能删除属性<code>delete global[prop]</code></li>
+<li><code>eval</code>不能在它的外层作用域引入变量</li>
+<li><code>eval</code>和<code>arguments</code>不能被重新赋值</li>
+<li><code>arguments</code>不会自动反映函数参数的变化</li>
+<li>不能使用<code>arguments.callee</code></li>
+<li>不能使用<code>arguments.caller</code></li>
+<li>禁止<code>this</code>指向全局对象</li>
+<li>不能使用<code>fn.caller</code>和<code>fn.arguments</code>获取函数调用的堆栈</li>
+<li>增加了保留字（比如<code>protected</code>、<code>static</code>和<code>interface</code>）</li>
+</ol>
+<p>设立”严格模式”的目的，主要有以下几个：</p>
+<ol>
+<li>消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;</li>
+<li>消除代码运行的一些不安全之处，保证代码运行的安全；</li>
+<li>提高编译器效率，增加运行速度；</li>
+<li>为未来新版本的Javascript做好铺垫。</li>
+</ol>
+<h3 id="6-JS数组方法"><a href="#6-JS数组方法" class="headerlink" title="6.JS数组方法"></a>6.JS数组方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Array.concat( ) 连接数组</span><br><span class="line">Array.join( ) 将数组元素连接起来以构建一个字符串</span><br><span class="line">Array.length 数组的大小</span><br><span class="line">Array.pop( ) 删除并返回数组的最后一个元素</span><br><span class="line">Array.push( ) 给数组添加元素</span><br><span class="line">Array.reverse( ) 颠倒数组中元素的顺序</span><br><span class="line">Array.shift( ) 将元素移出数组</span><br><span class="line">Array.slice( ) 返回数组的一部分</span><br><span class="line">Array.sort( ) 对数组元素进行排序</span><br><span class="line">Array.splice( ) 插入、删除或替换数组的元素</span><br><span class="line">Array.toLocaleString( ) 把数组转换成局部字符串</span><br><span class="line">Array.toString( ) 将数组转换成一个字符串</span><br><span class="line">Array.unshift( ) 在数组头部插入一个元素</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/03/12/JavaScript%E2%80%94%E2%80%94%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/" class="pre-post btn btn-default" title='JavaScript原型链与继承'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            JavaScript原型链与继承</span>
+    </a>
+    
+    
+    <a href="/2019/02/18/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/" class="next-post btn btn-default" title='事件模型'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            事件模型</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript基础知识"><span class="toc-text">JavaScript基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-JavaScript-是什么？"><span class="toc-text">1.JavaScript 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-js的基本数据类型"><span class="toc-text">2.js的基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-typeof的类型"><span class="toc-text">3.typeof的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-判断一个变量是否为数组"><span class="toc-text">4.判断一个变量是否为数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-use-strict严格模式"><span class="toc-text">5.use strict严格模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-JS数组方法"><span class="toc-text">6.JS数组方法</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
