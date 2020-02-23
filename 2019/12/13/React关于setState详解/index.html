@@ -209,7 +209,7 @@
 <h5 id="setTimeout里面的两次setState"><a href="#setTimeout里面的两次setState" class="headerlink" title="setTimeout里面的两次setState:"></a><code>setTimeout</code>里面的两次<code>setState</code>:</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同步</span></span><br><span class="line"> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;)</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value) <span class="comment">// 第三次输出2</span></span><br><span class="line">           <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span>&#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.value) <span class="comment">// 第四次输出3</span></span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <p>在<code>React</code>中，<strong>如果是由React引发的事件处理（比如：<code>onClick</code>引发的事件处理），调用<code>setState</code>不会同步更新<code>this.state</code>，除此之外的<code>setState</code>调用会同步执行t<code>his.setState</code>。</strong> “除此之外”指的是：绕过React通过<code>addEventListener</code>直接添加的事件处理函数和<code>setTimeout/setInterval</code>产生的异步调用。</p>
-<p><img src="/2019/12/13/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94setState%E8%AF%A6%E8%A7%A3/Blog/HexoBlog/source/image/setState/setState.png" alt="setState"></p>
+<p><img src="/2019/12/13/React%E5%85%B3%E4%BA%8EsetState%E8%AF%A6%E8%A7%A3/image/setState/setState.png" alt></p>
 <blockquote>
 <p>每次setState产生新的state会依次被存入一个队列，然后会根据<strong>isBathingUpdates</strong>变量判断是直接更新this.state还是放进dirtyComponent里回头再说。isBatchingUpdates默认是false，也就表示setState会同步更新this.state。但是，当React在调用事件处理函数之前就会调用batchedUpdates，这个函数会把isBatchingUpdates修改为true，造成的后果就是由React控制的事件处理过程setState不会同步更新this.state。</p>
 </blockquote>
@@ -245,14 +245,14 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/12/21/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94react-hook%E5%AE%9E%E7%8E%B0redux%E7%9A%84%E5%8A%9F%E8%83%BD/" class="pre-post btn btn-default" title='react hook实现redux的功能'>
+    <a href="/2019/12/21/react-hook%E5%AE%9E%E7%8E%B0redux%E7%9A%84%E5%8A%9F%E8%83%BD/" class="pre-post btn btn-default" title='react hook实现redux的功能'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
             react hook实现redux的功能</span>
     </a>
     
     
-    <a href="/2019/11/18/React%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94reactRouter4/" class="next-post btn btn-default" title='React中的reactRouter'>
+    <a href="/2019/11/18/React%E4%B8%AD%E7%9A%84reactRouter4/" class="next-post btn btn-default" title='React中的reactRouter'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
             React中的reactRouter</span><i class="fa fa-angle-right fa-fw"></i>
